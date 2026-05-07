@@ -1,0 +1,55 @@
+<section id="about" class="py-[60px] md:py-[100px] grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center max-w-7xl mx-auto">
+  <div class="text-left">
+    <div class="mb-16">
+      <div class="inline-block text-[0.6rem] tracking-[0.45em] uppercase text-gold-light mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle">
+        {{ langService.currentLang() === 'fr' ? 'Notre histoire' : 'Our story' }}
+      </div>
+      <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
+        {{ langService.currentLang() === 'fr' ? "Un refuge d'exception" : "An exceptional retreat" }}<br>
+        {{ langService.currentLang() === 'fr' ? "au cœur de " : "in the heart of " }}<em class="italic text-gold-light">Dakar</em>
+      </h2>
+    </div>
+    
+    <p class="text-[0.82rem] font-light leading-[1.9] text-white/65 mb-5">
+      {{ langService.currentLang() === 'fr' 
+        ? "Lebu Appart&Suites incarne l'élégance contemporaine mêlée aux richesses culturelles du Sénégal. Chaque appartement est conçu pour offrir un espace de vie raffiné, où le luxe rencontre l'authenticité africaine." 
+        : "Lebu Appart&Suites embodies contemporary elegance blended with Senegal's cultural richness. Each apartment is designed to offer a refined living space where luxury meets African authenticity." 
+      }}
+    </p>
+    <p class="text-[0.82rem] font-light leading-[1.9] text-white/65 mb-5">
+      {{ langService.currentLang() === 'fr' 
+        ? "Niché dans la ville de Dakar, notre résidence hôtelière offre une expérience unique alliant confort absolu, service personnalisé et panoramas époustouflants sur la capitale sénégalaise." 
+        : "Nestled in the city of Dakar, our hotel residence offers a unique experience combining absolute comfort, personalized service, and breathtaking views of the Senegalese capital." 
+      }}
+    </p>
+    
+    <div class="grid grid-cols-2 gap-6 mt-10">
+      @for (stat of stats; track stat.num) {
+        <div class="border border-gold-light/20 p-6 relative overflow-hidden after:absolute after:bottom-0 after:left-0 after:w-2/5 after:h-0.5 after:bg-gradient-to-r after:from-gold-light after:to-transparent">
+          <div class="font-serif text-4xl font-light text-gold-light leading-none">{{ stat.num }}</div>
+          <div class="text-[0.6rem] tracking-[0.2em] uppercase text-white/45 mt-1.5">{{ langService.currentLang() === 'fr' ? stat.labelFr : stat.labelEn }}</div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="hidden md:block relative">
+    <div class="relative h-[520px]">
+      <!-- Main Background Image -->
+      <div class="absolute top-0 right-0 w-[85%] h-full bg-[url('/bg-hero.jpeg')] bg-cover bg-center saturate-[0.7] brightness-[0.8] shadow-2xl relative after:absolute after:inset-0 after:bg-navy/10"></div>
+      
+      <!-- Frame Border -->
+      <div class="absolute -bottom-6 left-0 w-[55%] h-[60%] border-2 border-gold-light/30 pointer-events-none"></div>
+      
+      <!-- Second Image (Lobby) -->
+      <div class="absolute -bottom-[30px] -left-[30px] w-[55%] h-[220px] bg-[url('/accueil.jpeg')] bg-cover bg-center border-[3px] border-gold-light/40 shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-10"></div>
+
+      <!-- Floating Text Box (Right side) -->
+      <div class="absolute bottom-6 -right-4 bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep px-6 py-4 text-[0.6rem] font-bold tracking-[0.2em] uppercase text-center leading-[1.5] shadow-xl z-20">
+        LEBU<br>APPART&amp;SUITES<br>DAKAR
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-divider mx-6 max-w-7xl lg:mx-auto"></div>

@@ -1,0 +1,56 @@
+<section id="galerie" class="py-[60px] md:py-[100px] max-w-7xl mx-auto">
+  <div class="text-center mb-16">
+    <div class="inline-block text-[0.6rem] tracking-[0.45em] uppercase text-gold-light mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle before:content-['◆'] before:text-[0.4rem] before:mx-3 before:text-gold-dark before:align-middle">
+      {{ langService.currentLang() === 'fr' ? 'Galerie' : 'Gallery' }}
+    </div>
+    <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
+      {{ langService.currentLang() === 'fr' ? 'Découvrez' : 'Discover' }}<br>
+      <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? 'nos espaces' : 'our spaces' }}</em>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr] md:grid-rows-[280px_280px] auto-rows-[280px] gap-3 mt-16">
+    <!-- Facade large -->
+    <div class="md:row-span-2 relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('building.jpeg')">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
+      <div class="absolute bottom-6 left-6 transition-transform duration-500 group-hover:-translate-y-2">
+        <div class="text-[0.6rem] tracking-[0.3em] uppercase text-gold-light mb-1.5">{{ langService.currentLang() === 'fr' ? 'Façade' : 'Exterior' }}</div>
+        <div class="font-serif text-[1.6rem] font-light">{{ langService.currentLang() === 'fr' ? 'Architecture contemporaine' : 'Contemporary architecture' }}</div>
+      </div>
+    </div>
+    
+    <!-- Lobby -->
+    <div class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('accueil.jpeg')">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
+      <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
+        <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? 'Accueil' : 'Reception' }}</div>
+      </div>
+    </div>
+    
+    <!-- Salon -->
+    <div class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('salon.jpeg')">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
+      <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
+        <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? 'Salon' : 'Living room' }}</div>
+      </div>
+    </div>
+    
+    <!-- Salle de bain -->
+    <div class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('toilet.jpeg')">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
+      <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
+        <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? 'Salle de bain' : 'Bathroom' }}</div>
+      </div>
+    </div>
+    
+    <!-- Commerce -->
+    <div class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('commerces.jpeg')">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
+      <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
+        <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? 'Commerces' : 'Retail' }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pattern-divider mx-6 max-w-7xl lg:mx-auto mt-12 mb-12"></div>

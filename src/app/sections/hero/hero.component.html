@@ -1,0 +1,35 @@
+<section id="hero" class="relative h-screen min-h-[700px] flex items-end overflow-hidden">
+  <div class="absolute inset-0 z-0 bg-[url('/bg-hero.jpeg')] bg-cover bg-top bg-no-repeat saturate-[.85]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(17,48,104,0.5)_0%,transparent_60%),linear-gradient(180deg,rgba(10,30,69,0.3)_0%,rgba(10,30,69,0.85)_75%,#0a1e45_100%)] z-10"></div>
+  
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold-light/10 rounded-full z-10 before:content-[''] before:absolute before:inset-[30px] before:border before:border-gold-light/5 before:rounded-full pointer-events-none"></div>
+
+  <div class="relative z-20 w-full flex flex-col md:flex-row justify-between items-start md:items-end px-6 md:px-12 pb-[60px] md:pb-[80px] gap-8 md:gap-0">
+    <div class="text-left">
+      <p class="text-[0.65rem] tracking-[0.4em] uppercase text-gold-light mb-[20px] opacity-0 animate-[fadeInUp_1s_0.3s_forwards]">
+        {{ langService.currentLang() === 'fr' ? 'Dakar — Sénégal' : 'Dakar — Senegal' }}
+      </p>
+      <h1 class="font-serif text-[clamp(3rem,6vw,5.5rem)] font-light leading-[1.05] opacity-0 animate-[fadeInUp_1s_0.5s_forwards]">
+        {{ langService.currentLang() === 'fr' ? "L'art de vivre" : "The art of" }}<br>
+        <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? "l'hospitalité africaine" : "African hospitality" }}</em>
+      </h1>
+      <p class="text-[0.8rem] font-light tracking-[0.05em] text-white/60 mt-[20px]">
+        {{ langService.currentLang() === 'fr' ? '34 appartements & suites de luxe · Vue panoramique' : '34 luxury apartments & suites · Panoramic views' }}
+      </p>
+    </div>
+
+    <div class="mt-8 md:mt-0">
+      <button onclick="document.dispatchEvent(new CustomEvent('openModal'))" class="bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.65rem] font-bold tracking-[0.25em] uppercase px-9 py-[18px] cursor-pointer transition-transform duration-300 hover:-translate-y-1">
+        <span>{{ langService.currentLang() === 'fr' ? 'Réserver maintenant' : 'Book now' }}</span>
+        <span class="ml-3 text-[1.1em] align-middle">→</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-0 animate-[fadeIn_1s_1.5s_forwards]">
+    <span class="text-[0.55rem] tracking-[0.3em] uppercase text-white/40">
+      {{ langService.currentLang() === 'fr' ? 'Découvrir' : 'Discover' }}
+    </span>
+    <div class="w-[1px] h-12 bg-gradient-to-b from-[#e6c473] to-transparent animate-scrollPulse"></div>
+  </div>
+</section>

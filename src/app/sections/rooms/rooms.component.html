@@ -1,0 +1,55 @@
+<section id="rooms" class="py-[60px] md:py-[100px] max-w-7xl mx-auto">
+  <div class="text-center mb-16">
+    <div class="inline-block text-[0.6rem] tracking-[0.45em] uppercase text-gold-light mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle before:content-['◆'] before:text-[0.4rem] before:mx-3 before:text-gold-dark before:align-middle">
+      {{ langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}
+    </div>
+    <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
+      {{ langService.currentLang() === 'fr' ? 'Choisissez votre' : 'Choose your' }}<br>
+      <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? 'espace de vie' : 'living space' }}</em>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-0.5 border border-gold-light/10 bg-gold-light/10">
+    @for (room of rooms; track room.id) {
+      <div 
+        class="relative overflow-hidden cursor-pointer group bg-[#0a1e45]" 
+        [class.md:col-span-2]="room.id === 'studio' || room.id === 'penthouse'" 
+        [class.col-span-full]="room.id === 'studio' || room.id === 'penthouse'" 
+        [class.h-[350px]]="room.id !== 'studio' && room.id !== 'penthouse'"
+        [class.md:h-[480px]]="room.id !== 'studio' && room.id !== 'penthouse'"
+        [class.h-[400px]]="room.id === 'studio' || room.id === 'penthouse'"
+        [class.md:h-[560px]]="room.id === 'studio' || room.id === 'penthouse'"
+      >
+        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-70 group-hover:scale-[1.06] group-hover:opacity-90" [style.background-image]="'url(/' + room.image + ')'"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,30,69,0.95)] to-transparent opacity-90"></div>
+        
+        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 transform md:translate-y-10 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-y-0">
+          <p class="text-[0.58rem] tracking-[0.35em] uppercase text-gold-light mb-2.5">
+            {{ langService.currentLang() === 'fr' ? room.catFr : room.catEn }}
+          </p>
+          <h3 class="font-serif font-light leading-[1.1] mb-3 text-[2rem] md:text-[2.2rem]" [class.md:text-[2.8rem]]="room.id === 'studio' || room.id === 'penthouse'">
+            {{ langService.currentLang() === 'fr' ? room.nameFr : room.nameEn }}
+          </h3>
+          
+          <div class="flex items-baseline gap-2 mb-5">
+            <span class="font-serif text-[1.8rem] font-semibold text-gold-light">{{ room.price }}</span>
+            <span class="text-[0.65rem] text-white/50 tracking-widest">FCFA</span>
+            <span class="text-[0.55rem] text-white/35 tracking-widest ml-1">{{ langService.currentLang() === 'fr' ? '/ nuit + taxes' : '/ night + taxes' }}</span>
+          </div>
+          
+          <div class="flex gap-4 flex-wrap mb-6 md:opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100">
+            @for (feat of (langService.currentLang() === 'fr' ? room.featuresFr : room.featuresEn); track feat) {
+              <span class="text-[0.55rem] tracking-[0.15em] uppercase px-3 py-1 border border-gold-light/30 text-white/60">{{ feat }}</span>
+            }
+          </div>
+          
+          <button (click)="openModalRoom(room.id)" class="inline-block bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.6rem] font-bold tracking-[0.25em] uppercase px-7 py-3 cursor-pointer md:opacity-0 transition-all duration-400 delay-150 group-hover:opacity-100 group-hover:-translate-y-0.5 hover:-translate-y-1">
+            {{ langService.currentLang() === 'fr' ? room.btnFr : room.btnEn }}
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<div class="pattern-divider mx-6 md:mx-12 max-w-7xl lg:mx-auto"></div>

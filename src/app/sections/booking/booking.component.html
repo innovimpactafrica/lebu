@@ -1,0 +1,36 @@
+<section id="booking" class="relative px-4 -mt-[50px] z-30 max-w-7xl mx-auto">
+  <div class="bg-[rgba(17,48,104,0.92)] backdrop-blur-xl border border-gold-light/20 p-6 md:p-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto] gap-6 items-end">
+    
+    <div class="flex flex-col gap-2.5">
+      <label class="block text-[0.58rem] tracking-[0.3em] uppercase text-gold-light">
+        {{ langService.currentLang() === 'fr' ? 'Arrivée' : 'Check-in' }}
+      </label>
+      <input type="date" [(ngModel)]="checkIn" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
+    </div>
+    
+    <div class="flex flex-col gap-2.5">
+      <label class="block text-[0.58rem] tracking-[0.3em] uppercase text-gold-light">
+        {{ langService.currentLang() === 'fr' ? 'Départ' : 'Check-out' }}
+      </label>
+      <input type="date" [(ngModel)]="checkOut" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
+    </div>
+    
+    <div class="flex flex-col gap-2.5">
+      <label class="block text-[0.58rem] tracking-[0.3em] uppercase text-gold-light">
+        {{ langService.currentLang() === 'fr' ? 'Hébergement' : 'Accommodation' }}
+      </label>
+      <select [(ngModel)]="room" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none [&>option]:bg-navy [&>option]:text-white">
+        <option value="studio">{{ langService.currentLang() === 'fr' ? 'Studio de Luxe — 90 000 FCFA' : 'Luxury Studio — 90,000 FCFA' }}</option>
+        <option value="prestige">{{ langService.currentLang() === 'fr' ? 'Suite Prestige — 110 000 FCFA' : 'Prestige Suite — 110,000 FCFA' }}</option>
+        <option value="executive">{{ langService.currentLang() === 'fr' ? 'Suite Exécutive — 180 000 FCFA' : 'Executive Suite — 180,000 FCFA' }}</option>
+        <option value="penthouse">{{ langService.currentLang() === 'fr' ? 'Penthouse Exécutif — 220 000 FCFA' : 'Executive Penthouse — 220,000 FCFA' }}</option>
+      </select>
+    </div>
+    
+    <button (click)="openBooking()" class="col-span-1 md:col-span-2 lg:col-span-1 bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.65rem] font-bold tracking-[0.25em] uppercase px-9 py-3.5 cursor-pointer transition-all duration-300 whitespace-nowrap hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(230,196,115,0.3)]">
+      {{ langService.currentLang() === 'fr' ? 'Vérifier disponibilité' : 'Check availability' }}
+    </button>
+
+  </div>
+</section>
+<div class="pattern-divider mt-12 mx-6 md:mx-12 max-w-7xl lg:mx-auto"></div>
