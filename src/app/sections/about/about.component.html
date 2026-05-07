@@ -10,18 +10,33 @@
       </h2>
     </div>
     
-    <p class="text-[0.82rem] font-light leading-[1.9] text-white/65 mb-5">
-      {{ langService.currentLang() === 'fr' 
-        ? "Lebu Appart&Suites incarne l'élégance contemporaine mêlée aux richesses culturelles du Sénégal. Chaque appartement est conçu pour offrir un espace de vie raffiné, où le luxe rencontre l'authenticité africaine." 
-        : "Lebu Appart&Suites embodies contemporary elegance blended with Senegal's cultural richness. Each apartment is designed to offer a refined living space where luxury meets African authenticity." 
-      }}
-    </p>
-    <p class="text-[0.82rem] font-light leading-[1.9] text-white/65 mb-5">
-      {{ langService.currentLang() === 'fr' 
-        ? "Niché dans la ville de Dakar, notre résidence hôtelière offre une expérience unique alliant confort absolu, service personnalisé et panoramas époustouflants sur la capitale sénégalaise." 
-        : "Nestled in the city of Dakar, our hotel residence offers a unique experience combining absolute comfort, personalized service, and breathtaking views of the Senegalese capital." 
-      }}
-    </p>
+    <ng-container *ngIf="contentService.content">
+      <div class="space-y-5">
+        <div *ngFor="let paragraph of contentService.content.paragraphs; let i = index" class="relative group">
+          <ng-container *ngIf="editingIndex() !== i; else editBlock">
+            <p class="text-[0.82rem] font-light leading-[1.9] text-white/65 mb-5">
+              {{ langService.currentLang() === 'fr' ? paragraph.fr : paragraph.en }}
+            </p>
+            <button class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 text-[0.9rem] p-2" (click)="edit(i)" aria-label="Edit">✎</button>
+          </ng-container>
+
+          <ng-template #editBlock>
+            <div class="space-y-3 mb-5">
+              <label class="text-[0.65rem] uppercase text-white/45">FR</label>
+              <textarea rows="4" [(ngModel)]="tempFr" class="w-full rounded p-3 text-black"></textarea>
+
+              <label class="text-[0.65rem] uppercase text-white/45">EN</label>
+              <textarea rows="3" [(ngModel)]="tempEn" class="w-full rounded p-3 text-black"></textarea>
+
+              <div class="flex gap-3 mt-2">
+                <button class="px-3 py-1 bg-gold-light text-navy-deep" (click)="save(i)">Valider</button>
+                <button class="px-3 py-1 border border-white/20" (click)="cancel()">Annuler</button>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </ng-container>
     
     <div class="grid grid-cols-2 gap-6 mt-10">
       @for (stat of stats; track stat.num) {
