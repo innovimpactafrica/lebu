@@ -13,7 +13,7 @@ export class RoomsComponent {
   rooms = [
     {
       id: 'studio',
-      image: 'kitchen.jpeg',
+      image: 'kitchen.png',
       bgClass: 'bg-[linear-gradient(135deg,#0a1e45_0%,#1a3a70_50%,#113068_100%)]',
       gradient: 'linear-gradient(135deg,#071527 0%,#132d5a 100%)',
       catFr: 'Entrée de gamme', catEn: 'Entry level',
@@ -37,7 +37,7 @@ export class RoomsComponent {
     },
     {
       id: 'executive',
-      image: 'bedroom.jpeg',
+      image: 'bedroom.png',
       bgClass: 'bg-[linear-gradient(135deg,#0c1b35_0%,#162d58_100%)]',
       gradient: 'linear-gradient(135deg,#060f20 0%,#0b1e3e 100%)',
       catFr: 'Prestige & Raffinement', catEn: 'Prestige & Refinement',

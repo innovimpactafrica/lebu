@@ -11,17 +11,6 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 border border-gold-light/10 bg-gold-light/10">
-      <!-- Service 1 -->
-      <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-12 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
-        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
-        <span class="block text-4xl mb-6">🍽️</span>
-        <h3 class="font-serif text-2xl font-normal mb-3 text-white">
-          {{ langService.currentLang() === 'fr' ? 'Salle à Manger' : 'Dining Room' }}
-        </h3>
-        <p class="text-[0.72rem] font-light leading-[1.8] text-white/50">
-          {{ langService.currentLang() === 'fr' ? 'Un espace raffiné pour savourer des repas en toute intimité. Ambiance élégante et service attentionné.' : 'A refined space to enjoy meals in complete intimacy. Elegant atmosphere and attentive service.' }}
-        </p>
-      </div>
 
       <!-- Service 2 -->
       <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-12 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
@@ -67,6 +56,21 @@
           {{ langService.currentLang() === 'fr' ? 'Dernière génération' : 'Latest generation' }}
         </span>
       </div>
+
+
+        <!-- Service 1 -->
+       <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-12 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
+        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
+        <span class="block text-4xl mb-6">🧭</span>
+        <h3 class="font-serif text-2xl font-normal mb-3 text-white">
+          {{ langService.currentLang() === 'fr' ? 'Excursion' : 'Excursion' }}
+        </h3>
+        <p class="text-[0.72rem] font-light leading-[1.8] text-white/50">
+          {{ langService.currentLang() === 'fr' ? 'Découvrez la beauté et la culture locale à travers nos excursions guidées exclusives et sur-mesure.' : 'Discover local beauty and culture through our exclusive, custom-tailored guided excursions.' }}
+        </p>
+      </div>
+
+      
     </div>
   </div>
 </section>
