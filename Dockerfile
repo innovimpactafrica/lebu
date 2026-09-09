@@ -12,7 +12,7 @@ RUN npm run build -- --configuration=production
 
 FROM nginx:alpine
 
-COPY --from=builder /app/dist/pharmacie-delivery-v1/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/lebu/browser /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
