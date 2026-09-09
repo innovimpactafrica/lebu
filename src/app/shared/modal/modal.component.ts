@@ -14,7 +14,7 @@ export class ModalComponent implements OnInit {
   isOpen = signal(false);
   isSuccess = signal(false);
   
-  selectedRoom = signal('studio');
+  selectedRoom = signal('executive');
   
   checkIn = '';
   checkOut = '';
@@ -26,10 +26,12 @@ export class ModalComponent implements OnInit {
   formTouched = false;
 
   rooms = [
-    { id: 'studio', nameFr: 'Studio de Luxe', nameEn: 'Luxury Studio', price: '90 000' },
-    { id: 'prestige', nameFr: 'Suite Prestige', nameEn: 'Prestige Suite', price: '110 000' },
-    { id: 'executive', nameFr: 'Suite Exécutive', nameEn: 'Executive Suite', price: '180 000' },
-    { id: 'penthouse', nameFr: 'Penthouse Exécutif', nameEn: 'Executive Penthouse', price: '220 000' }
+    { id: 'executive', nameFr: 'Executive', nameEn: 'Executive', price: '90 000', group: 'floors' },
+    { id: 'deluxe', nameFr: 'Deluxe', nameEn: 'Deluxe', price: '110 000', group: 'floors' },
+    { id: 'premium-privilege', nameFr: 'Premium Privilege', nameEn: 'Premium Privilege', price: '130 000', group: 'club' },
+    { id: 'club-executive', nameFr: 'Executive', nameEn: 'Executive', price: '150 000', group: 'club' },
+    { id: 'club-deluxe', nameFr: 'Deluxe', nameEn: 'Deluxe', price: '180 000', group: 'club' },
+    { id: 'penthouse', nameFr: 'Penthouse / Lebu Platinum', nameEn: 'Penthouse / Lebu Platinum', price: '220 000', group: 'club' },
   ];
 
   ngOnInit() {

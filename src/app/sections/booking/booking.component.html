@@ -19,11 +19,17 @@
       <label class="block text-[0.58rem] tracking-[0.3em] uppercase text-gold-light">
         {{ langService.currentLang() === 'fr' ? 'Hébergement' : 'Accommodation' }}
       </label>
-      <select [(ngModel)]="room" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none [&>option]:bg-navy [&>option]:text-white">
-        <option value="studio">{{ langService.currentLang() === 'fr' ? 'Studio de Luxe — 90 000 FCFA' : 'Luxury Studio — 90,000 FCFA' }}</option>
-        <option value="prestige">{{ langService.currentLang() === 'fr' ? 'Suite Prestige — 110 000 FCFA' : 'Prestige Suite — 110,000 FCFA' }}</option>
-        <option value="executive">{{ langService.currentLang() === 'fr' ? 'Suite Exécutive — 180 000 FCFA' : 'Executive Suite — 180,000 FCFA' }}</option>
-        <option value="penthouse">{{ langService.currentLang() === 'fr' ? 'Penthouse Exécutif — 220 000 FCFA' : 'Executive Penthouse — 220,000 FCFA' }}</option>
+      <select [(ngModel)]="room" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none [&>option]:bg-navy [&>option]:text-white [&>optgroup]:bg-navy [&>optgroup]:text-gold-light">
+        <optgroup [label]="langService.currentLang() === 'fr' ? 'Étages 2 à 5' : 'Floors 2 to 5'">
+          <option value="executive">Executive</option>
+          <option value="deluxe">Deluxe</option>
+        </optgroup>
+        <optgroup [label]="langService.currentLang() === 'fr' ? 'Club Lebu — Étages 6 à 8' : 'Club Lebu — Floors 6 to 8'">
+          <option value="premium-privilege">Premium Privilege</option>
+          <option value="club-executive">Executive</option>
+          <option value="club-deluxe">Deluxe</option>
+          <option value="penthouse">Penthouse / Lebu Platinum</option>
+        </optgroup>
       </select>
     </div>
     

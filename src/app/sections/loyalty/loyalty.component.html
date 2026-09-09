@@ -1,0 +1,104 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0"/>
+    </filter>
+    <symbol id="pirogue" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="0.75" opacity="0.5"/>
+      <line x1="7" y1="21" x2="25" y2="21" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      <path d="M10.5 21 Q16 24.3 21.5 21" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <line x1="16" y1="21" x2="16" y2="9" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      <path d="M16 9 L22 20.3 L16 20.3 Z" fill="currentColor" opacity="0.9"/>
+    </symbol>
+    <pattern id="weaveBronze" width="22" height="15" patternUnits="userSpaceOnUse">
+      <rect width="22" height="15" fill="#5C3A1E"/>
+      <polygon points="0,15 5.5,0 11,15" fill="#E3A26D" opacity="0.55"/>
+      <polygon points="11,0 16.5,15 22,0" fill="#E3A26D" opacity="0.28"/>
+    </pattern>
+    <pattern id="weaveArgent" width="24" height="15" patternUnits="userSpaceOnUse">
+      <rect width="24" height="15" fill="#63666A"/>
+      <polygon points="0,15 6,0 12,15" fill="#F2F3F4" opacity="0.5"/>
+      <polygon points="12,0 18,15 24,0" fill="#F2F3F4" opacity="0.26"/>
+    </pattern>
+    <pattern id="weaveOr" width="30" height="15" patternUnits="userSpaceOnUse">
+      <rect width="30" height="15" fill="#6E5527"/>
+      <polygon points="0,15 7.5,0 15,15" fill="#F5E4BC" opacity="0.4"/>
+    </pattern>
+  </defs>
+</svg>
+
+<section class="loyalty-stage">
+
+  <p class="loyalty-eyebrow">Lebu Club</p>
+  <div class="loyalty-rule"></div>
+
+  <!-- Onglets -->
+  <div class="loyalty-tabs" role="tablist">
+    @for (c of cards; track c.tier; let i = $index) {
+      <button
+        role="tab"
+        [attr.aria-selected]="active() === i"
+        class="loyalty-tab"
+        [class.is-active]="active() === i"
+        [class.tab--bronze]="c.tier === 'Bronze'"
+        [class.tab--argent]="c.tier === 'Argent'"
+        [class.tab--or]="c.tier === 'Or'"
+        (click)="select(i)">
+        {{ c.tier }}
+      </button>
+    }
+  </div>
+
+  <!-- Contenu -->
+  <div class="loyalty-body">
+
+    <!-- Carte -->
+    <div class="loyalty-card-wrap">
+      <div #cardEl class="lcard {{ current.tierClass }}">
+        <div class="lcard-grain"></div>
+        <div class="lcard-sheen"></div>
+        <div class="lcard-glare"></div>
+        <div class="lcard-row lcard-top">
+          <img src="logo_Lebu2.png" class="lcard-logo" alt="Lebu">
+          <span class="lcard-tier">{{ current.tier }}</span>
+        </div>
+        <div class="lcard-brand">
+          <div class="lcard-brand-word">Lebu Club</div>
+          <div class="lcard-brand-tag">Hôtel Collection</div>
+        </div>
+        <div class="lcard-weave">
+          <svg viewBox="0 0 300 15" preserveAspectRatio="none">
+            <rect width="300" height="15" [attr.fill]="'url(#' + current.weaveId + ')'"/>
+          </svg>
+        </div>
+        <div class="lcard-row lcard-bottom">
+          <div>
+            <div class="lcard-member-label">{{ langService.currentLang() === 'fr' ? 'N° membre' : 'Member No.' }}</div>
+            <div class="lcard-member-number">{{ current.number }}</div>
+          </div>
+        </div>
+      </div>
+      <p class="loyalty-hint">
+        {{ langService.currentLang() === 'fr'
+          ? 'Survolez la carte pour révéler son éclat.'
+          : 'Hover the card to reveal its sheen.' }}
+      </p>
+    </div>
+
+    <!-- Avantages -->
+    <div class="loyalty-perks">
+      <p class="perks-label">{{ langService.currentLang() === 'fr' ? 'Avantages inclus' : 'Included benefits' }}</p>
+      <ul class="perks-list">
+        @for (p of current.perks; track p.fr) {
+          <li class="perk-item">
+            <span class="perk-dot"></span>
+            {{ langService.currentLang() === 'fr' ? p.fr : p.en }}
+          </li>
+        }
+      </ul>
+    </div>
+
+  </div>
+
+</section>

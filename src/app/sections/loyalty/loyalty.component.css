@@ -1,0 +1,228 @@
+:host {
+  --ivory: #F7F1E4;
+  --ivory-dim: rgba(247,241,228,0.62);
+  display: block;
+}
+
+.loyalty-stage {
+  position: relative;
+  padding: 72px 24px 80px;
+  background:
+    radial-gradient(ellipse 1100px 500px at 50% 60%, #2A2519 0%, transparent 70%),
+    linear-gradient(to bottom, #0a1e45 0%, #0d1a2e 30%, #0f1510 65%, #0B0A08 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ── Header ── */
+.loyalty-eyebrow {
+  font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: var(--ivory);
+  margin: 0 0 14px;
+}
+.loyalty-rule { width: 34px; height: 1px; background: rgba(247,241,228,0.35); margin-bottom: 48px; }
+
+/* ── Tabs ── */
+.loyalty-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(247,241,228,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 52px;
+}
+
+.loyalty-tab {
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(247,241,228,0.15);
+  color: var(--ivory-dim);
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.loyalty-tab:last-child { border-right: none; }
+.loyalty-tab:hover { color: var(--ivory); background: rgba(247,241,228,0.06); }
+
+.loyalty-tab.is-active.tab--bronze { background: linear-gradient(135deg, #4E2E18, #AD6E38); color: var(--ivory); }
+.loyalty-tab.is-active.tab--argent { background: linear-gradient(135deg, #5C6064, #ACAFB3); color: var(--ivory); }
+.loyalty-tab.is-active.tab--or     { background: linear-gradient(135deg, #6B5426, #C4A05C); color: var(--ivory); }
+
+/* ── Body ── */
+.loyalty-body {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+
+/* ── Card ── */
+.loyalty-card-wrap {
+  flex: 0 0 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.lcard {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 856 / 540;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 25px 27px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--ivory);
+  cursor: pointer;
+  transition: transform 0.2s ease-out, box-shadow 0.25s ease-out;
+  will-change: transform;
+  transform-style: preserve-3d;
+  box-shadow:
+    0 26px 46px -18px var(--amb),
+    0 10px 18px -6px rgba(0,0,0,0.4),
+    inset 0 1px 1px rgba(255,255,255,0.34),
+    inset 0 -1px 1px rgba(0,0,0,0.32),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+.lcard.is-active {
+  box-shadow:
+    0 34px 58px -18px var(--amb),
+    0 16px 26px -8px rgba(0,0,0,0.45),
+    inset 0 1px 1px rgba(255,255,255,0.36),
+    inset 0 -1px 1px rgba(0,0,0,0.32),
+    inset 0 0 0 1px rgba(255,255,255,0.07);
+}
+
+.lcard--bronze {
+  --amb: rgba(42,27,13,0.65);
+  background:
+    repeating-linear-gradient(112deg, rgba(255,255,255,0.045) 0px, rgba(255,255,255,0.045) 1px, rgba(0,0,0,0.035) 1px, rgba(0,0,0,0.035) 3px),
+    linear-gradient(135deg, #2A1B0D 0%, #4E2E18 15%, #7A4726 30%, #AD6E38 45%, #DB8F5A 58%, #8F5C2E 70%, #5A351B 85%, #2A1B0D 100%);
+}
+.lcard--argent {
+  --amb: rgba(30,32,34,0.55);
+  background:
+    repeating-linear-gradient(112deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, rgba(0,0,0,0.025) 1px, rgba(0,0,0,0.025) 3px),
+    linear-gradient(135deg, #3D4044 0%, #5C6064 15%, #82868A 30%, #ACAFB3 45%, #E8E9EA 58%, #92969A 70%, #5C6064 85%, #3D4044 100%);
+}
+.lcard--or {
+  --amb: rgba(80,64,20,0.55);
+  background: linear-gradient(135deg, #423311 0%, #6B5426 15%, #96793E 30%, #C4A05C 45%, #F0DDAA 58%, #A98950 70%, #6B5426 85%, #423311 100%);
+}
+
+.lcard-grain { position: absolute; inset: 0; z-index: 1; filter: url(#grain); opacity: 0.4; mix-blend-mode: overlay; pointer-events: none; }
+
+.lcard-sheen {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(100deg, transparent 32%, rgba(255,255,255,0.16) 50%, transparent 68%);
+  background-size: 240% 100%;
+  background-position: 130% 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: shimmer 9s ease-in-out infinite;
+}
+.lcard.is-active .lcard-sheen { animation-play-state: paused; }
+
+@keyframes shimmer {
+  0%, 100% { background-position: 130% 0; }
+  50%       { background-position: -30% 0; }
+}
+
+.lcard-glare {
+  position: absolute; inset: 0; z-index: 1;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,0.42), transparent 42%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.lcard.is-active .lcard-glare { opacity: 1; }
+
+.lcard-row { position: relative; z-index: 2; display: flex; justify-content: space-between; }
+.lcard-top    { align-items: center; }
+.lcard-bottom { align-items: flex-end; }
+
+.lcard-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 1.5px rgba(0,0,0,0.4));
+  flex-shrink: 0;
+}
+
+.lcard-tier { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; text-shadow: 0 -1px 0 rgba(255,255,255,0.22), 0 1px 2px rgba(0,0,0,0.4); }
+
+.lcard-brand { position: relative; z-index: 2; }
+.lcard-brand-word { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; letter-spacing: 0.09em; text-transform: uppercase; text-shadow: 0 -1px 0 rgba(255,255,255,0.25), 0 1px 3px rgba(0,0,0,0.45); }
+.lcard-brand-tag  { font-size: 7.5px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ivory-dim); margin-top: 6px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+
+.lcard-weave { position: relative; z-index: 2; height: 15px; border-radius: 3px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), inset 0 -1px 1px rgba(255,255,255,0.12); }
+.lcard-weave svg { display: block; width: 100%; height: 100%; }
+
+.lcard-member-label { font-size: 6.5px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ivory-dim); }
+.lcard-member-number { font-size: 13px; font-weight: 500; letter-spacing: 0.07em; margin-top: 4px; font-variant-numeric: tabular-nums; text-shadow: 0 -1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.4); }
+
+.loyalty-hint { font-size: 11px; letter-spacing: 0.05em; color: var(--ivory-dim); text-align: center; margin: 0; }
+
+/* ── Perks ── */
+.loyalty-perks { flex: 1; }
+
+.perks-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ivory-dim);
+  margin: 0 0 20px;
+}
+
+.perks-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--ivory);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.perk-dot {
+  flex-shrink: 0;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--ivory-dim);
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  .loyalty-body { flex-direction: column; gap: 40px; }
+  .loyalty-card-wrap { flex: none; width: 100%; max-width: 380px; }
+  .loyalty-tab { padding: 11px 20px; }
+}
+
+@media (max-width: 460px) {
+  .loyalty-stage { padding: 48px 18px 64px; }
+  .loyalty-tab { padding: 10px 14px; font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lcard-sheen { animation: none; }
+  .lcard { transition: none; }
+}

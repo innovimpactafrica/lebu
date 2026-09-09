@@ -10,6 +10,7 @@ import { GalleryComponent } from './sections/gallery/gallery.component';
 import { ServicesComponent } from './sections/services/services.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ModalComponent } from './shared/modal/modal.component';
+import { LoyaltyComponent } from './sections/loyalty/loyalty.component';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ import { ModalComponent } from './shared/modal/modal.component';
     GalleryComponent,
     ServicesComponent,
     FooterComponent,
-    ModalComponent
+    ModalComponent,
+    LoyaltyComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

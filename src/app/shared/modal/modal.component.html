@@ -20,26 +20,45 @@
       </h2>
       <p class="text-[0.65rem] tracking-[0.25em] uppercase text-gold-light mb-10">Lebu Appart&amp;Suites — Dakar</p>
 
-      <p class="text-[0.65rem] tracking-[0.2em] uppercase text-gold-light mb-4">
-        {{ langService.currentLang() === 'fr' ? 'Choisissez votre hébergement' : 'Choose your accommodation' }}
+      <p class="text-[0.65rem] tracking-[0.2em] uppercase text-gold-light mb-2">
+        {{ langService.currentLang() === 'fr' ? 'Étages 2 à 5' : 'Floors 2 to 5' }}
       </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-5">
+        @for (room of rooms; track room.id) {
+          @if (room.group === 'floors') {
+            <div 
+              (click)="selectRoom(room.id)"
+              class="border p-4 px-5 cursor-pointer transition-colors relative"
+              [style.backgroundColor]="selectedRoom() === room.id ? 'rgba(230,196,115,0.08)' : 'transparent'"
+              [style.borderColor]="selectedRoom() === room.id ? '#e6c473' : 'rgba(230,196,115,0.18)'"
+            >
+              <div class="absolute top-2.5 right-2.5 w-4 h-4 border border-gold-light/40 flex items-center justify-center text-[0.6rem] text-gold-light transition-opacity" [class.opacity-0]="selectedRoom() !== room.id" [class.opacity-100]="selectedRoom() === room.id">✓</div>
+              <div class="text-[0.72rem] font-medium text-white mb-1">{{ langService.currentLang() === 'fr' ? room.nameFr : room.nameEn }}</div>
+              <div class="font-serif text-[1.1rem] text-gold-light">{{ room.price }} <span class="text-[0.65rem] text-white/50">FCFA</span></div>
+              <div class="text-[0.5rem] text-white/35">{{ langService.currentLang() === 'fr' ? '+ taxes / nuit' : '+ taxes / night' }}</div>
+            </div>
+          }
+        }
+      </div>
 
+      <p class="text-[0.65rem] tracking-[0.2em] uppercase text-gold-light mb-2">
+        {{ langService.currentLang() === 'fr' ? 'Club Lebu — Étages 6 à 8' : 'Club Lebu — Floors 6 to 8' }}
+      </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-7">
         @for (room of rooms; track room.id) {
-          <div 
-            (click)="selectRoom(room.id)"
-            class="border p-4 px-5 cursor-pointer transition-colors relative"
-            [class.border-gold-light]="selectedRoom() === room.id"
-            [class.bg-gold-light]="selectedRoom() === room.id ? 'rgba(230,196,115,0.08)' : ''"
-            [class.border-gold-light!]="selectedRoom() !== room.id ? 'rgba(230,196,115,0.18)' : ''"
-            [style.backgroundColor]="selectedRoom() === room.id ? 'rgba(230,196,115,0.08)' : 'transparent'"
-            [style.borderColor]="selectedRoom() === room.id ? '#e6c473' : 'rgba(230,196,115,0.18)'"
-          >
-            <div class="absolute top-2.5 right-2.5 w-4 h-4 border border-gold-light/40 flex items-center justify-center text-[0.6rem] text-gold-light transition-opacity" [class.opacity-0]="selectedRoom() !== room.id" [class.opacity-100]="selectedRoom() === room.id">✓</div>
-            <div class="text-[0.72rem] font-medium text-white mb-1">{{ langService.currentLang() === 'fr' ? room.nameFr : room.nameEn }}</div>
-            <div class="font-serif text-[1.1rem] text-gold-light">{{ room.price }} <span class="text-[0.65rem] text-white/50">FCFA</span></div>
-            <div class="text-[0.5rem] text-white/35">{{ langService.currentLang() === 'fr' ? '+ taxes / nuit' : '+ taxes / night' }}</div>
-          </div>
+          @if (room.group === 'club') {
+            <div 
+              (click)="selectRoom(room.id)"
+              class="border p-4 px-5 cursor-pointer transition-colors relative"
+              [style.backgroundColor]="selectedRoom() === room.id ? 'rgba(230,196,115,0.08)' : 'transparent'"
+              [style.borderColor]="selectedRoom() === room.id ? '#e6c473' : 'rgba(230,196,115,0.18)'"
+            >
+              <div class="absolute top-2.5 right-2.5 w-4 h-4 border border-gold-light/40 flex items-center justify-center text-[0.6rem] text-gold-light transition-opacity" [class.opacity-0]="selectedRoom() !== room.id" [class.opacity-100]="selectedRoom() === room.id">✓</div>
+              <div class="text-[0.72rem] font-medium text-white mb-1">{{ langService.currentLang() === 'fr' ? room.nameFr : room.nameEn }}</div>
+              <div class="font-serif text-[1.1rem] text-gold-light">{{ room.price }} <span class="text-[0.65rem] text-white/50">FCFA</span></div>
+              <div class="text-[0.5rem] text-white/35">{{ langService.currentLang() === 'fr' ? '+ taxes / nuit' : '+ taxes / night' }}</div>
+            </div>
+          }
         }
       </div>
 
