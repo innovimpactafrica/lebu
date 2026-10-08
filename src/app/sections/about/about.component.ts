@@ -21,9 +21,9 @@ export class AboutComponent {
   tempEn = '';
 
   stats = [
-    { num: '34', labelFr: 'Appartements & Suites', labelEn: 'Apartments & Suites' },
+    { num: '36', labelFr: 'Appartements & Suites', labelEn: 'Apartments & Suites' },
     { num: '4', labelFr: 'Catégories de luxe', labelEn: 'Luxury categories' },
-    { num: '5★', labelFr: 'Service hôtelier', labelEn: 'Hotel service' },
+    { num: '3★', labelFr: 'Service hôtelier', labelEn: 'Hotel service' },
     { num: '24/7', labelFr: 'Assistance dédiée', labelEn: 'Dedicated assistance' }
   ];
 

@@ -10,7 +10,8 @@ import { GalleryComponent } from './sections/gallery/gallery.component';
 import { ServicesComponent } from './sections/services/services.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ModalComponent } from './shared/modal/modal.component';
-import { LoyaltyComponent } from './sections/loyalty/loyalty.component';
+// Lebu Fidélité: hidden for now
+// import { LoyaltyComponent } from './sections/loyalty/loyalty.component';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,7 @@ import { LoyaltyComponent } from './sections/loyalty/loyalty.component';
     ServicesComponent,
     FooterComponent,
     ModalComponent,
-    LoyaltyComponent
+    // LoyaltyComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
