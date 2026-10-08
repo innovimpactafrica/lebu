@@ -17,7 +17,7 @@
             <p class="text-[0.82rem] font-light leading-[1.9] text-white/65 mb-5">
               {{ langService.currentLang() === 'fr' ? paragraph.fr : paragraph.en }}
             </p>
-            <button class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 text-[0.9rem] p-2" (click)="edit(i)" aria-label="Edit">✎</button>
+            <button class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 text-[0.9rem] p-2" (click)="edit(i)" aria-label="Edit"><lucide-icon [img]="icons.PenLine" [size]="16" [strokeWidth]="1.5"></lucide-icon></button>
           </ng-container>
 
           <ng-template #editBlock>

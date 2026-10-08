@@ -10,47 +10,85 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr] md:grid-rows-[280px_280px] auto-rows-[280px] gap-3 mt-16">
-    <!-- Facade large -->
-    <div class="md:row-span-2 relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('building.jpeg')">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
-      <div class="absolute bottom-6 left-6 transition-transform duration-500 group-hover:-translate-y-2">
-        <div class="text-[0.6rem] tracking-[0.3em] uppercase text-gold-light mb-1.5">{{ langService.currentLang() === 'fr' ? 'Façade' : 'Exterior' }}</div>
-        <div class="font-serif text-[1.6rem] font-light">{{ langService.currentLang() === 'fr' ? 'Architecture contemporaine' : 'Contemporary architecture' }}</div>
-      </div>
-    </div>
-    
-    <!-- Lobby -->
-    <div class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('accueil.png')">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
-      <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
-        <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? 'Accueil' : 'Reception' }}</div>
-      </div>
-    </div>
-    
-    <!-- Salon -->
-    <div class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('salon.jpeg')">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
-      <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
-        <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? 'Salon' : 'Living room' }}</div>
-      </div>
-    </div>
-    
-    <!-- Salle de bain -->
-    <div class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('toilet.jpeg')">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
-      <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
-        <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? 'Salle de bain' : 'Bathroom' }}</div>
-      </div>
-    </div>
-    
-    <!-- Commerce -->
-    <div class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group" style="background-image: url('commerces.jpeg')">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
-      <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
-        <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? 'Commerces' : 'Retail' }}</div>
-      </div>
-    </div>
+    @for (space of spaces; track space.id) {
+      <button type="button"
+        class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group text-left cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gold-light"
+        [class.md:row-span-2]="space.large"
+        [style.background-image]="'url(' + space.image + ')'"
+        [attr.aria-label]="(langService.currentLang() === 'fr' ? 'Voir les détails : ' : 'View details: ') + (langService.currentLang() === 'fr' ? space.labelFr : space.labelEn)"
+        aria-haspopup="dialog"
+        (pointerenter)="onTileEnter(space, $event)"
+        (pointerleave)="onTileLeave()"
+        (click)="openNow(space)">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
+
+        <span class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center border border-gold-light/40 bg-navy-deep/40 text-gold-light opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true">
+          <lucide-icon [img]="icons.Maximize2" [size]="14" [strokeWidth]="1.5"></lucide-icon>
+        </span>
+
+        @if (space.large) {
+          <div class="absolute bottom-6 left-6 transition-transform duration-500 group-hover:-translate-y-2">
+            <div class="text-[0.6rem] tracking-[0.3em] uppercase text-gold-light mb-1.5">{{ langService.currentLang() === 'fr' ? space.labelFr : space.labelEn }}</div>
+            <div class="font-serif text-[1.6rem] font-light text-white">{{ langService.currentLang() === 'fr' ? space.titleFr : space.titleEn }}</div>
+          </div>
+        } @else {
+          <div class="absolute bottom-4 left-4 transition-transform duration-500 group-hover:-translate-y-1">
+            <div class="text-[0.58rem] tracking-[0.25em] uppercase text-gold-light">{{ langService.currentLang() === 'fr' ? space.labelFr : space.labelEn }}</div>
+          </div>
+        }
+      </button>
+    }
   </div>
 </section>
 
-<img src="Motif.svg" class="mx-6 md:mx-12 max-w-7xl lg:mx-auto">
+<!-- Space details modal -->
+@if (active(); as space) {
+  <div class="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-[rgba(8,15,31,0.75)] backdrop-blur-[6px] opacity-0 animate-fadeIn [animation-duration:300ms]"
+    (click)="close()">
+    <div role="dialog" aria-modal="true" aria-labelledby="gallery-detail-title"
+      class="relative w-full max-w-[860px] max-h-[90vh] overflow-y-auto bg-navy border border-gold-light/25 shadow-[0_30px_80px_rgba(0,0,0,0.6)] grid grid-cols-1 md:grid-cols-[1.1fr_1fr]"
+      (click)="$event.stopPropagation()"
+      (pointerenter)="onPanelEnter()"
+      (pointerleave)="onPanelLeave($event)">
+
+      <button #closeBtn type="button" (click)="close()"
+        class="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center bg-navy-deep/60 border border-gold-light/25 text-white transition-colors hover:bg-gold-light/10"
+        [attr.aria-label]="langService.currentLang() === 'fr' ? 'Fermer' : 'Close'">
+        <lucide-icon [img]="icons.X" [size]="18" [strokeWidth]="1.5"></lucide-icon>
+      </button>
+
+      <img [src]="space.image" [alt]="langService.currentLang() === 'fr' ? space.titleFr : space.titleEn"
+        class="w-full h-56 md:h-full object-cover">
+
+      <div class="p-6 md:p-10 flex flex-col">
+        <p class="text-[0.6rem] tracking-[0.35em] uppercase text-gold-light mb-3">
+          {{ langService.currentLang() === 'fr' ? space.labelFr : space.labelEn }}
+        </p>
+        <h3 id="gallery-detail-title" class="font-serif text-[2rem] font-light leading-[1.1] mb-4">
+          {{ langService.currentLang() === 'fr' ? space.titleFr : space.titleEn }}
+        </h3>
+        <div class="pattern-divider w-16 mb-5"></div>
+        <p class="text-[0.78rem] font-light leading-[1.9] text-white/65 mb-6">
+          {{ langService.currentLang() === 'fr' ? space.descFr : space.descEn }}
+        </p>
+
+        <ul class="space-y-3 mb-8">
+          @for (h of space.highlights; track h.fr) {
+            <li class="flex items-center gap-3 text-[0.72rem] text-white/80">
+              <span class="w-8 h-8 flex items-center justify-center border border-gold-light/30 text-gold-light shrink-0" aria-hidden="true">
+                <lucide-icon [img]="h.icon" [size]="15" [strokeWidth]="1.5"></lucide-icon>
+              </span>
+              {{ langService.currentLang() === 'fr' ? h.fr : h.en }}
+            </li>
+          }
+        </ul>
+
+        <button type="button" (click)="book()"
+          class="mt-auto self-start bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep font-sans text-[0.6rem] font-bold tracking-[0.25em] uppercase px-7 py-3 cursor-pointer transition-transform duration-300 hover:-translate-y-0.5">
+          {{ langService.currentLang() === 'fr' ? 'Réserver un séjour' : 'Book a stay' }}
+          <lucide-icon [img]="icons.ArrowRight" [size]="13" [strokeWidth]="2" class="inline-block ml-2 align-middle"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+}

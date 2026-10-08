@@ -19,9 +19,9 @@
     </div>
 
     <div class="mt-8 md:mt-0">
-      <button onclick="document.dispatchEvent(new CustomEvent('openModal'))" class="bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.65rem] font-bold tracking-[0.25em] uppercase px-9 py-[18px] cursor-pointer transition-transform duration-300 hover:-translate-y-1">
+      <button type="button" (click)="booking.open()" class="bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.65rem] font-bold tracking-[0.25em] uppercase px-9 py-[18px] cursor-pointer transition-transform duration-300 hover:-translate-y-1">
         <span>{{ langService.currentLang() === 'fr' ? 'Réserver maintenant' : 'Book now' }}</span>
-        <span class="ml-3 text-[1.1em] align-middle">→</span>
+        <lucide-icon [img]="icons.ArrowRight" [size]="16" [strokeWidth]="2" class="inline-block ml-3 align-middle"></lucide-icon>
       </button>
     </div>
   </div>

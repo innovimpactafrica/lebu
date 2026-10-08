@@ -1,18 +1,20 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LucideAngularModule, PenLine } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { ContentService } from '../../shared/content.service';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, LucideAngularModule],
   templateUrl: './about.component.html'
 })
 export class AboutComponent {
   langService = inject(LangService);
   contentService = inject(ContentService);
+  readonly icons = { PenLine };
 
   editingIndex = signal<number | null>(null);
   tempFr = '';

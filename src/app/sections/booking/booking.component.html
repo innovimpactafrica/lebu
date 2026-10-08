@@ -5,14 +5,14 @@
       <label class="block text-[0.58rem] tracking-[0.3em] uppercase text-gold-light">
         {{ langService.currentLang() === 'fr' ? 'Arrivée' : 'Check-in' }}
       </label>
-      <input type="date" [(ngModel)]="checkIn" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
+      <input type="date" [ngModel]="checkIn" (ngModelChange)="onCheckInChange($event)" [min]="today" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
     </div>
     
     <div class="flex flex-col gap-2.5">
       <label class="block text-[0.58rem] tracking-[0.3em] uppercase text-gold-light">
         {{ langService.currentLang() === 'fr' ? 'Départ' : 'Check-out' }}
       </label>
-      <input type="date" [(ngModel)]="checkOut" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
+      <input type="date" [(ngModel)]="checkOut" [min]="checkIn || today" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
     </div>
     
     <div class="flex flex-col gap-2.5">
@@ -20,15 +20,16 @@
         {{ langService.currentLang() === 'fr' ? 'Hébergement' : 'Accommodation' }}
       </label>
       <select [(ngModel)]="room" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none [&>option]:bg-navy [&>option]:text-white [&>optgroup]:bg-navy [&>optgroup]:text-gold-light">
-        <optgroup [label]="langService.currentLang() === 'fr' ? 'Étages 2 à 5' : 'Floors 2 to 5'">
-          <option value="executive">Executive</option>
-          <option value="deluxe">Deluxe</option>
+        <option value="">{{ langService.currentLang() === 'fr' ? 'Toutes les catégories' : 'All categories' }}</option>
+        <optgroup [label]="langService.currentLang() === 'fr' ? 'Classique' : 'Classic'">
+          @for (cat of classicRooms; track cat.id) {
+            <option [value]="cat.id + ':classic'">{{ cat.name }} · {{ formatPrice(cat.offers.classic!.price) }} FCFA</option>
+          }
         </optgroup>
-        <optgroup [label]="langService.currentLang() === 'fr' ? 'Club Lebu — Étages 6 à 8' : 'Club Lebu — Floors 6 to 8'">
-          <option value="premium-privilege">Premium Privilege</option>
-          <option value="club-executive">Executive</option>
-          <option value="club-deluxe">Deluxe</option>
-          <option value="penthouse">Penthouse / Lebu Platinum</option>
+        <optgroup [label]="'Club Lebu — ' + (langService.currentLang() === 'fr' ? clubFloors.fr : clubFloors.en)">
+          @for (cat of clubRooms; track cat.id) {
+            <option [value]="cat.id + ':club'">{{ cat.name }} Club · {{ formatPrice(cat.offers.club!.price) }} FCFA</option>
+          }
         </optgroup>
       </select>
     </div>

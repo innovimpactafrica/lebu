@@ -1,67 +1,68 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { Check, CigaretteOff, Crown, LucideAngularModule, Ruler, Users } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
+import { BookingService } from '../../shared/booking.service';
+import {
+  CLUB_FLOORS, CLUB_PERKS, ROOM_CATEGORIES, RoomCategory, RoomOffer, RoomVersion,
+  clubUpgradeDelta, formatPrice
+} from '../../data/rooms.data';
+
+interface RoomCard {
+  category: RoomCategory;
+  offer: RoomOffer;
+  version: RoomVersion;
+  // Classic mode, category only sold as Club (Penthouse)
+  clubOnly: boolean;
+  // Club mode, category without a Club version (Standard): shown greyed out
+  unavailable: boolean;
+  upgradeDelta: number | null;
+}
 
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [],
+  imports: [LucideAngularModule],
   templateUrl: './rooms.component.html'
 })
 export class RoomsComponent {
   langService = inject(LangService);
-  
-  rooms = [
-    {
-      id: 'studio',
-      image: 'kitchen.png',
-      bgClass: 'bg-[linear-gradient(135deg,#0a1e45_0%,#1a3a70_50%,#113068_100%)]',
-      gradient: 'linear-gradient(135deg,#071527 0%,#132d5a 100%)',
-      catFr: 'Entrée de gamme', catEn: 'Entry level',
-      nameFr: 'Studio de Luxe', nameEn: 'Luxury Studio',
-      price: '90 000',
-      featuresFr: ['Kitchenette', 'Climatisation', 'Wi-Fi Haut Débit', 'TV 4K'],
-      featuresEn: ['Kitchenette', 'Air conditioning', 'High-speed Wi-Fi', '4K TV'],
-      btnFr: 'Réserver ce studio', btnEn: 'Book this studio'
-    },
-    {
-      id: 'prestige',
-      image: 'salon.jpeg',
-      bgClass: 'bg-[linear-gradient(135deg,#0d1f3c_0%,#1e3460_100%)]',
-      gradient: 'linear-gradient(135deg,#071527 0%,#0e2348 100%)',
-      catFr: 'Élégance & Confort', catEn: 'Elegance & Comfort',
-      nameFr: 'Suite Prestige', nameEn: 'Prestige Suite',
-      price: '110 000',
-      featuresFr: ['Salon séparé', 'Cuisine équipée', 'Baignoire'],
-      featuresEn: ['Separate lounge', 'Fitted kitchen', 'Bathtub'],
-      btnFr: 'Réserver cette suite', btnEn: 'Book this suite'
-    },
-    {
-      id: 'executive',
-      image: 'bedroom.png',
-      bgClass: 'bg-[linear-gradient(135deg,#0c1b35_0%,#162d58_100%)]',
-      gradient: 'linear-gradient(135deg,#060f20 0%,#0b1e3e 100%)',
-      catFr: 'Prestige & Raffinement', catEn: 'Prestige & Refinement',
-      nameFr: 'Suite Exécutive', nameEn: 'Executive Suite',
-      price: '180 000',
-      featuresFr: ['Bureau privé', 'Vue panoramique', 'Jacuzzi'],
-      featuresEn: ['Private office', 'Panoramic view', 'Jacuzzi'],
-      btnFr: 'Réserver cette suite', btnEn: 'Book this suite'
-    },
-    {
-      id: 'penthouse',
-      image: 'toilet.jpeg',
-      bgClass: 'bg-[linear-gradient(135deg,#080f1f_0%,#10234a_100%)]',
-      gradient: 'linear-gradient(135deg,#04090f 0%,#081729 100%)',
-      catFr: 'Summum du luxe', catEn: 'Ultimate luxury',
-      nameFr: 'Penthouse Exécutif', nameEn: 'Executive Penthouse',
-      price: '220 000',
-      featuresFr: ['Terrasse privée', 'Service butler', 'Cuisine gastronomique'],
-      featuresEn: ['Private terrace', 'Butler service', 'Gourmet kitchen'],
-      btnFr: 'Réserver le penthouse', btnEn: 'Book the penthouse'
-    }
-  ];
+  private booking = inject(BookingService);
+  readonly icons = { Ruler, Users, CigaretteOff, Crown, Check };
+  readonly clubPerks = CLUB_PERKS;
+  readonly clubFloors = CLUB_FLOORS;
+  readonly formatPrice = formatPrice;
 
-  openModalRoom(type: string) {
-    document.dispatchEvent(new CustomEvent('openModalRoom', { detail: type }));
+  version = signal<RoomVersion>('classic');
+
+  // Every category is shown in both modes: a category without an offer in the
+  // selected version falls back to the one it has (Standard stays Classic in
+  // Club mode, Penthouse stays Club in Classic mode)
+  cards = computed<RoomCard[]>(() => {
+    const mode = this.version();
+    return ROOM_CATEGORIES
+      .map(category => {
+        const own = category.offers[mode];
+        const version: RoomVersion = own ? mode : mode === 'club' ? 'classic' : 'club';
+        return {
+          category,
+          offer: category.offers[version]!,
+          version,
+          clubOnly: mode === 'classic' && !own,
+          unavailable: mode === 'club' && !own,
+          upgradeDelta: clubUpgradeDelta(category),
+        };
+      });
+  });
+
+  setVersion(version: RoomVersion) {
+    this.version.set(version);
+  }
+
+  t(text: { fr: string; en: string }): string {
+    return this.langService.currentLang() === 'fr' ? text.fr : text.en;
+  }
+
+  openModalRoom(card: RoomCard) {
+    this.booking.open({ categoryId: card.category.id, version: card.version });
   }
 }

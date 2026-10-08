@@ -1,6 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { LangService } from '../../shared/lang.service';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { LangService } from '../../shared/lang.service';
+import { BookingService } from '../../shared/booking.service';
+import { addDays, todayISO } from '../../shared/date.utils';
+import {
+  CLUB_FLOORS, ROOM_CATEGORIES, RoomCategoryId, RoomVersion, formatPrice
+} from '../../data/rooms.data';
 
 @Component({
   selector: 'app-booking',
@@ -8,23 +13,28 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   templateUrl: './booking.component.html'
 })
-export class BookingComponent implements OnInit {
+export class BookingComponent {
   langService = inject(LangService);
+  private booking = inject(BookingService);
 
-  checkIn = '';
-  checkOut = '';
+  readonly today = todayISO();
+  readonly clubFloors = CLUB_FLOORS;
+  readonly formatPrice = formatPrice;
+  readonly classicRooms = ROOM_CATEGORIES.filter(c => c.offers.classic);
+  readonly clubRooms = ROOM_CATEGORIES.filter(c => c.offers.club);
+
+  checkIn = this.today;
+  checkOut = addDays(this.today, 1);
+  // "<categoryId>:<version>", empty when the visitor has no preference
   room = '';
 
-  ngOnInit() {
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    
-    this.checkIn = today.toISOString().split('T')[0];
-    this.checkOut = tomorrow.toISOString().split('T')[0];
+  onCheckInChange(value: string) {
+    this.checkIn = value;
+    if (value && this.checkOut <= value) this.checkOut = addDays(value, 1);
   }
 
   openBooking() {
-    document.dispatchEvent(new CustomEvent('openModal'));
+    const [categoryId, version] = this.room ? this.room.split(':') as [RoomCategoryId, RoomVersion] : [];
+    this.booking.open({ checkIn: this.checkIn, checkOut: this.checkOut, categoryId, version });
   }
 }

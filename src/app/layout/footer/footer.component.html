@@ -19,22 +19,11 @@
       {{ langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}
     </h4>
     <ul class="list-none p-0 m-0">
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Studio de Luxe' : 'Luxury Studio' }}
-      </li>
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Suite Prestige' : 'Prestige Suite' }}
-      </li>
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Suite Exécutive' : 'Executive Suite' }}
-      </li>
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Penthouse Exécutif' : 'Executive Penthouse' }}
-      </li>
+      @for (room of rooms; track room.id) {
+        <li class="text-[0.75rem] font-light text-white/45 mb-2.5 transition-colors duration-300 hover:text-gold-light">
+          <a href="#rooms">{{ room.name }}</a>
+        </li>
+      }
     </ul>
   </div>
 

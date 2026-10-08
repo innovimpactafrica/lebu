@@ -30,7 +30,7 @@
 
 <section class="loyalty-stage">
 
-  <p class="loyalty-eyebrow">Lebu Club</p>
+  <p class="loyalty-eyebrow">{{ langService.currentLang() === 'fr' ? 'Lebu Fidélité' : 'Lebu Loyalty' }}</p>
   <div class="loyalty-rule"></div>
 
   <!-- Onglets -->
@@ -64,7 +64,7 @@
           <span class="lcard-tier">{{ current.tier }}</span>
         </div>
         <div class="lcard-brand">
-          <div class="lcard-brand-word">Lebu Club</div>
+          <div class="lcard-brand-word">{{ langService.currentLang() === 'fr' ? 'Lebu Fidélité' : 'Lebu Loyalty' }}</div>
           <div class="lcard-brand-tag">Hôtel Collection</div>
         </div>
         <div class="lcard-weave">

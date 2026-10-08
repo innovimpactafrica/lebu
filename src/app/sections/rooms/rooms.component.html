@@ -1,5 +1,5 @@
 <section id="rooms" class="py-[60px] md:py-[100px] max-w-7xl mx-auto">
-  <div class="text-center mb-16">
+  <div class="text-center mb-10">
     <div class="inline-block text-[0.6rem] tracking-[0.45em] uppercase text-gold-light mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle before:content-['◆'] before:text-[0.4rem] before:mx-3 before:text-gold-dark before:align-middle">
       {{ langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}
     </div>
@@ -9,47 +9,146 @@
     </h2>
   </div>
 
+  <!-- Version selector -->
+  <div class="flex flex-col items-center gap-5 mb-10 px-6 text-center">
+    <p class="text-[0.75rem] font-light leading-[1.8] text-white/60 max-w-xl">
+      @if (langService.currentLang() === 'fr') {
+        Certaines catégories existent en version <span class="text-gold-light font-medium">Club Lebu</span>
+        ({{ t(clubFloors).toLowerCase() }}), avec des privilèges inclus.
+      } @else {
+        Some categories are available in a <span class="text-gold-light font-medium">Club Lebu</span>
+        version ({{ t(clubFloors).toLowerCase() }}), with exclusive privileges.
+      }
+    </p>
+
+    <div role="radiogroup" [attr.aria-label]="langService.currentLang() === 'fr' ? 'Version' : 'Version'"
+      class="inline-flex border border-gold-light/30 p-1 bg-white/[0.03]">
+      <button type="button" role="radio" [attr.aria-checked]="version() === 'classic'" (click)="setVersion('classic')"
+        class="px-6 md:px-8 py-2.5 text-[0.62rem] font-semibold tracking-[0.25em] uppercase transition-colors duration-300"
+        [class]="version() === 'classic' ? 'bg-white/10 text-white' : 'text-white/50 hover:text-white'">
+        {{ langService.currentLang() === 'fr' ? 'Classique' : 'Classic' }}
+      </button>
+      <button type="button" role="radio" [attr.aria-checked]="version() === 'club'" (click)="setVersion('club')"
+        class="inline-flex items-center gap-2 px-6 md:px-8 py-2.5 text-[0.62rem] font-semibold tracking-[0.25em] uppercase transition-colors duration-300"
+        [class]="version() === 'club' ? 'bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep' : 'text-gold-light/70 hover:text-gold-light'">
+        <lucide-icon [img]="icons.Crown" [size]="13" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
+        Club Lebu
+      </button>
+    </div>
+  </div>
+
+  <!-- Club perks, shown once since they are identical for every Club offer -->
+  @if (version() === 'club') {
+    <div class="mx-0 mb-8 border border-gold-light/25 bg-gradient-to-br from-gold-light/[0.08] to-transparent px-6 md:px-10 py-6 opacity-0 animate-fadeIn [animation-duration:400ms]">
+      <p class="text-[0.6rem] tracking-[0.35em] uppercase text-gold-light mb-4">
+        {{ langService.currentLang() === 'fr' ? 'Privilèges Club Lebu inclus' : 'Included Club Lebu privileges' }}
+      </p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-2.5">
+        @for (perk of clubPerks; track perk.fr) {
+          <li class="flex items-center gap-2.5 text-[0.72rem] font-light text-white/75">
+            <lucide-icon [img]="icons.Check" [size]="13" [strokeWidth]="2" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
+            {{ t(perk) }}
+          </li>
+        }
+      </ul>
+    </div>
+  }
+
   <div class="grid grid-cols-1 md:grid-cols-2 gap-0.5 border border-gold-light/10 bg-gold-light/10">
-    @for (room of rooms; track room.id) {
-      <div 
-        class="relative overflow-hidden cursor-pointer group bg-[#0a1e45]" 
-        [class.md:col-span-2]="room.id === 'studio' || room.id === 'penthouse'" 
-        [class.col-span-full]="room.id === 'studio' || room.id === 'penthouse'" 
-        [class.h-[350px]]="room.id !== 'studio' && room.id !== 'penthouse'"
-        [class.md:h-[480px]]="room.id !== 'studio' && room.id !== 'penthouse'"
-        [class.h-[400px]]="room.id === 'studio' || room.id === 'penthouse'"
-        [class.md:h-[560px]]="room.id === 'studio' || room.id === 'penthouse'"
+    @for (card of cards(); track card.category.id) {
+      <div
+        class="relative overflow-hidden group bg-[#0a1e45]"
+        [class.cursor-pointer]="!card.unavailable"
+        [class.grayscale]="card.unavailable"
+        [attr.aria-disabled]="card.unavailable"
+        [class.md:col-span-2]="card.category.wide"
+        [class.h-[460px]]="!card.category.wide"
+        [class.md:h-[500px]]="!card.category.wide"
+        [class.h-[480px]]="card.category.wide"
+        [class.md:h-[560px]]="card.category.wide"
       >
-        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-[800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] opacity-70 group-hover:scale-[1.06] group-hover:opacity-90" [style.background-image]="'url(/' + room.image + ')'"></div>
+        <div class="absolute inset-0 bg-cover bg-center transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+          [class]="card.unavailable ? 'opacity-30' : 'opacity-70 group-hover:opacity-90 group-hover:scale-[1.06]'"
+          [style.background-image]="'url(/' + card.category.image + ')'"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,30,69,0.95)] to-transparent opacity-90"></div>
-        
-        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 transform md:translate-y-10 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-y-0">
-          <p class="text-[0.58rem] tracking-[0.35em] uppercase text-gold-light mb-2.5">
-            {{ langService.currentLang() === 'fr' ? room.catFr : room.catEn }}
-          </p>
-          <h3 class="font-serif font-light leading-[1.1] mb-3 text-[2rem] md:text-[2.2rem]" [class.md:text-[2.8rem]]="room.id === 'studio' || room.id === 'penthouse'">
-            {{ langService.currentLang() === 'fr' ? room.nameFr : room.nameEn }}
-          </h3>
-          
-          <div class="flex items-baseline gap-2 mb-5">
-            <span class="font-serif text-[1.8rem] font-semibold text-gold-light">{{ room.price }}</span>
-            <span class="text-[0.65rem] text-white/50 tracking-widest">FCFA</span>
-            <span class="text-[0.55rem] text-white/35 tracking-widest ml-1">{{ langService.currentLang() === 'fr' ? '/ nuit + taxes' : '/ night + taxes' }}</span>
-          </div>
-          
-          <div class="flex gap-4 flex-wrap mb-6 md:opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100">
-            @for (feat of (langService.currentLang() === 'fr' ? room.featuresFr : room.featuresEn); track feat) {
-              <span class="text-[0.55rem] tracking-[0.15em] uppercase px-3 py-1 border border-gold-light/30 text-white/60">{{ feat }}</span>
+
+        <!-- Version badge -->
+        @if (card.version === 'club') {
+          <div class="absolute top-5 left-5 md:top-6 md:left-6 z-10 inline-flex items-center gap-2 bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep px-3.5 py-1.5 text-[0.55rem] font-bold tracking-[0.2em] uppercase shadow-lg">
+            <lucide-icon [img]="icons.Crown" [size]="12" [strokeWidth]="2" aria-hidden="true"></lucide-icon>
+            @if (card.clubOnly) {
+              {{ langService.currentLang() === 'fr' ? 'Exclusivité Club Lebu' : 'Club Lebu exclusive' }}
+            } @else {
+              Club Lebu · {{ t(clubFloors) }}
             }
           </div>
-          
-          <button (click)="openModalRoom(room.id)" class="inline-block bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.6rem] font-bold tracking-[0.25em] uppercase px-7 py-3 cursor-pointer md:opacity-0 transition-all duration-400 delay-150 group-hover:opacity-100 group-hover:-translate-y-0.5 hover:-translate-y-1">
-            {{ langService.currentLang() === 'fr' ? room.btnFr : room.btnEn }}
+        } @else if (card.unavailable) {
+          <div class="absolute top-5 left-5 md:top-6 md:left-6 z-10 inline-flex items-center border border-white/25 bg-navy-deep/70 text-white/60 px-3.5 py-1.5 text-[0.55rem] font-semibold tracking-[0.2em] uppercase">
+            {{ langService.currentLang() === 'fr' ? 'Non disponible en Club Lebu' : 'Not available as Club Lebu' }}
+          </div>
+        }
+
+        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 transform transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+          [class]="card.unavailable ? 'opacity-50' : 'md:translate-y-10 group-hover:translate-y-0'">
+          <p class="flex items-center gap-4 text-[0.58rem] tracking-[0.35em] uppercase text-gold-light mb-2.5">
+            <span class="inline-flex items-center gap-1.5">
+              <lucide-icon [img]="icons.Ruler" [size]="12" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+              {{ card.category.surface }} m²
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <lucide-icon [img]="icons.Users" [size]="12" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+              {{ card.category.adults }} {{ langService.currentLang() === 'fr' ? 'adultes' : 'adults' }}
+            </span>
+          </p>
+          <h3 class="font-serif font-light leading-[1.1] mb-3 text-[2rem] md:text-[2.2rem]" [class.md:text-[2.8rem]]="card.category.wide">
+            {{ card.category.name }}
+          </h3>
+
+          <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-5">
+            <span class="font-serif text-[1.8rem] font-semibold text-gold-light">{{ formatPrice(card.offer.price) }}</span>
+            <span class="text-[0.65rem] text-white/50 tracking-widest">FCFA</span>
+            <span class="text-[0.55rem] text-white/35 tracking-widest ml-1">{{ langService.currentLang() === 'fr' ? '/ nuit + taxes' : '/ night + taxes' }}</span>
+
+            <!-- Upsell: shown on Classic cards that also exist as Club -->
+            @if (version() === 'classic' && !card.clubOnly && card.upgradeDelta !== null) {
+              <button type="button" (click)="setVersion('club'); $event.stopPropagation()"
+                class="ml-0 md:ml-4 inline-flex items-center gap-1.5 text-[0.55rem] tracking-[0.18em] uppercase text-gold-light/80 border-b border-gold-light/30 pb-0.5 transition-colors hover:text-gold-light hover:border-gold-light">
+                <lucide-icon [img]="icons.Crown" [size]="11" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
+                {{ langService.currentLang() === 'fr' ? 'Aussi en Club Lebu' : 'Also as Club Lebu' }} · +{{ formatPrice(card.upgradeDelta) }}
+              </button>
+            }
+          </div>
+
+          <div class="md:opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100 mb-6">
+            <div class="flex gap-2 md:gap-3 flex-wrap mb-3">
+              @for (feat of card.category.features; track feat.fr) {
+                <span class="text-[0.55rem] tracking-[0.15em] uppercase px-3 py-1 border border-gold-light/30 text-white/60">{{ t(feat) }}</span>
+              }
+            </div>
+            <p class="text-[0.65rem] font-light text-white/45">
+              {{ langService.currentLang() === 'fr' ? 'Également : ' : 'Also: ' }}{{ t(card.category.also) }}
+            </p>
+          </div>
+
+          @if (card.unavailable) {
+            <button type="button" (click)="setVersion('classic')"
+              class="inline-block border border-white/30 text-white/80 font-sans text-[0.6rem] font-semibold tracking-[0.25em] uppercase px-7 py-3 transition-colors hover:bg-white/10">
+              {{ langService.currentLang() === 'fr' ? 'Voir en version Classique' : 'View Classic version' }}
+            </button>
+          } @else {
+          <button (click)="openModalRoom(card)" class="inline-block bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.6rem] font-bold tracking-[0.25em] uppercase px-7 py-3 cursor-pointer md:opacity-0 transition-all duration-400 delay-150 group-hover:opacity-100 group-hover:-translate-y-0.5 hover:-translate-y-1">
+            {{ langService.currentLang() === 'fr' ? 'Réserver cette chambre' : 'Book this room' }}
           </button>
+          }
         </div>
       </div>
     }
   </div>
+
+  <p class="flex items-center justify-center gap-2 mt-6 text-[0.62rem] tracking-[0.2em] uppercase text-white/45">
+    <lucide-icon [img]="icons.CigaretteOff" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+    {{ langService.currentLang() === 'fr' ? 'Toutes les chambres sont non-fumeur' : 'All rooms are non-smoking' }}
+  </p>
 </section>
 
 <img src="Motif.svg" class="mx-6 md:mx-12 max-w-7xl lg:mx-auto">
