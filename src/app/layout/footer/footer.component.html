@@ -1,16 +1,16 @@
 <div>
   <img src="Motif.svg" class="mx-6 md:mx-12 max-w-7xl lg:mx-auto">
 </div>
-<footer class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr] gap-10 md:gap-16 max-w-7xl mx-auto">
+<footer class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr] gap-10 md:gap-12 max-w-7xl mx-auto">
 
   <div>
     <div class="font-serif font-semibold tracking-wider leading-none mb-1.5">
       <img src="logo_Lebu2.png" class="w-28">
     </div>
     <p class="text-[0.75rem] font-light leading-[1.8] text-white/45 max-w-[280px]">
-      {{ langService.currentLang() === 'fr' ? 'Un art de vivre entre modernité et traditions africaines, au cœur de
-      Dakar, capitale culturelle du Sénégal.' : 'An art of living between modernity and African traditions, in the heart
-      of Dakar, cultural capital of Senegal.' }}
+      {{ langService.currentLang() === 'fr'
+        ? "L'art de vivre à Dakar. La téranga sénégalaise élevée au rang d'art de vivre, au cœur du Plateau."
+        : 'The art of living in Dakar. Senegalese teranga raised to an art of living, in the heart of Plateau.' }}
     </p>
   </div>
 
@@ -32,32 +32,40 @@
       {{ langService.currentLang() === 'fr' ? 'Services' : 'Services' }}
     </h4>
     <ul class="list-none p-0 m-0">
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Petit Déjeuner' : 'Breakfast' }}
+      @for (service of services; track service.fr) {
+        <li class="text-[0.75rem] font-light text-white/45 mb-2.5 transition-colors duration-300 hover:text-gold-light">
+          <a href="#services">{{ langService.currentLang() === 'fr' ? service.fr : service.en }}</a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <!-- Contact (brochure) -->
+  <div>
+    <h4 class="text-[0.6rem] tracking-[0.3em] uppercase text-gold-light mb-5">Contact</h4>
+    <ul class="list-none p-0 m-0 space-y-3 text-[0.75rem] font-light text-white/55">
+      <li class="flex gap-3">
+        <lucide-icon [img]="icons.MapPin" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0 mt-0.5" aria-hidden="true"></lucide-icon>
+        <span>Complexe Neptune<br>22 rue Wagane Diouf, Plateau<br>Dakar, Sénégal</span>
       </li>
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Bar Rooftop' : 'Rooftop Bar' }}
+      <li class="flex gap-3 items-center">
+        <lucide-icon [img]="icons.Phone" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
+        <a href="tel:+221710537979" class="transition-colors hover:text-gold-light">+221 71 053 79 79</a>
       </li>
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Salle Fitness' : 'Fitness Center' }}
+      <li class="flex gap-3 items-center">
+        <lucide-icon [img]="icons.Mail" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
+        <a href="mailto:infos@lebu-hotelsgroup.com" class="transition-colors hover:text-gold-light break-all">infos&#64;lebu-hotelsgroup.com</a>
       </li>
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Réception 24/7' : '24/7 Reception' }}
-      </li>
-      <li
-        class="text-[0.75rem] font-light text-white/45 mb-2.5 cursor-pointer transition-colors duration-300 hover:text-gold-light">
-        {{ langService.currentLang() === 'fr' ? 'Excursion' : 'Excursion' }}
+      <li class="flex gap-3 items-center text-white/40">
+        <lucide-icon [img]="icons.Plane" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
+        {{ langService.currentLang() === 'fr' ? 'AIBD : 60 min · Plage : 15 min à pied' : 'AIBD airport: 60 min · Beach: 15 min walk' }}
       </li>
     </ul>
   </div>
 
   <div
-    class="col-span-1 md:col-span-2 lg:col-span-3 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[0.6rem] text-white/25 tracking-widest gap-3 md:gap-0 text-center md:text-left">
-    <span>© 2025 Lebu Appart&amp;Suites — Dakar, Sénégal</span>
+    class="col-span-1 md:col-span-2 lg:col-span-4 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[0.6rem] text-white/25 tracking-widest gap-3 md:gap-0 text-center md:text-left">
+    <span>© {{ year }} Lebu Appart&amp;Suites — Dakar, Sénégal</span>
     <span>{{ langService.currentLang() === 'fr' ? 'Tous droits réservés' : 'All rights reserved' }}</span>
   </div>
 </footer>

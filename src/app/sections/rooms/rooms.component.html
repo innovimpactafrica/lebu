@@ -4,8 +4,8 @@
       {{ langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}
     </div>
     <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
-      {{ langService.currentLang() === 'fr' ? 'Choisissez votre' : 'Choose your' }}<br>
-      <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? 'espace de vie' : 'living space' }}</em>
+      {{ langService.currentLang() === 'fr' ? '36 unités' : '36 exceptional' }}<br>
+      <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? "d'exception" : 'suites' }}</em>
     </h2>
   </div>
 
@@ -102,6 +102,9 @@
           </p>
           <h3 class="font-serif font-light leading-[1.1] mb-3 text-[2rem] md:text-[2.2rem]" [class.md:text-[2.8rem]]="card.category.wide">
             {{ card.category.name }}
+            @if (card.category.subtitle) {
+              <em class="italic text-gold-light text-[0.6em]">{{ card.category.subtitle }}</em>
+            }
           </h3>
 
           <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-5">
@@ -125,8 +128,8 @@
                 <span class="text-[0.55rem] tracking-[0.15em] uppercase px-3 py-1 border border-gold-light/30 text-white/60">{{ t(feat) }}</span>
               }
             </div>
-            <p class="text-[0.65rem] font-light text-white/45">
-              {{ langService.currentLang() === 'fr' ? 'Également : ' : 'Also: ' }}{{ t(card.category.also) }}
+            <p class="text-[0.7rem] font-light leading-[1.7] text-white/55 max-w-2xl">
+              {{ t(card.category.description) }}
             </p>
           </div>
 
@@ -137,7 +140,7 @@
             </button>
           } @else {
           <button (click)="openModalRoom(card)" class="inline-block bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.6rem] font-bold tracking-[0.25em] uppercase px-7 py-3 cursor-pointer md:opacity-0 transition-all duration-400 delay-150 group-hover:opacity-100 group-hover:-translate-y-0.5 hover:-translate-y-1">
-            {{ langService.currentLang() === 'fr' ? 'Réserver cette chambre' : 'Book this room' }}
+            {{ langService.currentLang() === 'fr' ? 'Réserver cette suite' : 'Book this suite' }}
           </button>
           }
         </div>
@@ -145,9 +148,35 @@
     }
   </div>
 
-  <p class="flex items-center justify-center gap-2 mt-6 text-[0.62rem] tracking-[0.2em] uppercase text-white/45">
-    <lucide-icon [img]="icons.CigaretteOff" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
-    {{ langService.currentLang() === 'fr' ? 'Toutes les chambres sont non-fumeur' : 'All rooms are non-smoking' }}
+  <!-- Shared amenities (brochure) -->
+  <div class="mt-0.5 border border-gold-light/10 bg-[rgba(17,48,104,0.45)] px-6 md:px-10 py-7">
+    <p class="text-center text-[0.6rem] tracking-[0.35em] uppercase text-gold-light mb-6">
+      {{ langService.currentLang() === 'fr' ? 'Dans toutes nos suites' : 'In all our suites' }}
+    </p>
+    <ul class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-y-6 gap-x-4">
+      @for (amenity of amenities; track amenity.icon) {
+        <li class="flex flex-col items-center gap-2.5 text-center text-[0.62rem] tracking-[0.08em] text-white/70">
+          <!-- Icons extracted from the Lebu brochure (vector) -->
+          <img [src]="'icons/amenities/' + amenity.icon + '.svg'" alt="" class="h-9 w-auto" loading="lazy">
+          {{ t(amenity.label) }}
+        </li>
+      }
+    </ul>
+  </div>
+
+  <p class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-[0.62rem] tracking-[0.2em] uppercase text-white/45">
+    <span class="inline-flex items-center gap-2">
+      <lucide-icon [img]="icons.CigaretteOff" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+      {{ langService.currentLang() === 'fr' ? 'Établissement non-fumeur' : 'Non-smoking residence' }}
+    </span>
+    <span class="inline-flex items-center gap-2">
+      <lucide-icon [img]="icons.WineOff" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+      {{ langService.currentLang() === 'fr' ? 'Sans alcool' : 'Alcohol-free' }}
+    </span>
+    <span class="inline-flex items-center gap-2">
+      <lucide-icon [img]="icons.Clock" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+      {{ langService.currentLang() === 'fr' ? 'Arrivée dès 14 h · Départ avant 12 h' : 'Check-in from 2 PM · Check-out by 12 PM' }}
+    </span>
   </p>
 </section>
 

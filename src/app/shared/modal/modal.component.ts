@@ -1,6 +1,6 @@
 import { Component, HostListener, computed, effect, inject, signal, untracked } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ArrowRight, Check, Crown, LucideAngularModule, Ruler, Sparkles, Users, X } from 'lucide-angular';
+import { ArrowRight, Check, Crown, Info, LucideAngularModule, Ruler, Sparkles, Users, X } from 'lucide-angular';
 import { LangService } from '../lang.service';
 import { BookingRequest, BookingService } from '../booking.service';
 import { addDays, nightsBetween, todayISO } from '../date.utils';
@@ -20,7 +20,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export class ModalComponent {
   langService = inject(LangService);
   booking = inject(BookingService);
-  readonly icons = { X, Check, Sparkles, ArrowRight, Crown, Ruler, Users };
+  readonly icons = { X, Check, Sparkles, ArrowRight, Crown, Ruler, Users, Info };
 
   readonly categories = ROOM_CATEGORIES;
   readonly clubPerks = CLUB_PERKS;

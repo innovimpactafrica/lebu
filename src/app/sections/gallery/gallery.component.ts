@@ -41,29 +41,29 @@ export class GalleryComponent implements OnDestroy {
   private booking = inject(BookingService);
   readonly icons = { X, ArrowRight, Maximize2 };
 
-  // TODO: texts are placeholders, to be validated by Lebu
+  // Texts aligned with the Lebu brochure
   spaces: GallerySpace[] = [
     {
       id: 'facade', image: 'building.jpeg', large: true,
       labelFr: 'Façade', labelEn: 'Exterior',
       titleFr: 'Architecture contemporaine', titleEn: 'Contemporary architecture',
-      descFr: 'Une façade aux lignes épurées qui marie modernité et inspirations sénégalaises. La résidence accueille 34 appartements et suites répartis sur plusieurs étages, dont le Club Lebu.',
-      descEn: 'A clean-lined façade blending modernity with Senegalese inspiration. The residence houses 34 apartments and suites across several floors, including the Club Lebu.',
+      descFr: 'Une façade aux lignes épurées qui marie modernité et inspirations sénégalaises. Au sein du Complexe Neptune, au Plateau, la résidence accueille 36 suites réparties sur plusieurs étages, dont le Club Lebu.',
+      descEn: 'A clean-lined façade blending modernity with Senegalese inspiration. Within the Neptune complex in Plateau, the residence houses 36 suites across several floors, including the Club Lebu.',
       highlights: [
-        { icon: Building2, fr: '34 appartements & suites', en: '34 apartments & suites' },
+        { icon: Building2, fr: '36 suites', en: '36 suites' },
         { icon: Sparkles, fr: 'Club Lebu — étages 6 à 8', en: 'Club Lebu — floors 6 to 8' },
-        { icon: MapPin, fr: 'Au cœur de Dakar', en: 'In the heart of Dakar' },
+        { icon: MapPin, fr: '22 rue Wagane Diouf, Plateau', en: '22 rue Wagane Diouf, Plateau' },
       ]
     },
     {
       id: 'reception', image: 'accueil.png',
       labelFr: 'Accueil', labelEn: 'Reception',
       titleFr: 'Un accueil chaleureux', titleEn: 'A warm welcome',
-      descFr: 'Un hall lumineux où notre équipe vous reçoit à toute heure, pour faciliter votre arrivée et répondre à chacune de vos demandes.',
-      descEn: 'A bright lobby where our team welcomes you at any hour, to ease your arrival and answer each of your requests.',
+      descFr: 'Un hall lumineux où notre équipe multilingue vous reçoit 24h/24 : transferts aéroport, réservations et excursions, chaque demande est anticipée.',
+      descEn: 'A bright lobby where our multilingual team welcomes you 24/7: airport transfers, bookings and excursions, every request is anticipated.',
       highlights: [
         { icon: ConciergeBell, fr: 'Réception 24h/24', en: '24/7 reception' },
-        { icon: Sparkles, fr: 'Service personnalisé', en: 'Personalized service' },
+        { icon: Sparkles, fr: 'Équipe multilingue', en: 'Multilingual team' },
       ]
     },
     {
@@ -74,16 +74,16 @@ export class GalleryComponent implements OnDestroy {
       descEn: 'Carefully furnished lounges designed for relaxing or entertaining, with the comfort of an apartment and the services of a hotel.',
       highlights: [
         { icon: Sofa, fr: 'Salon séparé', en: 'Separate lounge' },
-        { icon: Wifi, fr: 'Wi-Fi haut débit', en: 'High-speed Wi-Fi' },
-        { icon: Tv, fr: 'TV 4K', en: '4K TV' },
+        { icon: Wifi, fr: 'Wi-Fi fibre', en: 'Fibre Wi-Fi' },
+        { icon: Tv, fr: 'Smart TV 4K', en: '4K Smart TV' },
       ]
     },
     {
       id: 'bathroom', image: 'toilet.jpeg',
       labelFr: 'Salle de bain', labelEn: 'Bathroom',
       titleFr: 'Salles de bain raffinées', titleEn: 'Refined bathrooms',
-      descFr: 'Des matériaux nobles et des finitions soignées pour un moment de détente, du studio au penthouse.',
-      descEn: 'Fine materials and careful finishes for a moment of relaxation, from studio to penthouse.',
+      descFr: 'Des matériaux nobles et des finitions soignées pour un moment de détente, du Standard au Penthouse.',
+      descEn: 'Fine materials and careful finishes for a moment of relaxation, from Standard to Penthouse.',
       highlights: [
         { icon: ShowerHead, fr: 'Douche à l\'italienne ou effet pluie', en: 'Walk-in or rain shower' },
         { icon: Sparkles, fr: 'Finitions haut de gamme', en: 'High-end finishes' },
@@ -93,11 +93,11 @@ export class GalleryComponent implements OnDestroy {
       id: 'retail', image: 'commerces.jpeg',
       labelFr: 'Commerces', labelEn: 'Retail',
       titleFr: 'Commerces de proximité', titleEn: 'Nearby shops',
-      descFr: 'Boutiques et services à proximité immédiate de la résidence, pour profiter de Dakar en toute simplicité.',
-      descEn: 'Shops and services right next to the residence, to enjoy Dakar with ease.',
+      descFr: 'Boutiques et services à proximité immédiate, au cœur du Plateau, le centre d\'affaires de Dakar. La plage est à 15 minutes à pied.',
+      descEn: 'Shops and services right next door, in the heart of Plateau, Dakar\'s business district. The beach is a 15-minute walk away.',
       highlights: [
         { icon: ShoppingBag, fr: 'Boutiques & services', en: 'Shops & services' },
-        { icon: MapPin, fr: 'Accès facile', en: 'Easy access' },
+        { icon: MapPin, fr: 'Plage à 15 min à pied · AIBD à 60 min', en: 'Beach 15 min walk · AIBD airport 60 min' },
       ]
     },
   ];

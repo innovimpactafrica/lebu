@@ -2,75 +2,61 @@
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
       <div class="inline-block text-[0.6rem] tracking-[0.45em] uppercase text-gold-light mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle before:content-['◆'] before:text-[0.4rem] before:mx-3 before:text-gold-dark before:align-middle">
-        {{ langService.currentLang() === 'fr' ? 'Nos services' : 'Our services' }}
+        {{ langService.currentLang() === 'fr' ? 'Services & Expérience' : 'Services & Experience' }}
       </div>
       <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
-        {{ langService.currentLang() === 'fr' ? 'Une expérience' : 'A complete' }}<br>
-        <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? 'complète & exclusive' : '& exclusive experience' }}</em>
+        {{ langService.currentLang() === 'fr' ? 'Le luxe' : 'Everyday' }}<br>
+        <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? 'du quotidien' : 'luxury' }}</em>
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 border border-gold-light/10 bg-gold-light/10">
-
-      <!-- Service 2 -->
-      <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-12 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
-        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
-        <span class="flex justify-center mb-6 text-gold-light transition-transform duration-400 group-hover:-translate-y-1" aria-hidden="true"><lucide-icon [img]="icons.Coffee" [size]="36" [strokeWidth]="1.25"></lucide-icon></span>
-        <h3 class="font-serif text-2xl font-normal mb-3 text-white">
-          {{ langService.currentLang() === 'fr' ? 'Petit Déjeuner' : 'Breakfast' }}
-        </h3>
-        <p class="text-[0.72rem] font-light leading-[1.8] text-white/50">
-          {{ langService.currentLang() === 'fr' ? 'Buffet continental et local servi chaque matin. Produits frais et saveurs sénégalaises authentiques.' : 'Continental and local buffet served every morning. Fresh products and authentic Senegalese flavors.' }}
-        </p>
-        <span class="inline-block mt-4 text-[0.55rem] tracking-[0.2em] uppercase text-gold-light border border-gold-light/30 px-3 py-1">
-          {{ langService.currentLang() === 'fr' ? 'Inclus' : 'Included' }}
-        </span>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-12 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
-        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
-        <span class="flex justify-center mb-6 text-gold-light transition-transform duration-400 group-hover:-translate-y-1" aria-hidden="true"><lucide-icon [img]="icons.Martini" [size]="36" [strokeWidth]="1.25"></lucide-icon></span>
-        <h3 class="font-serif text-2xl font-normal mb-3 text-white">
-          {{ langService.currentLang() === 'fr' ? 'Bar Rooftop' : 'Rooftop Bar' }}
-        </h3>
-        <p class="text-[0.72rem] font-light leading-[1.8] text-white/50">
-          {{ langService.currentLang() === 'fr' ? 'Cocktails signature et vins sélectionnés avec soin, le tout face à un panorama imprenable sur Dakar au coucher du soleil.' : 'Signature cocktails and carefully selected wines, all with breathtaking views of Dakar at sunset.' }}
-        </p>
-        <span class="inline-block mt-4 text-[0.55rem] tracking-[0.2em] uppercase text-gold-light border border-gold-light/30 px-3 py-1">
-          {{ langService.currentLang() === 'fr' ? 'Rooftop' : 'Rooftop' }}
-        </span>
-      </div>
-
-      <!-- Service 4 -->
-      <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-12 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
-        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
-        <span class="flex justify-center mb-6 text-gold-light transition-transform duration-400 group-hover:-translate-y-1" aria-hidden="true"><lucide-icon [img]="icons.Dumbbell" [size]="36" [strokeWidth]="1.25"></lucide-icon></span>
-        <h3 class="font-serif text-2xl font-normal mb-3 text-white">
-          {{ langService.currentLang() === 'fr' ? 'Salle Fitness' : 'Fitness Center' }}
-        </h3>
-        <p class="text-[0.72rem] font-light leading-[1.8] text-white/50">
-          {{ langService.currentLang() === 'fr' ? 'Machines de dernière génération, espace cardio et musculation entièrement équipé pour votre bien-être quotidien.' : 'Latest generation machines, fully equipped cardio and weight training area for your daily well-being.' }}
-        </p>
-        <span class="inline-block mt-4 text-[0.55rem] tracking-[0.2em] uppercase text-gold-light border border-gold-light/30 px-3 py-1">
-          {{ langService.currentLang() === 'fr' ? 'Dernière génération' : 'Latest generation' }}
-        </span>
-      </div>
-
-
-        <!-- Service 1 -->
-       <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-12 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
-        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
-        <span class="flex justify-center mb-6 text-gold-light transition-transform duration-400 group-hover:-translate-y-1" aria-hidden="true"><lucide-icon [img]="icons.Compass" [size]="36" [strokeWidth]="1.25"></lucide-icon></span>
-        <h3 class="font-serif text-2xl font-normal mb-3 text-white">
-          {{ langService.currentLang() === 'fr' ? 'Excursion' : 'Excursion' }}
-        </h3>
-        <p class="text-[0.72rem] font-light leading-[1.8] text-white/50">
-          {{ langService.currentLang() === 'fr' ? 'Découvrez la beauté et la culture locale à travers nos excursions guidées exclusives et sur-mesure.' : 'Discover local beauty and culture through our exclusive, custom-tailored guided excursions.' }}
-        </p>
-      </div>
-
-      
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 border border-gold-light/10 bg-gold-light/10">
+      @for (service of services; track service.category.fr) {
+        <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-10 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
+          <span class="flex justify-center mb-6 text-gold-light transition-transform duration-400 group-hover:-translate-y-1" aria-hidden="true"><lucide-icon [img]="service.icon" [size]="36" [strokeWidth]="1.25"></lucide-icon></span>
+          <p class="text-[0.58rem] tracking-[0.3em] uppercase text-gold-light mb-2">{{ t(service.category) }}</p>
+          <h3 class="font-serif text-2xl font-normal mb-3 text-white">{{ t(service.title) }}</h3>
+          <p class="text-[0.72rem] font-light leading-[1.8] text-white/50">{{ t(service.text) }}</p>
+        </div>
+      }
     </div>
+
+    <!-- Rooftop & Bar Lounge (brochure) -->
+    <div class="mt-0.5 grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] border border-gold-light/25 bg-gradient-to-br from-gold-light/[0.08] to-transparent">
+      <div class="p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-gold-light/15">
+        <p class="flex items-center gap-2.5 text-[0.6rem] tracking-[0.35em] uppercase text-gold-light mb-4">
+          <lucide-icon [img]="icons.Sunset" [size]="16" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+          Rooftop & Bar Lounge
+        </p>
+        <h3 class="font-serif text-[clamp(1.8rem,3vw,2.6rem)] font-light leading-[1.1]">
+          {{ langService.currentLang() === 'fr' ? 'Dakar à vos pieds,' : 'Dakar at your feet,' }}<br>
+          <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? "l'océan pour horizon." : 'the ocean on the horizon.' }}</em>
+        </h3>
+      </div>
+      <div class="p-8 md:p-12 flex flex-col justify-center">
+        <p class="text-[0.78rem] font-light leading-[1.9] text-white/65 mb-5">
+          @if (langService.currentLang() === 'fr') {
+            Prenez de la hauteur, savourez l'instant : bienvenue sur le rooftop de LEBU. Nos mocktails signature célèbrent le bien-être
+            avec bissap, bouye et fruits frais pressés minute. Pour les accompagner, nos tapas voyagent de Dakar à l'Asie,
+            mêlant tradition locale et modernité.
+          } @else {
+            Rise above it all and savour the moment: welcome to the LEBU rooftop. Our signature mocktails celebrate well-being
+            with bissap, baobab (bouye) and freshly squeezed fruit. To go with them, our tapas travel from Dakar to Asia,
+            blending local tradition and modernity.
+          }
+        </p>
+        <span class="self-start inline-flex items-center gap-2 text-[0.55rem] tracking-[0.2em] uppercase text-gold-light border border-gold-light/30 px-3 py-1">
+          <lucide-icon [img]="icons.GlassWater" [size]="12" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
+          {{ langService.currentLang() === 'fr' ? 'Établissement sans alcool' : 'Alcohol-free residence' }}
+        </span>
+      </div>
+    </div>
+
+    <p class="mt-12 text-center font-serif italic text-[1.15rem] md:text-[1.35rem] font-light text-white/70">
+      {{ langService.currentLang() === 'fr'
+        ? '« LEBU, la téranga sénégalaise élevée au rang d\'art de vivre »'
+        : '“LEBU, Senegalese teranga raised to an art of living”' }}
+    </p>
   </div>
 </section>

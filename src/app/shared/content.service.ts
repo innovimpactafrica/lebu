@@ -11,7 +11,7 @@ interface ContentModel {
 
 @Injectable({ providedIn: 'root' })
 export class ContentService {
-  private storageKey = 'lebu-content';
+  private storageKey = 'lebu-content-v2';
   content: ContentModel;
 
   constructor() {
@@ -31,12 +31,12 @@ export class ContentService {
     return {
       paragraphs: [
         {
-          fr: "Lebu Appart&Suites incarne l'élégance contemporaine mêlée aux richesses culturelles du Sénégal. Chaque appartement est conçu pour offrir un espace de vie raffiné, où le luxe rencontre l'authenticité africaine.",
-          en: "Lebu Appart&Suites embodies contemporary elegance blended with Senegal's cultural richness. Each apartment is designed to offer a refined living space where luxury meets African authenticity."
+          fr: "LEBU Appart & Suites est né d'une conviction : Dakar mérite une offre d'hébergement qui conjugue l'excellence internationale et l'authenticité de la culture Lébou. Notre résidence de 36 unités réinvente le séjour longue durée avec l'élégance des grandes adresses africaines.",
+          en: "LEBU Appart & Suites was born from a conviction: Dakar deserves accommodation that combines international excellence with the authenticity of Lébou culture. Our 36-unit residence reinvents the long stay with the elegance of Africa's finest addresses."
         },
         {
-          fr: "Niché dans la ville de Dakar, notre résidence hôtelière offre une expérience unique alliant confort absolu, service personnalisé et panoramas époustouflants sur la capitale sénégalaise.",
-          en: "Nestled in the city of Dakar, our hotel residence offers a unique experience combining absolute comfort, personalized service, and breathtaking views of the Senegalese capital."
+          fr: "Les Lébou, premiers habitants de la presqu'île du Cap-Vert, ont façonné l'âme de Dakar. LEBU rend hommage à leurs valeurs et à leur héritage, jusque dans son identité visuelle inspirée de l'art des pirogues de Yoff.",
+          en: "The Lébou, first inhabitants of the Cap-Vert peninsula, shaped the soul of Dakar. LEBU pays tribute to their values and heritage, down to a visual identity inspired by the art of the Yoff pirogues."
         }
       ]
     };

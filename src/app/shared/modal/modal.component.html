@@ -204,6 +204,20 @@
           <textarea id="bk-requests" rows="3" [(ngModel)]="requests" name="requests" [placeholder]="langService.currentLang() === 'fr' ? 'Ex : lits jumeaux, arrivée tardive...' : 'E.g: twin beds, late arrival...'" class="bg-white/5 border border-gold-light/20 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light resize-y min-h-[80px]"></textarea>
         </div>
 
+        <!-- Booking conditions (CGV v1.2) -->
+        <div class="flex gap-3 border border-gold-light/15 bg-white/[0.03] px-4 py-3.5 mb-4 text-[0.65rem] font-light leading-[1.7] text-white/55">
+          <lucide-icon [img]="icons.Info" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0 mt-0.5" aria-hidden="true"></lucide-icon>
+          <p>
+            @if (langService.currentLang() === 'fr') {
+              Arrivée dès 14 h, départ avant 12 h. Acompte de la première nuitée à la réservation, solde à l'arrivée.
+              Annulation sans frais jusqu'à 48 h avant l'arrivée. Établissement non-fumeur et sans alcool.
+            } @else {
+              Check-in from 2 PM, check-out by 12 PM. First-night deposit at booking, balance on arrival.
+              Free cancellation up to 48 hours before arrival. Non-smoking, alcohol-free residence.
+            }
+          </p>
+        </div>
+
         <button type="submit" class="w-full bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep border-none font-sans text-[0.7rem] font-bold tracking-[0.25em] uppercase p-[18px] cursor-pointer transition-all duration-300 mt-2 hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(230,196,115,0.3)]">
           {{ langService.currentLang() === 'fr' ? 'Confirmer la réservation' : 'Confirm booking' }}
           <lucide-icon [img]="icons.ArrowRight" [size]="14" [strokeWidth]="2" class="inline-block ml-2 align-middle"></lucide-icon>
