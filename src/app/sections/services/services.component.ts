@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {
-  Briefcase, CarTaxiFront, ConciergeBell, Dumbbell, GlassWater, LucideAngularModule, LucideIconData,
-  ShieldCheck, Sunset, Utensils
+  Briefcase, CarTaxiFront, ConciergeBell, Dumbbell, LucideAngularModule, LucideIconData, ShieldCheck, Utensils
 } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 
@@ -25,7 +24,6 @@ interface Service {
 })
 export class ServicesComponent {
   langService = inject(LangService);
-  readonly icons = { Sunset, GlassWater };
 
   // Source: Lebu brochure, "Services & Expérience"
   readonly services: Service[] = [

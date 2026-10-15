@@ -8,6 +8,7 @@ import { AboutComponent } from './sections/about/about.component';
 import { RoomsComponent } from './sections/rooms/rooms.component';
 import { GalleryComponent } from './sections/gallery/gallery.component';
 import { ServicesComponent } from './sections/services/services.component';
+import { RooftopComponent } from './sections/rooftop/rooftop.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ModalComponent } from './shared/modal/modal.component';
 // Lebu Fidélité: hidden for now
@@ -25,6 +26,7 @@ import { ModalComponent } from './shared/modal/modal.component';
     RoomsComponent,
     GalleryComponent,
     ServicesComponent,
+    RooftopComponent,
     FooterComponent,
     ModalComponent,
     // LoyaltyComponent

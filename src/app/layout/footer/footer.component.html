@@ -34,7 +34,7 @@
     <ul class="list-none p-0 m-0">
       @for (service of services; track service.fr) {
         <li class="text-[0.75rem] font-light text-white/45 mb-2.5 transition-colors duration-300 hover:text-gold-light">
-          <a href="#services">{{ langService.currentLang() === 'fr' ? service.fr : service.en }}</a>
+          <a [href]="service.anchor">{{ langService.currentLang() === 'fr' ? service.fr : service.en }}</a>
         </li>
       }
     </ul>

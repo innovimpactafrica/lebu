@@ -12,7 +12,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 border border-gold-light/10 bg-gold-light/10">
       @for (service of services; track service.category.fr) {
-        <div class="bg-[rgba(17,48,104,0.5)] border border-gold-light/10 p-10 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(17,48,104,0.8)] hover:border-gold-light/35 group">
+        <div class="bg-[rgba(22,58,150,0.5)] border border-gold-light/10 p-10 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-[rgba(22,58,150,0.8)] hover:border-gold-light/35 group">
           <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
           <span class="flex justify-center mb-6 text-gold-light transition-transform duration-400 group-hover:-translate-y-1" aria-hidden="true"><lucide-icon [img]="service.icon" [size]="36" [strokeWidth]="1.25"></lucide-icon></span>
           <p class="text-[0.58rem] tracking-[0.3em] uppercase text-gold-light mb-2">{{ t(service.category) }}</p>
@@ -20,37 +20,6 @@
           <p class="text-[0.72rem] font-light leading-[1.8] text-white/50">{{ t(service.text) }}</p>
         </div>
       }
-    </div>
-
-    <!-- Rooftop & Bar Lounge (brochure) -->
-    <div class="mt-0.5 grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] border border-gold-light/25 bg-gradient-to-br from-gold-light/[0.08] to-transparent">
-      <div class="p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-gold-light/15">
-        <p class="flex items-center gap-2.5 text-[0.6rem] tracking-[0.35em] uppercase text-gold-light mb-4">
-          <lucide-icon [img]="icons.Sunset" [size]="16" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
-          Rooftop & Bar Lounge
-        </p>
-        <h3 class="font-serif text-[clamp(1.8rem,3vw,2.6rem)] font-light leading-[1.1]">
-          {{ langService.currentLang() === 'fr' ? 'Dakar à vos pieds,' : 'Dakar at your feet,' }}<br>
-          <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? "l'océan pour horizon." : 'the ocean on the horizon.' }}</em>
-        </h3>
-      </div>
-      <div class="p-8 md:p-12 flex flex-col justify-center">
-        <p class="text-[0.78rem] font-light leading-[1.9] text-white/65 mb-5">
-          @if (langService.currentLang() === 'fr') {
-            Prenez de la hauteur, savourez l'instant : bienvenue sur le rooftop de LEBU. Nos mocktails signature célèbrent le bien-être
-            avec bissap, bouye et fruits frais pressés minute. Pour les accompagner, nos tapas voyagent de Dakar à l'Asie,
-            mêlant tradition locale et modernité.
-          } @else {
-            Rise above it all and savour the moment: welcome to the LEBU rooftop. Our signature mocktails celebrate well-being
-            with bissap, baobab (bouye) and freshly squeezed fruit. To go with them, our tapas travel from Dakar to Asia,
-            blending local tradition and modernity.
-          }
-        </p>
-        <span class="self-start inline-flex items-center gap-2 text-[0.55rem] tracking-[0.2em] uppercase text-gold-light border border-gold-light/30 px-3 py-1">
-          <lucide-icon [img]="icons.GlassWater" [size]="12" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
-          {{ langService.currentLang() === 'fr' ? 'Établissement sans alcool' : 'Alcohol-free residence' }}
-        </span>
-      </div>
     </div>
 
     <p class="mt-12 text-center font-serif italic text-[1.15rem] md:text-[1.35rem] font-light text-white/70">

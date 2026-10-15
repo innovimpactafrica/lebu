@@ -16,6 +16,12 @@ export class AboutComponent {
   contentService = inject(ContentService);
   readonly icons = { PenLine };
 
+  // Brochure section titles, one per editable paragraph
+  readonly headings = [
+    { fr: 'Notre Vision', en: 'Our Vision' },
+    { fr: 'Héritage Lébou', en: 'Lébou Heritage' },
+  ];
+
   editingIndex = signal<number | null>(null);
   tempFr = '';
   tempEn = '';

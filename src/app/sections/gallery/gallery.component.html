@@ -12,7 +12,7 @@
   <div class="grid grid-cols-1 md:grid-cols-[1.6fr_1fr_1fr] md:grid-rows-[280px_280px] auto-rows-[280px] gap-3 mt-16">
     @for (space of spaces; track space.id) {
       <button type="button"
-        class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a1e45]/50 group text-left cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gold-light"
+        class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a2672]/50 group text-left cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gold-light"
         [class.md:row-span-2]="space.large"
         [style.background-image]="'url(' + space.image + ')'"
         [attr.aria-label]="(langService.currentLang() === 'fr' ? 'Voir les détails : ' : 'View details: ') + (langService.currentLang() === 'fr' ? space.labelFr : space.labelEn)"
@@ -20,7 +20,7 @@
         (pointerenter)="onTileEnter(space, $event)"
         (pointerleave)="onTileLeave()"
         (click)="openNow(space)">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,30,69,0.1)] to-[rgba(10,30,69,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(10,38,114,0.1)] to-[rgba(10,38,114,0.8)] transition-opacity duration-500 group-hover:opacity-80"></div>
 
         <span class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center border border-gold-light/40 bg-navy-deep/40 text-gold-light opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true">
           <lucide-icon [img]="icons.Maximize2" [size]="14" [strokeWidth]="1.5"></lucide-icon>
@@ -43,7 +43,7 @@
 
 <!-- Space details modal -->
 @if (active(); as space) {
-  <div class="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-[rgba(8,15,31,0.75)] backdrop-blur-[6px] opacity-0 animate-fadeIn [animation-duration:300ms]"
+  <div class="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-[rgba(6,24,88,0.75)] backdrop-blur-[6px] opacity-0 animate-fadeIn [animation-duration:300ms]"
     (click)="close()">
     <div role="dialog" aria-modal="true" aria-labelledby="gallery-detail-title"
       class="relative w-full max-w-[860px] max-h-[90vh] overflow-y-auto bg-navy border border-gold-light/25 shadow-[0_30px_80px_rgba(0,0,0,0.6)] grid grid-cols-1 md:grid-cols-[1.1fr_1fr]"

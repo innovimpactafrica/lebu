@@ -6,12 +6,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Brochure palette: royal blue headers, cream content pages, gold accents
         'gold-light': '#e6c473',
-        navy: '#113068',
+        navy: '#163a96',
         'gold-dark': '#b3842a',
-        cream: '#f8f4ec',
-        'navy-deep': '#0a1e45',
-        overlay: 'rgba(10, 30, 69, 0.72)',
+        cream: '#fcf8f0',
+        'navy-deep': '#0a2672',
+        // Dark navy used for text on cream backgrounds
+        ink: '#0d296d',
+        overlay: 'rgba(10, 38, 114, 0.72)',
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],

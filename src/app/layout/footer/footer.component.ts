@@ -16,11 +16,11 @@ export class FooterComponent {
   readonly year = new Date().getFullYear();
 
   readonly services = [
-    { fr: 'Réception & Conciergerie 24/7', en: '24/7 Reception & Concierge' },
-    { fr: 'Centre d\'affaires', en: 'Business centre' },
-    { fr: 'Fitness & Wellness', en: 'Fitness & Wellness' },
-    { fr: 'Gastronomie', en: 'Gastronomy' },
-    { fr: 'Rooftop & Bar Lounge', en: 'Rooftop & Bar Lounge' },
-    { fr: 'Transports & Chauffeur', en: 'Transport & Driver' },
+    { fr: 'Réception & Conciergerie 24/7', en: '24/7 Reception & Concierge', anchor: '#services' },
+    { fr: 'Centre d\'affaires', en: 'Business centre', anchor: '#services' },
+    { fr: 'Fitness & Wellness', en: 'Fitness & Wellness', anchor: '#services' },
+    { fr: 'Gastronomie', en: 'Gastronomy', anchor: '#services' },
+    { fr: 'Rooftop & Bar Lounge', en: 'Rooftop & Bar Lounge', anchor: '#rooftop' },
+    { fr: 'Transports & Chauffeur', en: 'Transport & Driver', anchor: '#services' },
   ];
 }
