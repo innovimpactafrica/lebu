@@ -12,9 +12,16 @@ module.exports = {
         'gold-dark': '#b3842a',
         cream: '#fcf8f0',
         'navy-deep': '#0a2672',
-        // Dark navy used for text on cream backgrounds
-        ink: '#0d296d',
+        // Theme roles, switched by [data-theme] in styles.css
+        page: 'rgb(var(--c-page) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        ink: 'rgb(var(--c-ink) / <alpha-value>)',
+        accent: 'rgb(var(--c-accent) / <alpha-value>)',
         overlay: 'rgba(10, 38, 114, 0.72)',
+      },
+      maxWidth: {
+        // Shared content width for every section
+        site: '1440px',
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],

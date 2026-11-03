@@ -1,36 +1,36 @@
-<section id="rooms" class="py-[60px] md:py-[100px] max-w-7xl mx-auto">
+<section id="rooms" class="py-[60px] md:py-[100px] px-6 md:px-12 box-content max-w-site mx-auto">
   <div class="text-center mb-10">
-    <div class="inline-block text-[0.6rem] tracking-[0.45em] uppercase text-gold-light mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle before:content-['◆'] before:text-[0.4rem] before:mx-3 before:text-gold-dark before:align-middle">
+    <div class="inline-block text-[0.6rem] tracking-[0.45em] uppercase text-accent mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle before:content-['◆'] before:text-[0.4rem] before:mx-3 before:text-gold-dark before:align-middle">
       {{ langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}
     </div>
     <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
       {{ langService.currentLang() === 'fr' ? '36 unités' : '36 exceptional' }}<br>
-      <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? "d'exception" : 'suites' }}</em>
+      <em class="italic text-accent">{{ langService.currentLang() === 'fr' ? "d'exception" : 'suites' }}</em>
     </h2>
   </div>
 
   <!-- Version selector -->
   <div class="flex flex-col items-center gap-5 mb-10 px-6 text-center">
-    <p class="text-[0.75rem] font-light leading-[1.8] text-white/60 max-w-xl">
+    <p class="text-[0.75rem] font-light leading-[1.8] text-ink/70 max-w-xl">
       @if (langService.currentLang() === 'fr') {
-        Certaines catégories existent en version <span class="text-gold-light font-medium">Club Lebu</span>
+        Certaines catégories existent en version <span class="text-accent font-medium">Club Lebu</span>
         ({{ t(clubFloors).toLowerCase() }}), avec des privilèges inclus.
       } @else {
-        Some categories are available in a <span class="text-gold-light font-medium">Club Lebu</span>
+        Some categories are available in a <span class="text-accent font-medium">Club Lebu</span>
         version ({{ t(clubFloors).toLowerCase() }}), with exclusive privileges.
       }
     </p>
 
     <div role="radiogroup" [attr.aria-label]="langService.currentLang() === 'fr' ? 'Version' : 'Version'"
-      class="inline-flex border border-gold-light/30 p-1 bg-white/[0.03]">
+      class="inline-flex border border-accent/30 p-1 bg-surface">
       <button type="button" role="radio" [attr.aria-checked]="version() === 'classic'" (click)="setVersion('classic')"
         class="px-6 md:px-8 py-2.5 text-[0.62rem] font-semibold tracking-[0.25em] uppercase transition-colors duration-300"
-        [class]="version() === 'classic' ? 'bg-white/10 text-white' : 'text-white/50 hover:text-white'">
+        [class]="version() === 'classic' ? 'bg-navy text-white' : 'text-ink/50 hover:text-ink'">
         {{ langService.currentLang() === 'fr' ? 'Classique' : 'Classic' }}
       </button>
       <button type="button" role="radio" [attr.aria-checked]="version() === 'club'" (click)="setVersion('club')"
         class="inline-flex items-center gap-2 px-6 md:px-8 py-2.5 text-[0.62rem] font-semibold tracking-[0.25em] uppercase transition-colors duration-300"
-        [class]="version() === 'club' ? 'bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep' : 'text-gold-light/70 hover:text-gold-light'">
+        [class]="version() === 'club' ? 'bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep' : 'text-accent/80 hover:text-accent'">
         <lucide-icon [img]="icons.Crown" [size]="13" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
         Club Lebu
       </button>
@@ -39,14 +39,14 @@
 
   <!-- Club perks, shown once since they are identical for every Club offer -->
   @if (version() === 'club') {
-    <div class="mx-0 mb-8 border border-gold-light/25 bg-gradient-to-br from-gold-light/[0.08] to-transparent px-6 md:px-10 py-6 opacity-0 animate-fadeIn [animation-duration:400ms]">
-      <p class="text-[0.6rem] tracking-[0.35em] uppercase text-gold-light mb-4">
+    <div class="mx-0 mb-8 border border-accent/25 bg-surface px-6 md:px-10 py-6 opacity-0 animate-fadeIn [animation-duration:400ms]">
+      <p class="text-[0.6rem] tracking-[0.35em] uppercase text-accent mb-4">
         {{ langService.currentLang() === 'fr' ? 'Privilèges Club Lebu inclus' : 'Included Club Lebu privileges' }}
       </p>
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-2.5">
         @for (perk of clubPerks; track perk.fr) {
-          <li class="flex items-center gap-2.5 text-[0.72rem] font-light text-white/75">
-            <lucide-icon [img]="icons.Check" [size]="13" [strokeWidth]="2" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
+          <li class="flex items-center gap-2.5 text-[0.72rem] font-light text-ink/75">
+            <lucide-icon [img]="icons.Check" [size]="13" [strokeWidth]="2" class="text-accent shrink-0" aria-hidden="true"></lucide-icon>
             {{ t(perk) }}
           </li>
         }
@@ -57,7 +57,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-0.5 border border-gold-light/10 bg-gold-light/10">
     @for (card of cards(); track card.category.id) {
       <div
-        class="relative overflow-hidden group bg-[#0a2672]"
+        class="relative overflow-hidden group bg-[#0a2672] text-white"
         [class.cursor-pointer]="!card.unavailable"
         [class.grayscale]="card.unavailable"
         [attr.aria-disabled]="card.unavailable"
@@ -149,13 +149,13 @@
   </div>
 
   <!-- Shared amenities (brochure) -->
-  <div class="mt-0.5 border border-gold-light/10 bg-[rgba(22,58,150,0.45)] px-6 md:px-10 py-7">
+  <div class="mt-0.5 border border-gold-light/10 bg-navy-deep px-6 md:px-10 py-7">
     <p class="text-center text-[0.6rem] tracking-[0.35em] uppercase text-gold-light mb-6">
       {{ langService.currentLang() === 'fr' ? 'Dans toutes nos suites' : 'In all our suites' }}
     </p>
     <ul class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-y-6 gap-x-4">
       @for (amenity of amenities; track amenity.icon) {
-        <li class="flex flex-col items-center gap-2.5 text-center text-[0.62rem] tracking-[0.08em] text-white/70">
+        <li class="flex flex-col items-center gap-2.5 text-center text-[0.62rem] tracking-[0.08em] text-white/80">
           <!-- Icons extracted from the Lebu brochure (vector) -->
           <img [src]="'icons/amenities/' + amenity.icon + '.svg'" alt="" class="h-9 w-auto" loading="lazy">
           {{ t(amenity.label) }}
@@ -164,20 +164,16 @@
     </ul>
   </div>
 
-  <p class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-[0.62rem] tracking-[0.2em] uppercase text-white/45">
+  <!-- House rules phrased as guest benefits; the full wording is in the booking conditions -->
+  <p class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-[0.62rem] tracking-[0.2em] uppercase text-ink/55">
     <span class="inline-flex items-center gap-2">
-      <lucide-icon [img]="icons.CigaretteOff" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
-      {{ langService.currentLang() === 'fr' ? 'Établissement non-fumeur' : 'Non-smoking residence' }}
+      <lucide-icon [img]="icons.Leaf" [size]="14" [strokeWidth]="1.5" class="text-accent" aria-hidden="true"></lucide-icon>
+      {{ langService.currentLang() === 'fr' ? 'Suites non-fumeur, un air pur garanti' : 'Smoke-free suites, guaranteed fresh air' }}
     </span>
     <span class="inline-flex items-center gap-2">
-      <lucide-icon [img]="icons.WineOff" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
-      {{ langService.currentLang() === 'fr' ? 'Sans alcool' : 'Alcohol-free' }}
-    </span>
-    <span class="inline-flex items-center gap-2">
-      <lucide-icon [img]="icons.Clock" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+      <lucide-icon [img]="icons.Clock" [size]="14" [strokeWidth]="1.5" class="text-accent" aria-hidden="true"></lucide-icon>
       {{ langService.currentLang() === 'fr' ? 'Arrivée dès 14 h · Départ avant 12 h' : 'Check-in from 2 PM · Check-out by 12 PM' }}
     </span>
   </p>
 </section>
 
-<img src="Motif.svg" class="mx-6 md:mx-12 max-w-7xl lg:mx-auto">

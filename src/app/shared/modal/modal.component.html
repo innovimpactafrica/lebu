@@ -9,7 +9,7 @@
 >
   <div
     role="dialog" aria-modal="true" aria-labelledby="booking-title"
-    class="bg-navy border border-gold-light/25 w-[92%] max-w-[760px] max-h-[90vh] overflow-y-auto p-6 md:p-12 relative transition-transform duration-400"
+    class="bg-navy text-white border border-gold-light/25 w-[92%] max-w-[760px] max-h-[90vh] overflow-y-auto p-6 md:p-12 relative transition-transform duration-400"
     [class.translate-y-[30px]]="!booking.isOpen()"
     [class.translate-y-0]="booking.isOpen()"
     (click)="$event.stopPropagation()"
@@ -210,11 +210,18 @@
           <p>
             @if (langService.currentLang() === 'fr') {
               Arrivée dès 14 h, départ avant 12 h. Acompte de la première nuitée à la réservation, solde à l'arrivée.
-              Annulation sans frais jusqu'à 48 h avant l'arrivée. Établissement non-fumeur et sans alcool.
+              Annulation sans frais jusqu'à 48 h avant l'arrivée.<br>
+              Pour le bien-être de tous, la résidence est entièrement non-fumeur et notre Bar &amp; Lounge
+              propose une carte signature sans alcool : mocktails, bissap, bouye et jus pressés minute.
             } @else {
               Check-in from 2 PM, check-out by 12 PM. First-night deposit at booking, balance on arrival.
-              Free cancellation up to 48 hours before arrival. Non-smoking, alcohol-free residence.
+              Free cancellation up to 48 hours before arrival.<br>
+              For everyone's well-being, the residence is entirely smoke-free and our Bar &amp; Lounge
+              offers a signature alcohol-free menu: mocktails, bissap, bouye and freshly squeezed juices.
             }
+            <a routerLink="/conditions-generales" (click)="closeModal()" class="block mt-2 text-gold-light/90 underline underline-offset-4 decoration-gold-light/40 transition-colors hover:text-gold-light">
+              {{ langService.currentLang() === 'fr' ? 'Lire les conditions générales de vente' : 'Read the general terms of sale' }}
+            </a>
           </p>
         </div>
 

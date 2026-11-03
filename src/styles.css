@@ -3,6 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme roles as RGB triplets so Tailwind opacity modifiers (text-ink/60) keep working.
+   Light is the brochure cream; dark brings back the original royal blue. */
+:root {
+  --c-page: 252 248 240;
+  --c-surface: 255 255 255;
+  --c-ink: 13 41 109;
+  --c-accent: 179 132 42;
+}
+:root[data-theme="dark"] {
+  --c-page: 10 38 114;
+  --c-surface: 22 58 150;
+  --c-ink: 255 255 255;
+  --c-accent: 230 196 115;
+}
+body {
+  transition: background-color 0.4s, color 0.4s;
+}
+
 @layer utilities {
   .clip-text-padding {
     background-clip: text;
@@ -28,4 +46,12 @@
 }
 .animate-scrollPulse {
   animation: scrollPulse 2s infinite;
+}
+
+/* Printing the terms page: content only, black on white */
+@media print {
+  app-header, app-footer, app-modal { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .terms-hero { padding-top: 0 !important; padding-bottom: 1.5rem !important; }
+  .terms-hero, .terms-hero * { background: none !important; color: #000 !important; }
 }

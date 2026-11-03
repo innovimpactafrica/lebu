@@ -14,8 +14,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    // Apply the saved theme before Angular boots to avoid a flash of the wrong one
+    try { if (localStorage.getItem('lebu-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+  </script>
 </head>
-<body class="bg-navy-deep text-white font-sans overflow-x-hidden">
+<body class="bg-page text-ink font-sans overflow-x-hidden">
   <app-root></app-root>
 </body>
 </html>

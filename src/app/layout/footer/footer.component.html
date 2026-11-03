@@ -1,71 +1,85 @@
-<div>
-  <img src="Motif.svg" class="mx-6 md:mx-12 max-w-7xl lg:mx-auto">
-</div>
-<footer class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr] gap-10 md:gap-12 max-w-7xl mx-auto">
+<!-- Footer: the brochure "Séjour confort" photo covers the whole footer;
+     a navy veil, denser at the top, keeps the content readable -->
+<footer class="relative bg-navy-deep text-white overflow-hidden">
+  <div class="absolute inset-0" aria-hidden="true">
+    <img src="sejour-confort.jpg" alt="" loading="lazy" class="w-full h-full object-cover object-[30%_top]">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/95 via-navy-deep/70 via-45% to-navy-deep/10"></div>
+  </div>
 
-  <div>
-    <div class="font-serif font-semibold tracking-wider leading-none mb-1.5">
-      <img src="logo_Lebu2.png" class="w-28">
+  <!-- Bottom padding sets how much of the photo shows below the content -->
+  <div class="relative z-10 max-w-site mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-[140px] md:pb-[200px] lg:pb-[240px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_2fr] gap-12 lg:gap-20">
+
+      <!-- Brand -->
+      <div>
+        <a routerLink="/" class="inline-block" aria-label="Lebu Appart&amp;Suites">
+          <img src="logo_Lebu2.png" alt="Lebu Appart&amp;Suites" class="w-32">
+        </a>
+        <p class="mt-6 max-w-sm text-[0.9rem] font-light leading-[1.75] text-white/70">
+          {{ langService.currentLang() === 'fr'
+            ? "L'art de vivre à Dakar. La téranga sénégalaise élevée au rang d'art de vivre, au cœur du Plateau."
+            : 'The art of living in Dakar. Senegalese teranga raised to an art of living, in the heart of Plateau.' }}
+        </p>
+        <p class="mt-6 flex items-center gap-2.5 text-[0.72rem] font-light text-white/50">
+          <lucide-icon [img]="icons.Plane" [size]="14" [strokeWidth]="1.5" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
+          {{ langService.currentLang() === 'fr' ? 'AIBD : 60 min · Plage : 15 min à pied' : 'AIBD airport: 60 min · Beach: 15 min walk' }}
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-10">
+        <div>
+          <h4 class="text-[0.85rem] font-medium text-white mb-6">
+            {{ langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}
+          </h4>
+          <ul class="space-y-3.5">
+            @for (room of rooms; track room.id) {
+              <li>
+                <a routerLink="/" fragment="rooms" class="text-[0.8rem] font-light text-white/60 transition-colors duration-300 hover:text-gold-light">{{ room.name }}</a>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-[0.85rem] font-medium text-white mb-6">Services</h4>
+          <ul class="space-y-3.5">
+            @for (service of services; track service.fr) {
+              <li>
+                <a routerLink="/" [fragment]="service.anchor" class="text-[0.8rem] font-light text-white/60 transition-colors duration-300 hover:text-gold-light">{{ langService.currentLang() === 'fr' ? service.fr : service.en }}</a>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="col-span-2 md:col-span-1">
+          <h4 class="text-[0.85rem] font-medium text-white mb-6">Contact</h4>
+          <!-- Icon box matches the first line height so icons stay centred on it -->
+          <ul class="space-y-3.5 text-[0.8rem] font-light leading-[1.6] text-white/60">
+            <li class="flex items-start gap-3">
+              <span class="flex items-center h-[1.6em] text-gold-light shrink-0" aria-hidden="true"><lucide-icon [img]="icons.MapPin" [size]="15" [strokeWidth]="1.5"></lucide-icon></span>
+              <span>Complexe Neptune<br>22 rue Wagane Diouf, Plateau<br>Dakar, Sénégal</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex items-center h-[1.6em] text-gold-light shrink-0" aria-hidden="true"><lucide-icon [img]="icons.Phone" [size]="15" [strokeWidth]="1.5"></lucide-icon></span>
+              <a href="tel:+221710537979" class="transition-colors hover:text-gold-light">+221 71 053 79 79</a>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex items-center h-[1.6em] text-gold-light shrink-0" aria-hidden="true"><lucide-icon [img]="icons.Mail" [size]="15" [strokeWidth]="1.5"></lucide-icon></span>
+              <a href="mailto:infos@lebu-hotelsgroup.com" class="break-all transition-colors hover:text-gold-light">infos&#64;lebu-hotelsgroup.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <p class="text-[0.75rem] font-light leading-[1.8] text-white/45 max-w-[280px]">
-      {{ langService.currentLang() === 'fr'
-        ? "L'art de vivre à Dakar. La téranga sénégalaise élevée au rang d'art de vivre, au cœur du Plateau."
-        : 'The art of living in Dakar. Senegalese teranga raised to an art of living, in the heart of Plateau.' }}
-    </p>
+
+    <!-- Bottom bar -->
+    <div class="mt-16 md:mt-20 pt-7 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-3 text-[0.75rem] font-light text-white/70 text-center md:text-left">
+      <a routerLink="/conditions-generales" class="transition-colors hover:text-gold-light">
+        {{ langService.currentLang() === 'fr' ? 'Conditions générales de vente' : 'Terms of sale' }}
+      </a>
+      <span>Lebu Appart&amp;Suites ©{{ year }}. {{ langService.currentLang() === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.' }}</span>
+    </div>
   </div>
 
-  <div>
-    <h4 class="text-[0.6rem] tracking-[0.3em] uppercase text-gold-light mb-5">
-      {{ langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}
-    </h4>
-    <ul class="list-none p-0 m-0">
-      @for (room of rooms; track room.id) {
-        <li class="text-[0.75rem] font-light text-white/45 mb-2.5 transition-colors duration-300 hover:text-gold-light">
-          <a href="#rooms">{{ room.name }}</a>
-        </li>
-      }
-    </ul>
-  </div>
-
-  <div>
-    <h4 class="text-[0.6rem] tracking-[0.3em] uppercase text-gold-light mb-5">
-      {{ langService.currentLang() === 'fr' ? 'Services' : 'Services' }}
-    </h4>
-    <ul class="list-none p-0 m-0">
-      @for (service of services; track service.fr) {
-        <li class="text-[0.75rem] font-light text-white/45 mb-2.5 transition-colors duration-300 hover:text-gold-light">
-          <a [href]="service.anchor">{{ langService.currentLang() === 'fr' ? service.fr : service.en }}</a>
-        </li>
-      }
-    </ul>
-  </div>
-
-  <!-- Contact (brochure) -->
-  <div>
-    <h4 class="text-[0.6rem] tracking-[0.3em] uppercase text-gold-light mb-5">Contact</h4>
-    <ul class="list-none p-0 m-0 space-y-3 text-[0.75rem] font-light text-white/55">
-      <li class="flex gap-3">
-        <lucide-icon [img]="icons.MapPin" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0 mt-0.5" aria-hidden="true"></lucide-icon>
-        <span>Complexe Neptune<br>22 rue Wagane Diouf, Plateau<br>Dakar, Sénégal</span>
-      </li>
-      <li class="flex gap-3 items-center">
-        <lucide-icon [img]="icons.Phone" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
-        <a href="tel:+221710537979" class="transition-colors hover:text-gold-light">+221 71 053 79 79</a>
-      </li>
-      <li class="flex gap-3 items-center">
-        <lucide-icon [img]="icons.Mail" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
-        <a href="mailto:infos@lebu-hotelsgroup.com" class="transition-colors hover:text-gold-light break-all">infos&#64;lebu-hotelsgroup.com</a>
-      </li>
-      <li class="flex gap-3 items-center text-white/40">
-        <lucide-icon [img]="icons.Plane" [size]="15" [strokeWidth]="1.5" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
-        {{ langService.currentLang() === 'fr' ? 'AIBD : 60 min · Plage : 15 min à pied' : 'AIBD airport: 60 min · Beach: 15 min walk' }}
-      </li>
-    </ul>
-  </div>
-
-  <div
-    class="col-span-1 md:col-span-2 lg:col-span-4 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[0.6rem] text-white/25 tracking-widest gap-3 md:gap-0 text-center md:text-left">
-    <span>© {{ year }} Lebu Appart&amp;Suites — Dakar, Sénégal</span>
-    <span>{{ langService.currentLang() === 'fr' ? 'Tous droits réservés' : 'All rights reserved' }}</span>
-  </div>
 </footer>

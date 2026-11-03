@@ -22,6 +22,22 @@ export class AboutComponent {
     { fr: 'Héritage Lébou', en: 'Lébou Heritage' },
   ];
 
+  // Brochure "Concept & Héritage" pillars
+  readonly pillars = [
+    {
+      title: { fr: 'Service', en: 'Service' },
+      text: { fr: 'Équipe dédiée 24h/24 autour d\'une hospitalité authentique.', en: 'A dedicated 24/7 team built around authentic hospitality.' },
+    },
+    {
+      title: { fr: 'Culture', en: 'Culture' },
+      text: { fr: 'Identité visuelle ancrée dans l\'art des pirogues de Yoff.', en: 'A visual identity rooted in the art of the Yoff pirogues.' },
+    },
+    {
+      title: { fr: 'Confort', en: 'Comfort' },
+      text: { fr: 'Appartements entièrement équipés, courts et longs séjours.', en: 'Fully equipped apartments for short and long stays.' },
+    },
+  ];
+
   editingIndex = signal<number | null>(null);
   tempFr = '';
   tempEn = '';
@@ -29,7 +45,6 @@ export class AboutComponent {
   stats = [
     { num: '36', labelFr: 'Suites', labelEn: 'Suites' },
     { num: '5', labelFr: 'Catégories de suites', labelEn: 'Suite categories' },
-    { num: '4★', labelFr: 'Apart-hôtel', labelEn: 'Apart-hotel' },
     { num: '24/7', labelFr: 'Assistance dédiée', labelEn: 'Dedicated assistance' }
   ];
 

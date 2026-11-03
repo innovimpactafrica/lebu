@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ArrowRight, Citrus, GlassWater, Leaf, LucideAngularModule, LucideIconData, Sunset, Utensils, WineOff } from 'lucide-angular';
+import { ArrowRight, Citrus, GlassWater, Leaf, LucideAngularModule, LucideIconData, Sunset, Utensils } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
 
@@ -18,7 +18,7 @@ interface Signature {
 export class RooftopComponent {
   langService = inject(LangService);
   private booking = inject(BookingService);
-  readonly icons = { Sunset, WineOff, ArrowRight };
+  readonly icons = { Sunset, ArrowRight };
 
   // Source: Lebu brochure, "Rooftop & Bar Lounge"
   readonly signatures: Signature[] = [

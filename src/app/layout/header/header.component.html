@@ -3,31 +3,39 @@
   [class]="isScrolled() ? 'bg-[rgba(6,24,88,0.97)]' : 'bg-[rgba(10,38,114,0.85)]'">
   <div class="flex flex-col leading-none">
     <div class="font-serif font-semibold tracking-wider">
-      <img src="logo_Lebu2.png" class="w-28">
+      <a routerLink="/" aria-label="Lebu Appart&amp;Suites"><img src="logo_Lebu2.png" alt="Lebu Appart&amp;Suites" class="w-28"></a>
     </div>
   </div>
 
   <ul class="hidden md:flex gap-9 list-none">
-    <li><a href="#about"
+    <li><a routerLink="/" fragment="about"
         class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'À propos' : 'About' }}</a></li>
-    <li><a href="#rooms"
+    <li><a routerLink="/" fragment="rooms"
         class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}</a></li>
-    <li><a href="#galerie"
+    <li><a routerLink="/" fragment="galerie"
         class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'Galerie' : 'Gallery' }}</a></li>
-    <li><a href="#services"
+    <li><a routerLink="/" fragment="services"
         class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'Services' : 'Services' }}</a></li>
-    <li><a href="#rooftop"
+    <li><a routerLink="/" fragment="rooftop"
         class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">Rooftop</a></li>
-    <li><a href="#booking"
+    <li><a routerLink="/" fragment="booking"
         class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'Réservation' : 'Book now' }}</a></li>
   </ul>
 
-  <div class="flex gap-2.5 text-[0.65rem] font-semibold tracking-widest uppercase">
+  <div class="flex items-center gap-2.5 text-[0.65rem] font-semibold tracking-widest uppercase">
+    <button type="button" (click)="themeService.toggle()"
+      class="w-8 h-8 flex items-center justify-center border border-gold-light/25 text-white/70 transition-colors hover:text-gold-light hover:border-gold-light/60"
+      [attr.aria-label]="themeService.theme() === 'dark'
+        ? (langService.currentLang() === 'fr' ? 'Passer au thème clair' : 'Switch to light theme')
+        : (langService.currentLang() === 'fr' ? 'Passer au thème sombre' : 'Switch to dark theme')">
+      <lucide-icon [img]="themeService.theme() === 'dark' ? icons.Sun : icons.Moon" [size]="15" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+    </button>
+    <span class="text-white/25 mr-0.5">|</span>
     <button (click)="setLang('fr')" class="bg-transparent border-none cursor-pointer transition-colors"
       [class]="langService.currentLang() === 'fr' ? 'text-gold-light' : 'text-white/50 hover:text-gold-light'">FR</button>
     <span class="text-white/25">|</span>

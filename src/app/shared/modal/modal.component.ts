@@ -1,5 +1,6 @@
 import { Component, HostListener, computed, effect, inject, signal, untracked } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { ArrowRight, Check, Crown, Info, LucideAngularModule, Ruler, Sparkles, Users, X } from 'lucide-angular';
 import { LangService } from '../lang.service';
 import { BookingRequest, BookingService } from '../booking.service';
@@ -14,7 +15,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [FormsModule, LucideAngularModule],
+  imports: [FormsModule, RouterLink, LucideAngularModule],
   templateUrl: './modal.component.html'
 })
 export class ModalComponent {

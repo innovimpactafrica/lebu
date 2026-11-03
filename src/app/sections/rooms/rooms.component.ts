@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { Check, CigaretteOff, Clock, Crown, LucideAngularModule, Ruler, Users, WineOff } from 'lucide-angular';
+import { Check, Clock, Crown, Leaf, LucideAngularModule, Ruler, Users } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
 import {
@@ -27,7 +27,7 @@ interface RoomCard {
 export class RoomsComponent {
   langService = inject(LangService);
   private booking = inject(BookingService);
-  readonly icons = { Ruler, Users, CigaretteOff, Crown, Check, WineOff, Clock };
+  readonly icons = { Ruler, Users, Leaf, Crown, Check, Clock };
   readonly amenities = SHARED_AMENITIES;
   readonly clubPerks = CLUB_PERKS;
   readonly clubFloors = CLUB_FLOORS;

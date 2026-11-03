@@ -1,0 +1,192 @@
+<!-- Hero -->
+<section class="terms-hero relative overflow-hidden bg-navy-deep text-white px-6 md:px-12 pt-36 md:pt-44 pb-16 md:pb-24">
+  <div class="absolute -top-40 -right-40 w-[560px] h-[560px] border border-gold-light/10 rounded-full pointer-events-none before:content-[''] before:absolute before:inset-[40px] before:border before:border-gold-light/5 before:rounded-full print:hidden" aria-hidden="true"></div>
+
+  <div class="relative max-w-site mx-auto">
+    <a routerLink="/" class="inline-flex items-center gap-2.5 text-[0.6rem] tracking-[0.3em] uppercase text-white/50 transition-colors hover:text-gold-light mb-12 print:hidden">
+      <lucide-icon [img]="icons.ArrowLeft" [size]="13" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
+      {{ langService.currentLang() === 'fr' ? 'Retour à l\'accueil' : 'Back to home' }}
+    </a>
+
+    <p class="text-[0.62rem] tracking-[0.45em] uppercase text-gold-light mb-5 opacity-0 animate-[fadeInUp_1s_0.1s_forwards]">
+      {{ langService.currentLang() === 'fr' ? 'Informations légales' : 'Legal information' }}
+    </p>
+    <h1 class="font-serif text-[clamp(2.6rem,6vw,5.2rem)] font-light leading-[1.02] opacity-0 animate-[fadeInUp_1s_0.25s_forwards]">
+      {{ langService.currentLang() === 'fr' ? 'Conditions générales' : 'General terms' }}<br>
+      <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? 'de vente' : 'of sale' }}</em>
+    </h1>
+
+    <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-[0.62rem] tracking-[0.22em] uppercase text-white/55">
+      <span>{{ t(version) }}</span>
+      <span class="w-1.5 h-1.5 rotate-45 bg-gold-light/60" aria-hidden="true"></span>
+      <span>LEBU Appart &amp; Suites · Dakar</span>
+    </div>
+
+    <p class="mt-8 max-w-2xl text-[0.85rem] font-light leading-[1.9] text-white/70">
+      {{ langService.currentLang() === 'fr'
+        ? 'Parce qu\'un séjour d\'exception commence par la transparence, voici les conditions qui encadrent votre réservation et votre séjour à LEBU Appart & Suites.'
+        : 'Because an exceptional stay begins with transparency, here are the terms that govern your booking and your stay at LEBU Appart & Suites.' }}
+    </p>
+    @if (langService.currentLang() === 'en') {
+      <p class="mt-3 text-[0.68rem] italic text-white/45">
+        This English version is provided for convenience; the French text prevails.
+      </p>
+    }
+  </div>
+</section>
+
+<!-- At a glance -->
+<section class="px-6 md:px-12 pt-16 md:pt-20 print:hidden">
+  <div class="max-w-site mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+      <div>
+        <div class="inline-block text-[0.6rem] tracking-[0.45em] uppercase text-accent mb-4 after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle">
+          {{ langService.currentLang() === 'fr' ? 'L\'essentiel' : 'The essentials' }}
+        </div>
+        <h2 class="font-serif text-[clamp(1.8rem,3.4vw,2.8rem)] font-light leading-[1.1]">
+          {{ langService.currentLang() === 'fr' ? 'En un' : 'At a' }}
+          <em class="italic text-accent">{{ langService.currentLang() === 'fr' ? 'coup d\'œil' : 'glance' }}</em>
+        </h2>
+      </div>
+      <p class="max-w-sm text-[0.7rem] font-light leading-[1.8] text-ink/55">
+        {{ langService.currentLang() === 'fr'
+          ? 'Ce résumé facilite la lecture et ne remplace pas les conditions détaillées ci-dessous.'
+          : 'This summary is for ease of reading and does not replace the detailed terms below.' }}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-0.5 border border-accent/10 bg-accent/10">
+      @for (item of essentials; track item.label.fr; let last = $last) {
+        <button type="button" (click)="goTo(item.article)"
+          class="group relative overflow-hidden bg-surface/70 border border-accent/10 p-6 md:p-7 text-left transition-all duration-400 hover:bg-surface hover:border-accent/35"
+          [class.col-span-2]="last" [class.lg:col-span-1]="last">
+          <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
+          <span class="block font-serif text-[2.4rem] md:text-[2.8rem] font-light leading-none text-accent transition-transform duration-400 group-hover:-translate-y-0.5">{{ t(item.value) }}</span>
+          <span class="block mt-4 text-[0.6rem] font-semibold tracking-[0.25em] uppercase text-ink">{{ t(item.label) }}</span>
+          <span class="block mt-1.5 text-[0.7rem] font-light leading-[1.6] text-ink/60">{{ t(item.detail) }}</span>
+          <span class="inline-flex items-center gap-1.5 mt-5 text-[0.55rem] tracking-[0.25em] uppercase text-accent/70 transition-colors group-hover:text-accent">
+            Art. {{ num(item.article) }}
+            <lucide-icon [img]="icons.ArrowRight" [size]="11" [strokeWidth]="1.75" class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></lucide-icon>
+          </span>
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Full terms -->
+<section class="px-6 md:px-12 py-16 md:py-24">
+  <div class="max-w-site mx-auto grid grid-cols-1 lg:grid-cols-[270px_1fr] gap-12 lg:gap-20">
+
+    <!-- Table of contents -->
+    <aside class="print:hidden">
+      <div class="lg:sticky lg:top-28">
+        <p class="text-[0.6rem] tracking-[0.4em] uppercase text-accent mb-5">
+          {{ langService.currentLang() === 'fr' ? 'Sommaire' : 'Contents' }}
+        </p>
+        <nav [attr.aria-label]="langService.currentLang() === 'fr' ? 'Sommaire' : 'Contents'">
+          <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 border-l border-accent/15">
+            @for (article of articles; track article.number) {
+              <li>
+                <button type="button" (click)="goTo(article.number)"
+                  class="relative w-full flex items-baseline gap-3 py-2 pl-5 pr-2 text-left text-[0.72rem] leading-[1.45] transition-colors duration-300"
+                  [class]="active() === article.number ? 'text-ink' : 'text-ink/50 hover:text-ink'"
+                  [attr.aria-current]="active() === article.number ? 'true' : null">
+                  <span class="absolute -left-px top-1 bottom-1 w-[2px] bg-accent origin-top transition-transform duration-500"
+                    [class.scale-y-0]="active() !== article.number" aria-hidden="true"></span>
+                  <span class="font-serif text-[0.9rem] text-accent tabular-nums">{{ num(article.number) }}</span>
+                  {{ t(article.title) }}
+                </button>
+              </li>
+            }
+          </ol>
+        </nav>
+
+        <button type="button" (click)="print()"
+          class="mt-8 inline-flex items-center gap-2.5 border border-accent/30 text-ink/70 px-5 py-3 text-[0.58rem] font-semibold tracking-[0.25em] uppercase transition-colors hover:border-accent hover:text-accent">
+          <lucide-icon [img]="icons.Printer" [size]="14" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+          {{ langService.currentLang() === 'fr' ? 'Imprimer / PDF' : 'Print / PDF' }}
+        </button>
+      </div>
+    </aside>
+
+    <!-- Articles -->
+    <div class="min-w-0">
+      @for (article of articles; track article.number) {
+        <article [id]="'article-' + article.number" [attr.data-article]="article.number"
+          class="scroll-mt-28 grid grid-cols-[auto_1fr] gap-x-5 md:gap-x-10 py-10 md:py-12 border-t border-accent/15 first:border-t-0 first:pt-0 break-inside-avoid">
+          <div class="font-serif text-[2.4rem] md:text-[3.4rem] font-light leading-none text-accent/80 tabular-nums" aria-hidden="true">
+            {{ num(article.number) }}
+          </div>
+          <div class="min-w-0">
+            <h2 class="text-[0.72rem] md:text-[0.78rem] font-semibold tracking-[0.26em] uppercase text-ink mb-5 pt-1.5 md:pt-3">
+              <span class="sr-only">{{ langService.currentLang() === 'fr' ? 'Article' : 'Article' }} {{ article.number }} : </span>{{ t(article.title) }}
+            </h2>
+            @for (paragraph of article.paragraphs; track paragraph.fr) {
+              <p class="max-w-3xl text-[0.84rem] font-light leading-[1.95] text-ink/75 mb-4 last:mb-0">{{ t(paragraph) }}</p>
+            }
+            @if (article.items) {
+              <dl class="max-w-3xl mt-6 space-y-2">
+                @for (item of article.items; track item.label.fr) {
+                  <div class="bg-surface/60 border-l-2 border-accent/50 px-5 py-4 transition-colors duration-300 hover:border-accent hover:bg-surface">
+                    <dt class="text-[0.6rem] font-semibold tracking-[0.22em] uppercase text-accent mb-1.5">{{ t(item.label) }}</dt>
+                    <dd class="text-[0.8rem] font-light leading-[1.85] text-ink/75">{{ t(item.text) }}</dd>
+                  </div>
+                }
+              </dl>
+            }
+          </div>
+        </article>
+      }
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact: full container width, same margins as the other sections -->
+<section class="px-6 md:px-12 pb-16 md:pb-24 print:hidden">
+  <div class="max-w-site mx-auto">
+    <div class="relative overflow-hidden bg-navy text-white px-7 md:px-12 lg:px-16 py-10 md:py-14 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 lg:items-end">
+      <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-light to-transparent" aria-hidden="true"></div>
+
+      <div>
+        <p class="text-[0.6rem] tracking-[0.4em] uppercase text-gold-light mb-3">
+          {{ langService.currentLang() === 'fr' ? 'Une question ?' : 'Any questions?' }}
+        </p>
+        <h2 class="font-serif text-[clamp(1.6rem,3vw,2.3rem)] font-light leading-[1.15] mb-8">
+          {{ langService.currentLang() === 'fr' ? 'Notre équipe vous répond,' : 'Our team is here for you,' }}
+          <em class="italic text-gold-light">24h/24</em>
+        </h2>
+
+        <!-- Icon box matches the first line height so icons sit centred on it, even for the 2-line address -->
+        <ul class="flex flex-col md:flex-row md:flex-wrap gap-x-12 gap-y-5 text-[0.75rem] font-light leading-[1.6] text-white/75">
+          <li class="flex items-start gap-3">
+            <span class="flex items-center h-[1.6em] text-gold-light shrink-0" aria-hidden="true"><lucide-icon [img]="icons.Mail" [size]="16" [strokeWidth]="1.5"></lucide-icon></span>
+            <a href="mailto:infos@lebu-hotelsgroup.com" class="break-all transition-colors hover:text-gold-light">infos&#64;lebu-hotelsgroup.com</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex items-center h-[1.6em] text-gold-light shrink-0" aria-hidden="true"><lucide-icon [img]="icons.Phone" [size]="16" [strokeWidth]="1.5"></lucide-icon></span>
+            <a href="tel:+221710537979" class="whitespace-nowrap transition-colors hover:text-gold-light">+221 71 053 79 79</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex items-center h-[1.6em] text-gold-light shrink-0" aria-hidden="true"><lucide-icon [img]="icons.MapPin" [size]="16" [strokeWidth]="1.5"></lucide-icon></span>
+            <span><span class="sm:whitespace-nowrap">Complexe Neptune, 22 rue Wagane Diouf</span><br>Plateau, Dakar</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex flex-wrap lg:flex-col lg:items-stretch gap-4">
+        <button type="button" (click)="book()"
+          class="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep font-sans text-[0.62rem] font-bold tracking-[0.25em] uppercase px-7 py-3.5 transition-transform duration-300 hover:-translate-y-0.5">
+          {{ langService.currentLang() === 'fr' ? 'Réserver un séjour' : 'Book a stay' }}
+          <lucide-icon [img]="icons.ArrowRight" [size]="13" [strokeWidth]="2" aria-hidden="true"></lucide-icon>
+        </button>
+        <a routerLink="/" fragment="rooms"
+          class="inline-flex items-center justify-center gap-2 border border-white/25 text-white/80 text-[0.6rem] font-semibold tracking-[0.25em] uppercase px-7 py-3.5 transition-colors hover:border-gold-light hover:text-gold-light">
+          {{ langService.currentLang() === 'fr' ? 'Découvrir nos suites' : 'Discover our suites' }}
+          <lucide-icon [img]="icons.ArrowUpRight" [size]="13" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
