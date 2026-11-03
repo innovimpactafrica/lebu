@@ -14,7 +14,14 @@ export interface Bilingual {
 
 export interface RoomOffer {
   price: number;
+  // RoomRaccoon room type id, used to deep-link "Book this suite" to this exact offer
+  pmsRoomTypeId?: number;
 }
+
+// Every RoomRaccoon room type of the hotel (from the PMS booking widget).
+// TODO: set each offer's pmsRoomTypeId below once RoomRaccoon confirms which id is which;
+// until then every booking link lists all of them.
+export const PMS_ROOM_TYPE_IDS = [132226, 132227, 132228, 132225, 132229, 132222, 132223, 132224];
 
 export interface RoomCategory {
   id: RoomCategoryId;

@@ -5,6 +5,7 @@ import {
 } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 interface Highlight {
   icon: LucideIconData;
@@ -28,11 +29,10 @@ interface GallerySpace {
 // Delay before a hover opens the details, so scrolling past a tile does not trigger it
 const HOVER_OPEN_DELAY = 450;
 const HOVER_CLOSE_DELAY = 250;
-
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, RevealDirective],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.css'
 })

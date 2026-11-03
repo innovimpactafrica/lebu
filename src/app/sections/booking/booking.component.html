@@ -5,14 +5,20 @@
       <label class="block text-[0.58rem] tracking-[0.3em] uppercase text-gold-light">
         {{ langService.currentLang() === 'fr' ? 'Arrivée' : 'Check-in' }}
       </label>
-      <input type="date" [ngModel]="checkIn" (ngModelChange)="onCheckInChange($event)" [min]="today" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
+      <div class="relative">
+        <input type="date" [ngModel]="checkIn" (ngModelChange)="onCheckInChange($event)" [min]="today" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] date-input pl-4 pr-11 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
+        <lucide-icon [img]="icons.CalendarDays" [size]="16" [strokeWidth]="1.5" class="absolute right-4 top-1/2 -translate-y-1/2 text-white pointer-events-none" aria-hidden="true"></lucide-icon>
+      </div>
     </div>
     
     <div class="flex flex-col gap-2.5">
       <label class="block text-[0.58rem] tracking-[0.3em] uppercase text-gold-light">
         {{ langService.currentLang() === 'fr' ? 'Départ' : 'Check-out' }}
       </label>
-      <input type="date" [(ngModel)]="checkOut" [min]="checkIn || today" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] px-4 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
+      <div class="relative">
+        <input type="date" [(ngModel)]="checkOut" [min]="checkIn || today" class="w-full bg-white/5 border border-gold-light/25 text-white font-sans text-[0.8rem] date-input pl-4 pr-11 py-3 outline-none transition-colors focus:border-gold-light appearance-none">
+        <lucide-icon [img]="icons.CalendarDays" [size]="16" [strokeWidth]="1.5" class="absolute right-4 top-1/2 -translate-y-1/2 text-white pointer-events-none" aria-hidden="true"></lucide-icon>
+      </div>
     </div>
     
     <div class="flex flex-col gap-2.5">

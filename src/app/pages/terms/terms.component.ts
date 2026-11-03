@@ -5,11 +5,12 @@ import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
 import { Bilingual } from '../../data/rooms.data';
 import { TERMS_ARTICLES, TERMS_ESSENTIALS, TERMS_VERSION } from '../../data/terms.data';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 @Component({
   selector: 'app-terms',
   standalone: true,
-  imports: [RouterLink, LucideAngularModule],
+  imports: [RouterLink, LucideAngularModule, RevealDirective],
   templateUrl: './terms.component.html'
 })
 export class TermsComponent implements AfterViewInit, OnDestroy {

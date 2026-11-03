@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CalendarDays, LucideAngularModule } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
 import { addDays, todayISO } from '../../shared/date.utils';
@@ -10,12 +11,13 @@ import {
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, LucideAngularModule],
   templateUrl: './booking.component.html'
 })
 export class BookingComponent {
   langService = inject(LangService);
   private booking = inject(BookingService);
+  readonly icons = { CalendarDays };
 
   readonly today = todayISO();
   readonly clubFloors = CLUB_FLOORS;

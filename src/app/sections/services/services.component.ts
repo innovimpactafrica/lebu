@@ -3,6 +3,7 @@ import {
   Briefcase, CarTaxiFront, ConciergeBell, Dumbbell, LucideAngularModule, LucideIconData, ShieldCheck, Utensils
 } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 interface Bilingual {
   fr: string;
@@ -15,11 +16,10 @@ interface Service {
   title: Bilingual;
   text: Bilingual;
 }
-
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, RevealDirective],
   templateUrl: './services.component.html'
 })
 export class ServicesComponent {

@@ -1,5 +1,6 @@
 <app-header></app-header>
-<main>
+<!-- Holds a screen of height while the route renders, so the footer never flashes at the top -->
+<main class="block min-h-screen">
     <router-outlet></router-outlet>
 </main>
 <app-footer></app-footer>

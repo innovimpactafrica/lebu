@@ -57,7 +57,7 @@
 
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-0.5 border border-accent/10 bg-accent/10">
       @for (item of essentials; track item.label.fr; let last = $last) {
-        <button type="button" (click)="goTo(item.article)"
+        <button type="button" (click)="goTo(item.article)" appReveal [revealDelay]="$index * 100"
           class="group relative overflow-hidden bg-surface/70 border border-accent/10 p-6 md:p-7 text-left transition-all duration-400 hover:bg-surface hover:border-accent/35"
           [class.col-span-2]="last" [class.lg:col-span-1]="last">
           <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
@@ -113,7 +113,7 @@
     <!-- Articles -->
     <div class="min-w-0">
       @for (article of articles; track article.number) {
-        <article [id]="'article-' + article.number" [attr.data-article]="article.number"
+        <article appReveal [id]="'article-' + article.number" [attr.data-article]="article.number"
           class="scroll-mt-28 grid grid-cols-[auto_1fr] gap-x-5 md:gap-x-10 py-10 md:py-12 border-t border-accent/15 first:border-t-0 first:pt-0 break-inside-avoid">
           <div class="font-serif text-[2.4rem] md:text-[3.4rem] font-light leading-none text-accent/80 tabular-nums" aria-hidden="true">
             {{ num(article.number) }}

@@ -55,3 +55,49 @@ body {
   .terms-hero { padding-top: 0 !important; padding-bottom: 1.5rem !important; }
   .terms-hero, .terms-hero * { background: none !important; color: #000 !important; }
 }
+
+/* Date fields on navy: dark native picker, and the browser's calendar icon is replaced
+   by a white Lucide icon. The native indicator stays clickable, invisible, over the whole field. */
+.date-input {
+  color-scheme: dark;
+  position: relative;
+}
+.date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Scroll reveal (RevealDirective). Animations rather than transitions, and the individual
+   `translate` / `scale` properties, so hover effects (transform, transition, opacity) keep working. */
+@keyframes reveal-up {
+  from { opacity: 0; translate: 0 28px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+@keyframes reveal-curtain {
+  from { opacity: 1; clip-path: inset(100% 0 0 0); scale: 1.06; }
+  to   { opacity: 1; clip-path: inset(0 0 0 0); scale: 1; }
+}
+.reveal:not(.is-visible) { opacity: 0; }
+.reveal.is-visible {
+  animation: reveal-up 1s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms) backwards;
+}
+/* Hidden with opacity only: a fully clipped target never counts as intersecting in Chrome,
+   so the clip-path exists only inside the animation */
+.reveal--curtain.is-visible {
+  animation: reveal-curtain 1.1s cubic-bezier(0.77, 0, 0.18, 1) var(--reveal-delay, 0ms) backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal:not(.is-visible) { opacity: 1; }
+  .reveal.is-visible { animation: none; }
+}
+
+/* Page transitions (router withViewTransitions): slow crossfade */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}

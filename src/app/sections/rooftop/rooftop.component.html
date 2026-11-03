@@ -6,15 +6,15 @@
   <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,38,114,0.75)] via-transparent to-transparent hidden lg:block"></div>
 
   <div class="relative z-10 w-full max-w-site mx-auto px-6 md:px-12 pb-12 md:pb-16 pt-40">
-    <p class="flex items-center gap-2.5 text-[0.62rem] tracking-[0.4em] uppercase text-gold-light mb-4">
+    <p appReveal class="flex items-center gap-2.5 text-[0.62rem] tracking-[0.4em] uppercase text-gold-light mb-4">
       <lucide-icon [img]="icons.Sunset" [size]="16" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
       Rooftop & Bar Lounge
     </p>
-    <h2 class="font-serif text-[clamp(2.4rem,5vw,4.5rem)] font-light leading-[1.02] max-w-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
+    <h2 appReveal [revealDelay]="100" class="font-serif text-[clamp(2.4rem,5vw,4.5rem)] font-light leading-[1.02] max-w-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
       {{ langService.currentLang() === 'fr' ? 'Dakar à vos pieds,' : 'Dakar at your feet,' }}<br>
       <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? "l'océan pour horizon." : 'the ocean on the horizon.' }}</em>
     </h2>
-    <p class="mt-5 max-w-xl text-[0.85rem] font-light leading-[1.85] text-white/85">
+    <p appReveal [revealDelay]="250" class="mt-5 max-w-xl text-[0.85rem] font-light leading-[1.85] text-white/85">
       {{ langService.currentLang() === 'fr'
         ? "Prenez de la hauteur, savourez l'instant : bienvenue sur le rooftop de LEBU, face à l'Atlantique au coucher du soleil. Nos mocktails signature célèbrent le bien-être avec le bissap, le bouye et les fruits frais pressés minute."
         : 'Rise above it all and savour the moment: welcome to the LEBU rooftop, facing the Atlantic at sunset. Our signature mocktails celebrate well-being with bissap, bouye and freshly squeezed fruit.' }}
@@ -22,7 +22,7 @@
 
     <ul class="mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
       @for (item of signatures; track item.title.fr) {
-        <li class="flex items-start gap-3.5 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-4 transition-colors duration-300 hover:bg-white/15 hover:border-gold-light/50">
+        <li appReveal [revealDelay]="400 + $index * 120" class="flex items-start gap-3.5 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-4 transition-colors duration-300 hover:bg-white/15 hover:border-gold-light/50">
           <span class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep" aria-hidden="true">
             <lucide-icon [img]="item.icon" [size]="18" [strokeWidth]="1.75"></lucide-icon>
           </span>

@@ -6,6 +6,7 @@ import {
   CLUB_FLOORS, CLUB_PERKS, ROOM_CATEGORIES, RoomCategory, RoomOffer, RoomVersion, SHARED_AMENITIES,
   clubUpgradeDelta, formatPrice
 } from '../../data/rooms.data';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 interface RoomCard {
   category: RoomCategory;
@@ -17,11 +18,10 @@ interface RoomCard {
   unavailable: boolean;
   upgradeDelta: number | null;
 }
-
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, RevealDirective],
   templateUrl: './rooms.component.html'
 })
 export class RoomsComponent {

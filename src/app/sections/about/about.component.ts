@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { LucideAngularModule, PenLine } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { ContentService } from '../../shared/content.service';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, FormsModule, LucideAngularModule],
+  imports: [CommonModule, FormsModule, LucideAngularModule, RevealDirective],
   templateUrl: './about.component.html'
 })
 export class AboutComponent {

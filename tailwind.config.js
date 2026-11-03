@@ -39,12 +39,18 @@ module.exports = {
         scrollPulse: {
           '0%, 100%': { opacity: '0.4', transform: 'scaleY(1)' },
           '50%': { opacity: '1', transform: 'scaleY(1.3)' },
-        }
+        },
+        // Slow zoom-out on the hero photo
+        kenburns: {
+          '0%': { transform: 'scale(1.12)' },
+          '100%': { transform: 'scale(1)' },
+        },
       },
       animation: {
         fadeInUp: 'fadeInUp 1s forwards',
         fadeIn: 'fadeIn 1s forwards',
         scrollPulse: 'scrollPulse 2s infinite',
+        kenburns: 'kenburns 14s cubic-bezier(0.22, 1, 0.36, 1) forwards',
       }
     },
   },

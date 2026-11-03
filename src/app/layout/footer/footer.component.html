@@ -1,13 +1,16 @@
 <!-- Footer: the brochure "Séjour confort" photo covers the whole footer;
      a navy veil, denser at the top, keeps the content readable -->
 <footer class="relative bg-navy-deep text-white overflow-hidden">
-  <div class="absolute inset-0" aria-hidden="true">
-    <img src="sejour-confort.jpg" alt="" loading="lazy" class="w-full h-full object-cover object-[30%_top]">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-deep/95 via-navy-deep/70 via-45% to-navy-deep/10"></div>
+  <!-- Small screens: the stacked content is tall, so the photo only fills a band below it,
+       framed on the face; from md up it covers the whole footer -->
+  <div class="absolute inset-x-0 bottom-0 h-[440px] md:h-auto md:top-0" aria-hidden="true">
+    <img src="sejour-confort.jpg" alt="" loading="lazy" class="w-full h-full object-cover object-[0%_top] md:object-[30%_top]">
+    <div class="md:hidden absolute inset-x-0 top-0 h-[80px] bg-gradient-to-b from-navy-deep to-transparent"></div>
+    <div class="hidden md:block absolute inset-0 bg-gradient-to-b from-navy-deep/95 via-navy-deep/70 via-45% to-navy-deep/10"></div>
   </div>
 
   <!-- Bottom padding sets how much of the photo shows below the content -->
-  <div class="relative z-10 max-w-site mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-[140px] md:pb-[200px] lg:pb-[240px]">
+  <div class="relative z-10 max-w-site mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-[400px] md:pb-[200px] lg:pb-[240px]">
     <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_2fr] gap-12 lg:gap-20">
 
       <!-- Brand -->

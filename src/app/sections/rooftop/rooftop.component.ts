@@ -2,17 +2,17 @@ import { Component, inject } from '@angular/core';
 import { ArrowRight, Citrus, GlassWater, Leaf, LucideAngularModule, LucideIconData, Sunset, Utensils } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
+import { RevealDirective } from '../../shared/reveal.directive';
 
 interface Signature {
   icon: LucideIconData;
   title: { fr: string; en: string };
   text: { fr: string; en: string };
 }
-
 @Component({
   selector: 'app-rooftop',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, RevealDirective],
   templateUrl: './rooftop.component.html'
 })
 export class RooftopComponent {
