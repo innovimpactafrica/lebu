@@ -71,6 +71,10 @@
           [class]="card.unavailable ? 'opacity-30' : 'opacity-95 group-hover:opacity-100 group-hover:scale-[1.06]'"
           [style.background-image]="'url(/' + card.category.image + ')'"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,38,114,0.92)] via-[rgba(10,38,114,0.35)] via-45% to-transparent"></div>
+        <!-- Darker veil behind the details revealed on hover (always on for touch screens) -->
+        @if (!card.unavailable) {
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/75 via-55% to-navy-deep/10 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100"></div>
+        }
 
         <!-- Version badge -->
         @if (card.version === 'club') {
@@ -125,10 +129,10 @@
           <div class="md:opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100 mb-6">
             <div class="flex gap-2 md:gap-3 flex-wrap mb-3">
               @for (feat of card.category.features; track feat.fr) {
-                <span class="text-[0.55rem] tracking-[0.15em] uppercase px-3 py-1 border border-gold-light/30 text-white/60">{{ t(feat) }}</span>
+                <span class="text-[0.62rem] tracking-[0.12em] uppercase px-3 py-1.5 border border-gold-light/45 bg-navy-deep/60 backdrop-blur-sm text-white/90">{{ t(feat) }}</span>
               }
             </div>
-            <p class="text-[0.7rem] font-light leading-[1.7] text-white/55 max-w-2xl">
+            <p class="text-[0.82rem] font-light leading-[1.75] text-white/85 max-w-2xl">
               {{ t(card.category.description) }}
             </p>
           </div>

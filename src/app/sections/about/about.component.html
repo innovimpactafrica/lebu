@@ -24,38 +24,18 @@
       }
     </div>
 
-    <ng-container *ngIf="contentService.content">
-      <div class="space-y-5" appReveal>
-        <div *ngFor="let paragraph of contentService.content.paragraphs; let i = index" class="relative group">
-          @if (headings[i]; as heading) {
-            <h3 class="inline-block font-sans text-[1.15rem] font-semibold text-ink mb-3 pb-2 border-b-2 border-accent">
-              {{ langService.currentLang() === 'fr' ? heading.fr : heading.en }}
-            </h3>
-          }
-          <ng-container *ngIf="editingIndex() !== i; else editBlock">
-            <p class="text-[0.85rem] font-light leading-[1.9] text-ink/80 mb-5">
-              {{ langService.currentLang() === 'fr' ? paragraph.fr : paragraph.en }}
-            </p>
-            <button class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 text-[0.9rem] p-2 text-accent" (click)="edit(i)" aria-label="Edit"><lucide-icon [img]="icons.PenLine" [size]="16" [strokeWidth]="1.5"></lucide-icon></button>
-          </ng-container>
-
-          <ng-template #editBlock>
-            <div class="space-y-3 mb-5">
-              <label class="text-[0.65rem] uppercase text-ink/60">FR</label>
-              <textarea rows="4" [(ngModel)]="tempFr" class="w-full rounded p-3 text-black border border-ink/20"></textarea>
-
-              <label class="text-[0.65rem] uppercase text-ink/60">EN</label>
-              <textarea rows="3" [(ngModel)]="tempEn" class="w-full rounded p-3 text-black border border-ink/20"></textarea>
-
-              <div class="flex gap-3 mt-2">
-                <button class="px-3 py-1 bg-navy text-white" (click)="save(i)">Valider</button>
-                <button class="px-3 py-1 border border-ink/25" (click)="cancel()">Annuler</button>
-              </div>
-            </div>
-          </ng-template>
+    <div class="space-y-5" appReveal>
+      @for (paragraph of paragraphs; track paragraph.heading.fr) {
+        <div>
+          <h3 class="inline-block font-sans text-[1.15rem] font-semibold text-ink mb-3 pb-2 border-b-2 border-accent">
+            {{ langService.currentLang() === 'fr' ? paragraph.heading.fr : paragraph.heading.en }}
+          </h3>
+          <p class="text-[0.85rem] font-light leading-[1.9] text-ink/80 mb-5">
+            {{ langService.currentLang() === 'fr' ? paragraph.text.fr : paragraph.text.en }}
+          </p>
         </div>
-      </div>
-    </ng-container>
+      }
+    </div>
     
     <div class="grid grid-cols-2 gap-6 mt-10">
       @for (stat of stats; track stat.num; let i = $index) {
