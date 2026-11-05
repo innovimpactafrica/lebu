@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnDestroy, inject, signal, viewChild } from '@angular/core';
 import {
   ArrowRight, Building2, ConciergeBell, LucideAngularModule, LucideIconData,
-  MapPin, Maximize2, ShoppingBag, ShowerHead, Sofa, Sparkles, Tv, Wifi, X
+  MapPin, Maximize2, ShoppingBag, ShowerHead, Sparkles, Tv, Wifi, X
 } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
@@ -73,7 +73,6 @@ export class GalleryComponent implements OnDestroy {
       descFr: 'Des salons meublés avec soin, pensés pour se détendre ou recevoir, avec tout le confort d’un appartement et les services d’un hôtel.',
       descEn: 'Carefully furnished lounges designed for relaxing or entertaining, with the comfort of an apartment and the services of a hotel.',
       highlights: [
-        { icon: Sofa, fr: 'Salon séparé', en: 'Separate lounge' },
         { icon: Wifi, fr: 'Wi-Fi fibre', en: 'Fibre Wi-Fi' },
         { icon: Tv, fr: 'Smart TV 4K', en: '4K Smart TV' },
       ]

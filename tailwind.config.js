@@ -21,7 +21,7 @@ module.exports = {
       },
       maxWidth: {
         // Shared content width for every section
-        site: '1440px',
+        site: '1560px',
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],

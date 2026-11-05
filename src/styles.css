@@ -4,12 +4,14 @@
 @tailwind utilities;
 
 /* Theme roles as RGB triplets so Tailwind opacity modifiers (text-ink/60) keep working.
-   Light is the brochure cream; dark brings back the original royal blue. */
+   Light is the brochure cream; dark brings back the original royal blue.
+   Light ink is the logo navy (#113068). The light accent is a deeper shade of the logo gold
+   (#b3842a reads at only ~3:1 on cream) so small gold text stays readable. */
 :root {
   --c-page: 252 248 240;
   --c-surface: 255 255 255;
-  --c-ink: 13 41 109;
-  --c-accent: 179 132 42;
+  --c-ink: 17 48 104;
+  --c-accent: 150 108 30;
 }
 :root[data-theme="dark"] {
   --c-page: 10 38 114;

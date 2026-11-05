@@ -11,54 +11,54 @@
 
   <!-- Bottom padding sets how much of the photo shows below the content -->
   <div class="relative z-10 max-w-site mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-[400px] md:pb-[200px] lg:pb-[240px]">
-    <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_2fr] gap-12 lg:gap-20">
+    <div class="grid grid-cols-1 xl:grid-cols-[1.2fr_2fr] gap-12 xl:gap-20">
 
       <!-- Brand -->
       <div>
         <a routerLink="/" class="inline-block" aria-label="Lebu Appart&amp;Suites">
           <img src="logo_Lebu2.png" alt="Lebu Appart&amp;Suites" class="w-32">
         </a>
-        <p class="mt-6 max-w-sm text-[0.9rem] font-light leading-[1.75] text-white/70">
+        <p class="mt-6 max-w-sm text-[1rem] font-light leading-[1.75] text-white/85">
           {{ langService.currentLang() === 'fr'
             ? "L'art de vivre à Dakar. La téranga sénégalaise élevée au rang d'art de vivre, au cœur du Plateau."
             : 'The art of living in Dakar. Senegalese teranga raised to an art of living, in the heart of Plateau.' }}
         </p>
-        <p class="mt-6 flex items-center gap-2.5 text-[0.72rem] font-light text-white/50">
+        <p class="mt-6 flex items-center gap-2.5 text-[0.85rem] font-normal text-white/70">
           <lucide-icon [img]="icons.Plane" [size]="14" [strokeWidth]="1.5" class="text-gold-light shrink-0" aria-hidden="true"></lucide-icon>
           {{ langService.currentLang() === 'fr' ? 'AIBD : 60 min · Plage : 15 min à pied' : 'AIBD airport: 60 min · Beach: 15 min walk' }}
         </p>
       </div>
 
       <!-- Links -->
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-2 md:grid-cols-[1fr_1fr_1.6fr] gap-x-8 gap-y-10">
         <div>
-          <h4 class="text-[0.85rem] font-medium text-white mb-6">
+          <h4 class="text-[0.9375rem] font-medium text-white mb-6">
             {{ langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}
           </h4>
           <ul class="space-y-3.5">
             @for (room of rooms; track room.id) {
               <li>
-                <a routerLink="/" fragment="rooms" class="text-[0.8rem] font-light text-white/60 transition-colors duration-300 hover:text-gold-light">{{ room.name }}</a>
+                <a routerLink="/" fragment="rooms" class="text-[0.9375rem] font-normal text-white/80 transition-colors duration-300 hover:text-gold-light">{{ room.name }}</a>
               </li>
             }
           </ul>
         </div>
 
         <div>
-          <h4 class="text-[0.85rem] font-medium text-white mb-6">Services</h4>
+          <h4 class="text-[0.9375rem] font-medium text-white mb-6">Services</h4>
           <ul class="space-y-3.5">
             @for (service of services; track service.fr) {
               <li>
-                <a routerLink="/" [fragment]="service.anchor" class="text-[0.8rem] font-light text-white/60 transition-colors duration-300 hover:text-gold-light">{{ langService.currentLang() === 'fr' ? service.fr : service.en }}</a>
+                <a routerLink="/" [fragment]="service.anchor" class="text-[0.9375rem] font-normal text-white/80 transition-colors duration-300 hover:text-gold-light">{{ langService.currentLang() === 'fr' ? service.fr : service.en }}</a>
               </li>
             }
           </ul>
         </div>
 
         <div class="col-span-2 md:col-span-1">
-          <h4 class="text-[0.85rem] font-medium text-white mb-6">Contact</h4>
+          <h4 class="text-[0.9375rem] font-medium text-white mb-6">Contact</h4>
           <!-- Icon box matches the first line height so icons stay centred on it -->
-          <ul class="space-y-3.5 text-[0.8rem] font-light leading-[1.6] text-white/60">
+          <ul class="space-y-3.5 text-[0.9375rem] font-normal leading-[1.6] text-white/80">
             <li class="flex items-start gap-3">
               <span class="flex items-center h-[1.6em] text-gold-light shrink-0" aria-hidden="true"><lucide-icon [img]="icons.MapPin" [size]="15" [strokeWidth]="1.5"></lucide-icon></span>
               <span>Complexe Neptune<br>22 rue Wagane Diouf, Plateau<br>Dakar, Sénégal</span>
@@ -69,7 +69,7 @@
             </li>
             <li class="flex items-start gap-3">
               <span class="flex items-center h-[1.6em] text-gold-light shrink-0" aria-hidden="true"><lucide-icon [img]="icons.Mail" [size]="15" [strokeWidth]="1.5"></lucide-icon></span>
-              <a href="mailto:infos@lebu-hotelsgroup.com" class="break-all transition-colors hover:text-gold-light">infos&#64;lebu-hotelsgroup.com</a>
+              <a href="mailto:infos@lebu-hotelsgroup.com" class="whitespace-nowrap transition-colors hover:text-gold-light">infos&#64;lebu-hotelsgroup.com</a>
             </li>
           </ul>
         </div>
@@ -77,7 +77,7 @@
     </div>
 
     <!-- Bottom bar -->
-    <div class="mt-16 md:mt-20 pt-7 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-3 text-[0.75rem] font-light text-white/70 text-center md:text-left">
+    <div class="mt-16 md:mt-20 pt-7 border-t border-white/15 flex flex-col md:flex-row justify-between items-center gap-3 text-[0.875rem] font-normal text-white/85 text-center md:text-left">
       <a routerLink="/conditions-generales" class="transition-colors hover:text-gold-light">
         {{ langService.currentLang() === 'fr' ? 'Conditions générales de vente' : 'Terms of sale' }}
       </a>

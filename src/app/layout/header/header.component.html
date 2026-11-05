@@ -7,29 +7,29 @@
     </div>
   </div>
 
-  <ul class="hidden md:flex gap-9 list-none">
+  <ul class="hidden md:flex gap-5 lg:gap-8 list-none">
     <li><a routerLink="/" fragment="about"
-        class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
+        class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'À propos' : 'About' }}</a></li>
     <li><a routerLink="/" fragment="rooms"
-        class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
+        class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}</a></li>
     <li><a routerLink="/" fragment="galerie"
-        class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
+        class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'Galerie' : 'Gallery' }}</a></li>
     <li><a routerLink="/" fragment="services"
-        class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
+        class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'Services' : 'Services' }}</a></li>
     <li><a routerLink="/" fragment="rooftop"
-        class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">Rooftop</a></li>
+        class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">Rooftop</a></li>
     <li><a routerLink="/" fragment="booking"
-        class="text-white/75 no-underline text-[0.7rem] font-medium tracking-widest uppercase transition-colors hover:text-gold-light">{{
+        class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
         langService.currentLang() === 'fr' ? 'Réservation' : 'Book now' }}</a></li>
   </ul>
 
-  <div class="flex items-center gap-2.5 text-[0.65rem] font-semibold tracking-widest uppercase">
+  <div class="flex items-center gap-2.5 text-[0.75rem] font-semibold tracking-widest uppercase">
     <button type="button" (click)="themeService.toggle()"
-      class="w-8 h-8 flex items-center justify-center border border-gold-light/25 text-white/70 transition-colors hover:text-gold-light hover:border-gold-light/60"
+      class="w-8 h-8 flex items-center justify-center border border-gold-light/25 text-white/85 transition-colors hover:text-gold-light hover:border-gold-light/60"
       [attr.aria-label]="themeService.theme() === 'dark'
         ? (langService.currentLang() === 'fr' ? 'Passer au thème clair' : 'Switch to light theme')
         : (langService.currentLang() === 'fr' ? 'Passer au thème sombre' : 'Switch to dark theme')">
@@ -37,9 +37,9 @@
     </button>
     <span class="text-white/25 mr-0.5">|</span>
     <button (click)="setLang('fr')" class="bg-transparent border-none cursor-pointer transition-colors"
-      [class]="langService.currentLang() === 'fr' ? 'text-gold-light' : 'text-white/50 hover:text-gold-light'">FR</button>
+      [class]="langService.currentLang() === 'fr' ? 'text-gold-light' : 'text-white/70 hover:text-gold-light'">FR</button>
     <span class="text-white/25">|</span>
     <button (click)="setLang('en')" class="bg-transparent border-none cursor-pointer transition-colors"
-      [class]="langService.currentLang() === 'en' ? 'text-gold-light' : 'text-white/50 hover:text-gold-light'">EN</button>
+      [class]="langService.currentLang() === 'en' ? 'text-gold-light' : 'text-white/70 hover:text-gold-light'">EN</button>
   </div>
 </nav>

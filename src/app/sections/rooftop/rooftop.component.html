@@ -6,7 +6,7 @@
   <div class="absolute inset-0 bg-gradient-to-r from-[rgba(10,38,114,0.75)] via-transparent to-transparent hidden lg:block"></div>
 
   <div class="relative z-10 w-full max-w-site mx-auto px-6 md:px-12 pb-12 md:pb-16 pt-40">
-    <p appReveal class="flex items-center gap-2.5 text-[0.62rem] tracking-[0.4em] uppercase text-gold-light mb-4">
+    <p appReveal class="flex items-center gap-2.5 text-[0.75rem] tracking-[0.4em] uppercase text-gold-light mb-4">
       <lucide-icon [img]="icons.Sunset" [size]="16" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
       Rooftop & Bar Lounge
     </p>
@@ -14,7 +14,7 @@
       {{ langService.currentLang() === 'fr' ? 'Dakar à vos pieds,' : 'Dakar at your feet,' }}<br>
       <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? "l'océan pour horizon." : 'the ocean on the horizon.' }}</em>
     </h2>
-    <p appReveal [revealDelay]="250" class="mt-5 max-w-xl text-[0.85rem] font-light leading-[1.85] text-white/85">
+    <p appReveal [revealDelay]="250" class="mt-5 max-w-xl text-[0.9375rem] font-normal leading-[1.85] text-white/85">
       {{ langService.currentLang() === 'fr'
         ? "Prenez de la hauteur, savourez l'instant : bienvenue sur le rooftop de LEBU, face à l'Atlantique au coucher du soleil. Nos mocktails signature célèbrent le bien-être avec le bissap, le bouye et les fruits frais pressés minute."
         : 'Rise above it all and savour the moment: welcome to the LEBU rooftop, facing the Atlantic at sunset. Our signature mocktails celebrate well-being with bissap, bouye and freshly squeezed fruit.' }}
@@ -28,7 +28,7 @@
           </span>
           <span>
             <span class="block font-serif text-[1.15rem] leading-tight text-white">{{ t(item.title) }}</span>
-            <span class="block text-[0.68rem] font-light leading-[1.6] text-white/75 mt-0.5">{{ t(item.text) }}</span>
+            <span class="block text-[0.78rem] font-normal leading-[1.6] text-white/75 mt-0.5">{{ t(item.text) }}</span>
           </span>
         </li>
       }
@@ -36,7 +36,7 @@
 
     <div class="mt-8 flex flex-wrap items-center gap-4">
       <button type="button" (click)="book()"
-        class="inline-flex items-center gap-2 bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep font-sans text-[0.62rem] font-bold tracking-[0.25em] uppercase px-7 py-3 transition-transform duration-300 hover:-translate-y-0.5">
+        class="inline-flex items-center gap-2 bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep font-sans text-[0.75rem] font-bold tracking-[0.25em] uppercase px-7 py-3 transition-transform duration-300 hover:-translate-y-0.5">
         {{ langService.currentLang() === 'fr' ? 'Réserver un séjour' : 'Book a stay' }}
         <lucide-icon [img]="icons.ArrowRight" [size]="13" [strokeWidth]="2"></lucide-icon>
       </button>
