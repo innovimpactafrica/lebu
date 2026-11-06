@@ -1,0 +1,158 @@
+{
+  "common": {
+    "checkIn": "Arrivée",
+    "classic": "Classique",
+    "concierge": "Conciergerie",
+    "checkOut": "Départ",
+    "close": "Fermer",
+    "gallery": "Galerie",
+    "accommodations": "Hébergements",
+    "backHome": "Retour à l'accueil",
+    "categories": "Rubriques",
+    "bookStay": "Réserver un séjour",
+    "addresses": "adresses",
+    "adults": "adultes",
+    "likeLocal": "comme un habitué"
+  },
+  "footer": {
+    "artLivingDakarSenegalese": "L'art de vivre à Dakar. La téranga sénégalaise élevée au rang d'art de vivre, au cœur du Plateau.",
+    "aibdAirport60Min": "AIBD : 60 min · Plage : 15 min à pied",
+    "termsSale": "Conditions générales de vente",
+    "allRightsReserved": "Tous droits réservés."
+  },
+  "header": {
+    "about": "À propos",
+    "services": "Services",
+    "switchLightTheme": "Passer au thème clair",
+    "switchDarkTheme": "Passer au thème sombre"
+  },
+  "conciergePage": {
+    "lebuConcierge": "Conciergerie LEBU",
+    "categories": "rubriques",
+    "teamSFavouriteAddresses": "Les adresses préférées de notre équipe, avec horaires, tarifs et itinéraire depuis l'hôtel. La réception reste à votre disposition pour toute réservation, chauffeur ou excursion.",
+    "searchAddress": "Rechercher une adresse",
+    "beachBrunchPharmacy": "Plage, brunch, pharmacie…",
+    "clearSearch": "Effacer la recherche",
+    "reception247": "Réception 24h/24",
+    "search": "Recherche",
+    "for": "pour",
+    "noAddressFoundTry": "Aucune adresse trouvée. Essayez un autre mot, ou demandez à la réception.",
+    "somethingSpecificMind": "Une envie particulière ?",
+    "tableDriverExcursionReception": "Table, chauffeur, excursion : la réception s'en occupe, 24h/24.",
+    "callReception": "Appeler la réception",
+    "address": "Adresse",
+    "openingHours": "Horaires",
+    "price": "Tarif",
+    "result": {
+      "one": "résultat",
+      "other": "résultats"
+    }
+  },
+  "terms": {
+    "legalInformation": "Informations légales",
+    "generalTerms": "Conditions générales",
+    "ofSale": "de vente",
+    "becauseExceptionalStayBegins": "Parce qu'un séjour d'exception commence par la transparence, voici les conditions qui encadrent votre réservation et votre séjour à LEBU Appart & Suites.",
+    "theEssentials": "L'essentiel",
+    "atA": "En un",
+    "glance": "coup d'œil",
+    "thisSummaryEaseReading": "Ce résumé facilite la lecture et ne remplace pas les conditions détaillées ci-dessous.",
+    "contents": "Sommaire",
+    "printPdf": "Imprimer / PDF",
+    "article": "Article",
+    "anyQuestions": "Une question ?",
+    "teamHereYou": "Notre équipe vous répond,",
+    "discoverSuites": "Découvrir nos suites"
+  },
+  "about": {
+    "conceptHeritage": "Concept & Héritage",
+    "exceptionalRetreat": "Un refuge d'exception",
+    "inTheHeartOf": "au cœur de "
+  },
+  "booking": {
+    "accommodation": "Hébergement",
+    "allCategories": "Toutes les catégories",
+    "checkAvailability": "Vérifier disponibilité"
+  },
+  "concierge": {
+    "restaurantsBeachesExcursionsNights": "Tables, plages, excursions, sorties : notre équipe a sélectionné pour vous les meilleures adresses de la ville, avec horaires, tarifs et itinéraire. La réception reste à votre disposition pour réserver, trouver un chauffeur ou organiser une excursion.",
+    "addresses": "Adresses",
+    "emergencies": "Urgences",
+    "exploreConcierge": "Explorer la conciergerie",
+    "alsoEmergenciesHealthTransport": "Également : urgences et santé, transports, espaces enfants, sport et infos pratiques."
+  },
+  "gallery": {
+    "discover": "Découvrez",
+    "ourSpaces": "nos espaces",
+    "viewDetails": "Voir les détails : "
+  },
+  "hero": {
+    "dakarSenegalLuxuryHotel": "Dakar · Sénégal · Résidence hôtelière de luxe",
+    "artLiving": "L'art de vivre",
+    "inDakar": "à Dakar",
+    "n36SuitesEquippedKitchen": "36 suites · Cuisine équipée · Fitness center · Rooftop bar · Conciergerie",
+    "bookNow": "Réserver maintenant",
+    "discover": "Découvrir"
+  },
+  "loyalty": {
+    "lebuLoyalty": "Lebu Fidélité",
+    "memberNo": "N° membre",
+    "hoverCardRevealIts": "Survolez la carte pour révéler son éclat.",
+    "includedBenefits": "Avantages inclus"
+  },
+  "rooftop": {
+    "dakarFeet": "Dakar à vos pieds,",
+    "oceanHorizon": "l'océan pour horizon.",
+    "riseAboveAllSavour": "Prenez de la hauteur, savourez l'instant : bienvenue sur le rooftop de LEBU, face à l'Atlantique au coucher du soleil. Nos mocktails signature célèbrent le bien-être avec le bissap, le bouye et les fruits frais pressés minute."
+  },
+  "rooms": {
+    "n36Exceptional": "36 unités",
+    "suites": "d'exception",
+    "version": "Version",
+    "includedClubLebuPrivileges": "Privilèges Club Lebu inclus",
+    "clubLebuExclusive": "Exclusivité Club Lebu",
+    "notAvailableClubLebu": "Non disponible en Club Lebu",
+    "nightTaxes": "/ nuit + taxes",
+    "alsoClubLebu": "Aussi en Club Lebu",
+    "viewClassicVersion": "Voir en version Classique",
+    "bookThisSuite": "Réserver cette suite",
+    "allSuites": "Dans toutes nos suites",
+    "smokeFreeSuitesGuaranteed": "Suites non-fumeur, un air pur garanti",
+    "checkFrom2Pm": "Arrivée dès 14 h · Départ avant 12 h",
+    "clubIntroBefore": "Certaines catégories existent en version",
+    "clubIntroAfter": "({{ floors }}), avec des privilèges inclus."
+  },
+  "services": {
+    "servicesExperience": "Services & Expérience",
+    "everyday": "Le luxe",
+    "luxury": "du quotidien",
+    "lebuSenegaleseTerangaRaised": "« LEBU, la téranga sénégalaise élevée au rang d'art de vivre »"
+  },
+  "modal": {
+    "bookStay": "Réservation",
+    "category": "Catégorie",
+    "from": "dès",
+    "pleaseChooseCategory": "Veuillez choisir une catégorie.",
+    "taxesNight": "+ taxes / nuit",
+    "notAvailableThisCategory": "Non disponible pour cette catégorie",
+    "taxesNightPrivilegesIncluded": "+ taxes / nuit · privilèges inclus",
+    "stay": "Séjour",
+    "checkOutMustBe": "La date de départ doit être après la date d'arrivée.",
+    "adults": "Adultes",
+    "children": "Enfants",
+    "yourDetails": "Vos coordonnées",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "phone": "Téléphone",
+    "specialRequests": "Demandes spéciales",
+    "eGTwinBeds": "Ex : lits jumeaux, arrivée tardive...",
+    "readGeneralTermsSale": "Lire les conditions générales de vente",
+    "confirmBooking": "Confirmer la réservation",
+    "thankYouBooking": "Merci pour votre réservation !",
+    "teamWillContactYou": "Notre équipe vous contactera dans les 24 heures pour confirmer votre séjour et finaliser les détails.",
+    "night": {
+      "one": "nuit",
+      "other": "nuits"
+    }
+  }
+}

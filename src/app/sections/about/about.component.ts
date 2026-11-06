@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { LangService } from '../../shared/lang.service';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [TranslocoPipe, RevealDirective],
   templateUrl: './about.component.html'
 })
 export class AboutComponent {

@@ -8,5 +8,15 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/terms/terms.component').then(m => m.TermsComponent),
     title: 'Conditions générales de vente · Lebu Appart&Suites',
   },
+  {
+    path: 'conciergerie',
+    loadComponent: () => import('./pages/concierge/concierge-page.component').then(m => m.ConciergePageComponent),
+    title: 'Conciergerie · Lebu Appart&Suites',
+  },
+  {
+    path: 'conciergerie/:rubric',
+    loadComponent: () => import('./pages/concierge/concierge-page.component').then(m => m.ConciergePageComponent),
+    title: 'Conciergerie · Lebu Appart&Suites',
+  },
   { path: '**', redirectTo: '' },
 ];

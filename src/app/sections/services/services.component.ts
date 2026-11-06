@@ -4,6 +4,7 @@ import {
 } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 interface Bilingual {
   fr: string;
@@ -11,6 +12,8 @@ interface Bilingual {
 }
 
 interface Service {
+  // Anchor target, linked from the footer
+  id: string;
   icon: LucideIconData;
   category: Bilingual;
   title: Bilingual;
@@ -19,7 +22,7 @@ interface Service {
 @Component({
   selector: 'app-services',
   standalone: true,
-  imports: [LucideAngularModule, RevealDirective],
+  imports: [TranslocoPipe, LucideAngularModule, RevealDirective],
   templateUrl: './services.component.html'
 })
 export class ServicesComponent {
@@ -28,6 +31,7 @@ export class ServicesComponent {
   // Source: Lebu brochure, "Services & Expérience"
   readonly services: Service[] = [
     {
+      id: 'service-reception',
       icon: ConciergeBell,
       category: { fr: 'Accueil', en: 'Welcome' },
       title: { fr: 'Réception & Conciergerie', en: 'Reception & Concierge' },
@@ -37,6 +41,7 @@ export class ServicesComponent {
       },
     },
     {
+      id: 'service-affaires',
       icon: Briefcase,
       category: { fr: 'Business', en: 'Business' },
       title: { fr: 'Centre d\'affaires', en: 'Business centre' },
@@ -46,6 +51,7 @@ export class ServicesComponent {
       },
     },
     {
+      id: 'service-bien-etre',
       icon: Dumbbell,
       category: { fr: 'Bien-être', en: 'Wellness' },
       title: { fr: 'Détente & Wellness', en: 'Relaxation & Wellness' },
@@ -55,6 +61,7 @@ export class ServicesComponent {
       },
     },
     {
+      id: 'service-gastronomie',
       icon: Utensils,
       category: { fr: 'Restauration', en: 'Dining' },
       title: { fr: 'Gastronomie', en: 'Gastronomy' },
@@ -64,6 +71,7 @@ export class ServicesComponent {
       },
     },
     {
+      id: 'service-surete',
       icon: ShieldCheck,
       category: { fr: 'Sécurité', en: 'Security' },
       title: { fr: 'Sûreté & Tranquillité', en: 'Safety & Peace of mind' },
@@ -73,6 +81,7 @@ export class ServicesComponent {
       },
     },
     {
+      id: 'service-transports',
       icon: CarTaxiFront,
       category: { fr: 'Mobilité', en: 'Mobility' },
       title: { fr: 'Transports & Déplacements', en: 'Transport & Travel' },

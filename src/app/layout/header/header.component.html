@@ -10,29 +10,29 @@
   <ul class="hidden md:flex gap-5 lg:gap-8 list-none">
     <li><a routerLink="/" fragment="about"
         class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
-        langService.currentLang() === 'fr' ? 'À propos' : 'About' }}</a></li>
+        'header.about' | transloco }}</a></li>
     <li><a routerLink="/" fragment="rooms"
         class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
-        langService.currentLang() === 'fr' ? 'Hébergements' : 'Accommodations' }}</a></li>
+        'common.accommodations' | transloco }}</a></li>
     <li><a routerLink="/" fragment="galerie"
         class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
-        langService.currentLang() === 'fr' ? 'Galerie' : 'Gallery' }}</a></li>
+        'common.gallery' | transloco }}</a></li>
     <li><a routerLink="/" fragment="services"
         class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
-        langService.currentLang() === 'fr' ? 'Services' : 'Services' }}</a></li>
+        'header.services' | transloco }}</a></li>
     <li><a routerLink="/" fragment="rooftop"
         class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">Rooftop</a></li>
-    <li><a routerLink="/" fragment="booking"
+    <li><a routerLink="/conciergerie"
         class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
-        langService.currentLang() === 'fr' ? 'Réservation' : 'Book now' }}</a></li>
+        'common.concierge' | transloco }}</a></li>
   </ul>
 
   <div class="flex items-center gap-2.5 text-[0.75rem] font-semibold tracking-widest uppercase">
     <button type="button" (click)="themeService.toggle()"
       class="w-8 h-8 flex items-center justify-center border border-gold-light/25 text-white/85 transition-colors hover:text-gold-light hover:border-gold-light/60"
       [attr.aria-label]="themeService.theme() === 'dark'
-        ? (langService.currentLang() === 'fr' ? 'Passer au thème clair' : 'Switch to light theme')
-        : (langService.currentLang() === 'fr' ? 'Passer au thème sombre' : 'Switch to dark theme')">
+        ? (('header.switchLightTheme' | transloco))
+        : (('header.switchDarkTheme' | transloco))">
       <lucide-icon [img]="themeService.theme() === 'dark' ? icons.Sun : icons.Moon" [size]="15" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
     </button>
     <span class="text-white/25 mr-0.5">|</span>

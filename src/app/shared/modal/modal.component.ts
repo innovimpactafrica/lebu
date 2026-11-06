@@ -9,13 +9,14 @@ import {
   CLUB_FLOORS, CLUB_PERKS, ROOM_CATEGORIES, RoomCategory, RoomCategoryId, RoomVersion,
   availableVersions, clubUpgradeDelta, findCategory, formatPrice, lowestPrice
 } from '../../data/rooms.data';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [FormsModule, RouterLink, LucideAngularModule],
+  imports: [TranslocoPipe, FormsModule, RouterLink, LucideAngularModule],
   templateUrl: './modal.component.html'
 })
 export class ModalComponent {

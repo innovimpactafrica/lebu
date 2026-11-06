@@ -17,6 +17,8 @@
   <script>
     // Apply the saved theme before Angular boots to avoid a flash of the wrong one
     try { if (localStorage.getItem('lebu-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+    // Same for the language attribute, read by screen readers and search engines
+    try { if (localStorage.getItem('lebu-lang') === 'en') document.documentElement.lang = 'en'; } catch (e) {}
   </script>
 </head>
 <body class="bg-page text-ink font-sans overflow-x-hidden">

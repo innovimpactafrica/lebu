@@ -1,5 +1,6 @@
 import { Component, ElementRef, inject, AfterViewInit, ViewChild, signal } from '@angular/core';
 import { LangService } from '../../shared/lang.service';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 interface Card {
   tier: string;

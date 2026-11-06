@@ -2,17 +2,17 @@
   <div class="max-w-site mx-auto">
     <div class="text-center mb-16" appReveal>
       <div class="inline-block text-[0.7rem] tracking-[0.45em] uppercase text-accent mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle before:content-['◆'] before:text-[0.4rem] before:mx-3 before:text-gold-dark before:align-middle">
-        {{ langService.currentLang() === 'fr' ? 'Services & Expérience' : 'Services & Experience' }}
+        {{ 'services.servicesExperience' | transloco }}
       </div>
       <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
-        {{ langService.currentLang() === 'fr' ? 'Le luxe' : 'Everyday' }}<br>
-        <em class="italic text-accent">{{ langService.currentLang() === 'fr' ? 'du quotidien' : 'luxury' }}</em>
+        {{ 'services.everyday' | transloco }}<br>
+        <em class="italic text-accent">{{ 'services.luxury' | transloco }}</em>
       </h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 border border-accent/10 bg-accent/10">
       @for (service of services; track service.category.fr) {
-        <div appReveal [revealDelay]="($index % 3) * 120" class="bg-surface/70 border border-accent/10 p-10 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-surface hover:border-accent/35 group">
+        <div [id]="service.id" appReveal [revealDelay]="($index % 3) * 120" class="scroll-mt-28 bg-surface/70 border border-accent/10 p-10 md:p-8 text-center relative overflow-hidden transition-all duration-400 hover:bg-surface hover:border-accent/35 group">
           <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"></div>
           <span class="flex justify-center mb-6 text-accent transition-transform duration-400 group-hover:-translate-y-1" aria-hidden="true"><lucide-icon [img]="service.icon" [size]="36" [strokeWidth]="1.25"></lucide-icon></span>
           <p class="text-[0.7rem] tracking-[0.3em] uppercase text-accent mb-2">{{ t(service.category) }}</p>
@@ -23,9 +23,7 @@
     </div>
 
     <p class="mt-12 text-center font-serif italic text-[1.15rem] md:text-[1.35rem] font-light text-ink/80">
-      {{ langService.currentLang() === 'fr'
-        ? '« LEBU, la téranga sénégalaise élevée au rang d\'art de vivre »'
-        : '“LEBU, Senegalese teranga raised to an art of living”' }}
+      {{ 'services.lebuSenegaleseTerangaRaised' | transloco }}
     </p>
   </div>
 </section>

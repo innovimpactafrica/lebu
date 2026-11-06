@@ -1,0 +1,194 @@
+<!-- Hero -->
+<section class="relative overflow-hidden bg-navy-deep text-white px-6 md:px-12 pt-36 md:pt-44 pb-16 md:pb-20">
+  <div class="absolute -top-40 -right-40 w-[560px] h-[560px] border border-gold-light/10 rounded-full pointer-events-none before:content-[''] before:absolute before:inset-[40px] before:border before:border-gold-light/5 before:rounded-full" aria-hidden="true"></div>
+
+  <div class="relative max-w-site mx-auto">
+    <a routerLink="/" class="inline-flex items-center gap-2.5 text-[0.7rem] tracking-[0.3em] uppercase text-white/70 transition-colors hover:text-gold-light mb-12">
+      <lucide-icon [img]="icons.ArrowLeft" [size]="13" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
+      {{ 'common.backHome' | transloco }}
+    </a>
+
+    <p class="text-[0.75rem] tracking-[0.45em] uppercase text-gold-light mb-5 opacity-0 animate-[fadeInUp_1s_0.1s_forwards]">
+      {{ 'conciergePage.lebuConcierge' | transloco }}
+    </p>
+    <h1 class="font-serif text-[clamp(2.6rem,6vw,5.2rem)] font-light leading-[1.02] opacity-0 animate-[fadeInUp_1s_0.25s_forwards]">
+      Dakar,<br>
+      <em class="italic text-gold-light">{{ 'common.likeLocal' | transloco }}</em>
+    </h1>
+
+    <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-[0.75rem] tracking-[0.22em] uppercase text-white/75">
+      <span>{{ total }} {{ 'common.addresses' | transloco }}</span>
+      <span class="w-1.5 h-1.5 rotate-45 bg-gold-light/60" aria-hidden="true"></span>
+      <span>{{ rubrics.length }} {{ 'conciergePage.categories' | transloco }}</span>
+      <span class="w-1.5 h-1.5 rotate-45 bg-gold-light/60" aria-hidden="true"></span>
+      <span>22 rue Wagane Diouf, Plateau</span>
+    </div>
+
+    <p class="mt-8 max-w-2xl text-[0.9375rem] font-normal leading-[1.9] text-white/85">
+      {{ 'conciergePage.teamSFavouriteAddresses' | transloco }}
+    </p>
+
+    <!-- Emergency numbers, always one tap away -->
+    <ul class="mt-10 flex flex-wrap gap-3">
+      @for (emergency of emergencies; track emergency.number) {
+        <li>
+          <a [href]="'tel:' + emergency.number" class="inline-flex items-baseline gap-3 border border-gold-light/30 px-5 py-3 transition-colors hover:border-gold-light hover:bg-white/5">
+            <span class="font-serif text-2xl text-gold-light leading-none">{{ emergency.number }}</span>
+            <span class="text-[0.7rem] tracking-[0.2em] uppercase text-white/85">{{ t(emergency.label) }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Guide -->
+<section id="guide" class="scroll-mt-24 px-6 md:px-12 py-14 md:py-20">
+  <div class="max-w-site mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 lg:gap-16 items-start">
+
+    <!-- Search + rubrics: sticky sidebar on desktop, horizontal strip on mobile -->
+    <aside class="lg:sticky lg:top-28 min-w-0">
+      <label class="relative block">
+        <span class="sr-only">{{ 'conciergePage.searchAddress' | transloco }}</span>
+        <lucide-icon [img]="icons.Search" [size]="16" [strokeWidth]="1.5" class="absolute left-4 top-1/2 -translate-y-1/2 text-accent pointer-events-none" aria-hidden="true"></lucide-icon>
+        <input type="search" [value]="query()" (input)="query.set($any($event.target).value)"
+          [placeholder]="'conciergePage.beachBrunchPharmacy' | transloco"
+          class="w-full bg-surface border border-accent/25 text-ink placeholder:text-ink/50 text-[0.9375rem] pl-12 pr-10 py-3.5 outline-none transition-colors focus:border-accent [&::-webkit-search-cancel-button]:hidden">
+        @if (query()) {
+          <button type="button" (click)="query.set('')" class="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-ink/60 hover:text-accent"
+            [attr.aria-label]="'conciergePage.clearSearch' | transloco">
+            <lucide-icon [img]="icons.X" [size]="16" [strokeWidth]="1.5"></lucide-icon>
+          </button>
+        }
+      </label>
+
+      <nav class="mt-6 -mx-6 px-6 lg:mx-0 lg:px-0 overflow-x-auto lg:overflow-visible" [attr.aria-label]="'common.categories' | transloco">
+        <ul class="flex lg:flex-col gap-2 lg:gap-0 w-max lg:w-auto lg:border-l lg:border-accent/20">
+          @for (rubric of rubrics; track rubric.slug) {
+            <li>
+              <button type="button" (click)="select(rubric)" [attr.aria-current]="!query() && active() === rubric ? 'true' : null"
+                class="w-full flex items-center justify-between gap-4 whitespace-nowrap text-left text-[0.85rem] transition-colors border lg:border-0 lg:border-l-2 lg:-ml-px px-4 py-2.5 lg:py-2"
+                [class]="!query() && active() === rubric
+                  ? 'border-accent bg-accent text-page lg:bg-transparent lg:text-ink lg:font-medium'
+                  : 'border-accent/25 lg:border-transparent text-ink/75 hover:text-accent'">
+                {{ t(rubric.short) }}
+                <span class="hidden lg:inline text-[0.75rem] text-ink/60">{{ rubric.places.length }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <a [href]="'tel:' + receptionPhone" class="hidden lg:flex mt-10 items-start gap-3 border border-accent/25 bg-surface p-5 transition-colors hover:border-accent">
+        <lucide-icon [img]="icons.ConciergeBell" [size]="20" [strokeWidth]="1.5" class="text-accent shrink-0 mt-0.5" aria-hidden="true"></lucide-icon>
+        <span>
+          <span class="block text-[0.85rem] font-medium text-ink">{{ 'conciergePage.reception247' | transloco }}</span>
+          <span class="block mt-1 text-[0.85rem] text-ink/75">+221 71 053 79 79</span>
+        </span>
+      </a>
+    </aside>
+
+    <!-- Content -->
+    <div class="min-w-0">
+      @if (query()) {
+        <p class="text-[0.7rem] tracking-[0.45em] uppercase text-accent mb-3">{{ 'conciergePage.search' | transloco }}</p>
+        <h2 class="font-serif text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.1]">
+          {{ resultCount() }} {{ 'conciergePage.result.' + langService.plural(resultCount()) | transloco }}
+        </h2>
+        <p class="mt-2 text-[0.9375rem] text-ink/75">{{ 'conciergePage.for' | transloco }} « {{ query() }} »</p>
+
+        @for (group of results(); track group.rubric.slug) {
+          <p class="mt-12 mb-5 text-[0.7rem] tracking-[0.3em] uppercase text-ink/75 pb-3 border-b border-accent/20">{{ t(group.rubric.short) }}</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5">
+            @for (place of group.places; track place.name) {
+              <ng-container *ngTemplateOutlet="card; context: { $implicit: place }"></ng-container>
+            }
+          </div>
+        } @empty {
+          <p class="mt-10 text-[0.9375rem] text-ink/75">
+            {{ 'conciergePage.noAddressFoundTry' | transloco }}
+          </p>
+        }
+      } @else {
+        <p class="text-[0.7rem] tracking-[0.45em] uppercase text-accent mb-3">
+          {{ num(rubrics.indexOf(active()) + 1) }} · {{ active().places.length }} {{ 'common.addresses' | transloco }}
+        </p>
+        <h2 class="font-serif text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.1]">{{ t(active().title) }}</h2>
+        <p class="mt-3 max-w-2xl text-[0.9375rem] leading-[1.8] text-ink/80">{{ t(active().lead) }}</p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5">
+          @for (place of active().places; track place.name) {
+            <ng-container *ngTemplateOutlet="card; context: { $implicit: place }"></ng-container>
+          }
+        </div>
+      }
+
+      <!-- Reception, for everything that is not in the guide -->
+      <div class="mt-16 border border-accent/25 bg-navy text-white p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <p class="font-serif text-[1.6rem] font-light leading-[1.2]">
+            {{ 'conciergePage.somethingSpecificMind' | transloco }}
+          </p>
+          <p class="mt-2 text-[0.9375rem] text-white/85">
+            {{ 'conciergePage.tableDriverExcursionReception' | transloco }}
+          </p>
+        </div>
+        <a [href]="'tel:' + receptionPhone" class="inline-flex items-center justify-center gap-3 bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep text-[0.75rem] font-bold tracking-[0.25em] uppercase px-8 py-4 whitespace-nowrap transition-transform duration-300 hover:-translate-y-1">
+          <lucide-icon [img]="icons.Phone" [size]="16" [strokeWidth]="2" aria-hidden="true"></lucide-icon>
+          {{ 'conciergePage.callReception' | transloco }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #card let-place>
+  <article class="group relative flex flex-col bg-surface border border-accent/15 p-6 md:p-7 transition-colors duration-300 hover:border-accent/40">
+    <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true"></div>
+    <p class="text-[0.7rem] tracking-[0.2em] uppercase text-accent">{{ field(place, 'cat') }}</p>
+    <h3 class="mt-2 font-serif text-[1.5rem] font-normal leading-[1.2] text-ink">{{ field(place, 'name') }}</h3>
+    <p class="mt-3 text-[0.9rem] leading-[1.7] text-ink/80">{{ field(place, 'desc') }}</p>
+
+    <dl class="mt-5 space-y-2.5 text-[0.85rem] leading-[1.6] text-ink/80">
+      @if (place.loc) {
+        <div class="flex items-start gap-3">
+          <dt class="flex items-center h-[1.6em] text-accent shrink-0"><lucide-icon [img]="icons.MapPin" [size]="15" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon><span class="sr-only">{{ 'conciergePage.address' | transloco }}</span></dt>
+          <dd>{{ field(place, 'loc') }}</dd>
+        </div>
+      }
+      @if (place.tel) {
+        <div class="flex items-start gap-3">
+          <dt class="flex items-center h-[1.6em] text-accent shrink-0"><lucide-icon [img]="icons.Phone" [size]="15" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon><span class="sr-only">Contact</span></dt>
+          <dd>@for (part of phoneParts(field(place, 'tel')!); track $index) {@if (part.href) {<a [href]="part.href" class="whitespace-nowrap text-ink underline decoration-accent/40 underline-offset-4 transition-colors hover:text-accent">{{ part.text }}</a>} @else {{{ part.text }}}}</dd>
+        </div>
+      }
+      @if (place.hours) {
+        <div class="flex items-start gap-3">
+          <dt class="flex items-center h-[1.6em] text-accent shrink-0"><lucide-icon [img]="icons.Clock" [size]="15" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon><span class="sr-only">{{ 'conciergePage.openingHours' | transloco }}</span></dt>
+          <dd>{{ field(place, 'hours') }}</dd>
+        </div>
+      }
+      @if (place.price) {
+        <div class="flex items-start gap-3">
+          <dt class="flex items-center h-[1.6em] text-accent shrink-0"><lucide-icon [img]="icons.Tag" [size]="15" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon><span class="sr-only">{{ 'conciergePage.price' | transloco }}</span></dt>
+          <dd>{{ field(place, 'price') }}</dd>
+        </div>
+      }
+    </dl>
+
+    @if (place.note) {
+      <p class="mt-5 flex items-start gap-2.5 text-[0.85rem] italic leading-[1.6] text-accent">
+        <lucide-icon [img]="icons.Sparkles" [size]="14" [strokeWidth]="1.5" class="shrink-0 mt-1" aria-hidden="true"></lucide-icon>
+        {{ field(place, 'note') }}
+      </p>
+    }
+
+    @if (place.map) {
+      <a [href]="place.map" target="_blank" rel="noopener"
+        class="mt-auto pt-6 self-start inline-flex items-center gap-2 text-[0.75rem] font-semibold tracking-[0.18em] uppercase text-accent transition-colors hover:text-ink">
+        <lucide-icon [img]="icons.Navigation" [size]="14" [strokeWidth]="1.75" aria-hidden="true"></lucide-icon>
+        {{ field(place, 'mapLabel') }}
+      </a>
+    }
+  </article>
+</ng-template>

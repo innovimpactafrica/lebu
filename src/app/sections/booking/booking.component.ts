@@ -7,11 +7,12 @@ import { addDays, todayISO } from '../../shared/date.utils';
 import {
   CLUB_FLOORS, ROOM_CATEGORIES, RoomCategoryId, RoomVersion, formatPrice
 } from '../../data/rooms.data';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [FormsModule, LucideAngularModule],
+  imports: [TranslocoPipe, FormsModule, LucideAngularModule],
   templateUrl: './booking.component.html'
 })
 export class BookingComponent {

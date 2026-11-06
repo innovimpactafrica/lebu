@@ -6,6 +6,7 @@ import {
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 interface Highlight {
   icon: LucideIconData;
@@ -32,7 +33,7 @@ const HOVER_CLOSE_DELAY = 250;
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [LucideAngularModule, RevealDirective],
+  imports: [TranslocoPipe, LucideAngularModule, RevealDirective],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.css'
 })

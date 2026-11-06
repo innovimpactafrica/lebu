@@ -1,0 +1,158 @@
+{
+  "common": {
+    "checkIn": "Check-in",
+    "classic": "Classic",
+    "concierge": "Concierge",
+    "checkOut": "Check-out",
+    "close": "Close",
+    "gallery": "Gallery",
+    "accommodations": "Accommodations",
+    "backHome": "Back to home",
+    "categories": "Categories",
+    "bookStay": "Book a stay",
+    "addresses": "addresses",
+    "adults": "adults",
+    "likeLocal": "like a local"
+  },
+  "footer": {
+    "artLivingDakarSenegalese": "The art of living in Dakar. Senegalese teranga raised to an art of living, in the heart of Plateau.",
+    "aibdAirport60Min": "AIBD airport: 60 min · Beach: 15 min walk",
+    "termsSale": "Terms of sale",
+    "allRightsReserved": "All rights reserved."
+  },
+  "header": {
+    "about": "About",
+    "services": "Services",
+    "switchLightTheme": "Switch to light theme",
+    "switchDarkTheme": "Switch to dark theme"
+  },
+  "conciergePage": {
+    "lebuConcierge": "LEBU Concierge",
+    "categories": "categories",
+    "teamSFavouriteAddresses": "Our team's favourite addresses, with opening hours, prices and directions from the hotel. Reception is always on hand for bookings, drivers or excursions.",
+    "searchAddress": "Search an address",
+    "beachBrunchPharmacy": "Beach, brunch, pharmacy…",
+    "clearSearch": "Clear search",
+    "reception247": "Reception 24/7",
+    "search": "Search",
+    "for": "for",
+    "noAddressFoundTry": "No address found. Try another word, or ask reception.",
+    "somethingSpecificMind": "Something specific in mind?",
+    "tableDriverExcursionReception": "A table, a driver, an excursion: reception takes care of it, 24/7.",
+    "callReception": "Call reception",
+    "address": "Address",
+    "openingHours": "Opening hours",
+    "price": "Price",
+    "result": {
+      "one": "result",
+      "other": "results"
+    }
+  },
+  "terms": {
+    "legalInformation": "Legal information",
+    "generalTerms": "General terms",
+    "ofSale": "of sale",
+    "becauseExceptionalStayBegins": "Because an exceptional stay begins with transparency, here are the terms that govern your booking and your stay at LEBU Appart & Suites.",
+    "theEssentials": "The essentials",
+    "atA": "At a",
+    "glance": "glance",
+    "thisSummaryEaseReading": "This summary is for ease of reading and does not replace the detailed terms below.",
+    "contents": "Contents",
+    "printPdf": "Print / PDF",
+    "article": "Article",
+    "anyQuestions": "Any questions?",
+    "teamHereYou": "Our team is here for you,",
+    "discoverSuites": "Discover our suites"
+  },
+  "about": {
+    "conceptHeritage": "Concept & Heritage",
+    "exceptionalRetreat": "An exceptional retreat",
+    "inTheHeartOf": "in the heart of "
+  },
+  "booking": {
+    "accommodation": "Accommodation",
+    "allCategories": "All categories",
+    "checkAvailability": "Check availability"
+  },
+  "concierge": {
+    "restaurantsBeachesExcursionsNights": "Restaurants, beaches, excursions, nights out: our team has selected the best addresses in town for you, with opening hours, prices and directions. Reception is always on hand to book, find a driver or arrange an excursion.",
+    "addresses": "Addresses",
+    "emergencies": "Emergencies",
+    "exploreConcierge": "Explore the concierge",
+    "alsoEmergenciesHealthTransport": "Also: emergencies and health, transport, kids, fitness and practical info."
+  },
+  "gallery": {
+    "discover": "Discover",
+    "ourSpaces": "our spaces",
+    "viewDetails": "View details: "
+  },
+  "hero": {
+    "dakarSenegalLuxuryHotel": "Dakar · Senegal · Luxury hotel residence",
+    "artLiving": "The art of living",
+    "inDakar": "in Dakar",
+    "n36SuitesEquippedKitchen": "36 suites · Equipped kitchen · Fitness centre · Rooftop bar · Concierge",
+    "bookNow": "Book now",
+    "discover": "Discover"
+  },
+  "loyalty": {
+    "lebuLoyalty": "Lebu Loyalty",
+    "memberNo": "Member No.",
+    "hoverCardRevealIts": "Hover the card to reveal its sheen.",
+    "includedBenefits": "Included benefits"
+  },
+  "rooftop": {
+    "dakarFeet": "Dakar at your feet,",
+    "oceanHorizon": "the ocean on the horizon.",
+    "riseAboveAllSavour": "Rise above it all and savour the moment: welcome to the LEBU rooftop, facing the Atlantic at sunset. Our signature mocktails celebrate well-being with bissap, bouye and freshly squeezed fruit."
+  },
+  "rooms": {
+    "n36Exceptional": "36 exceptional",
+    "suites": "suites",
+    "version": "Version",
+    "includedClubLebuPrivileges": "Included Club Lebu privileges",
+    "clubLebuExclusive": "Club Lebu exclusive",
+    "notAvailableClubLebu": "Not available as Club Lebu",
+    "nightTaxes": "/ night + taxes",
+    "alsoClubLebu": "Also as Club Lebu",
+    "viewClassicVersion": "View Classic version",
+    "bookThisSuite": "Book this suite",
+    "allSuites": "In all our suites",
+    "smokeFreeSuitesGuaranteed": "Smoke-free suites, guaranteed fresh air",
+    "checkFrom2Pm": "Check-in from 2 PM · Check-out by 12 PM",
+    "clubIntroBefore": "Some categories are available in a",
+    "clubIntroAfter": "version ({{ floors }}), with exclusive privileges."
+  },
+  "services": {
+    "servicesExperience": "Services & Experience",
+    "everyday": "Everyday",
+    "luxury": "luxury",
+    "lebuSenegaleseTerangaRaised": "“LEBU, Senegalese teranga raised to an art of living”"
+  },
+  "modal": {
+    "bookStay": "Book your stay",
+    "category": "Category",
+    "from": "from",
+    "pleaseChooseCategory": "Please choose a category.",
+    "taxesNight": "+ taxes / night",
+    "notAvailableThisCategory": "Not available for this category",
+    "taxesNightPrivilegesIncluded": "+ taxes / night · privileges included",
+    "stay": "Stay",
+    "checkOutMustBe": "Check-out must be after check-in.",
+    "adults": "Adults",
+    "children": "Children",
+    "yourDetails": "Your details",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "specialRequests": "Special requests",
+    "eGTwinBeds": "E.g: twin beds, late arrival...",
+    "readGeneralTermsSale": "Read the general terms of sale",
+    "confirmBooking": "Confirm booking",
+    "thankYouBooking": "Thank you for your booking!",
+    "teamWillContactYou": "Our team will contact you within 24 hours to confirm your stay and finalize the details.",
+    "night": {
+      "one": "night",
+      "other": "nights"
+    }
+  }
+}

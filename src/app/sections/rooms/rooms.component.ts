@@ -7,6 +7,7 @@ import {
   clubUpgradeDelta, formatPrice
 } from '../../data/rooms.data';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 interface RoomCard {
   category: RoomCategory;
@@ -21,7 +22,7 @@ interface RoomCard {
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [LucideAngularModule, RevealDirective],
+  imports: [TranslocoPipe, LucideAngularModule, RevealDirective],
   templateUrl: './rooms.component.html'
 })
 export class RoomsComponent {

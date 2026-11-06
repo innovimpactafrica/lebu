@@ -1,11 +1,11 @@
 <section id="galerie" class="py-12 md:py-16 px-6 md:px-12 box-content max-w-site mx-auto">
   <div class="text-center mb-10" appReveal>
     <div class="inline-block text-[0.7rem] tracking-[0.45em] uppercase text-accent mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle before:content-['◆'] before:text-[0.4rem] before:mx-3 before:text-gold-dark before:align-middle">
-      {{ langService.currentLang() === 'fr' ? 'Galerie' : 'Gallery' }}
+      {{ 'common.gallery' | transloco }}
     </div>
     <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
-      {{ langService.currentLang() === 'fr' ? 'Découvrez' : 'Discover' }}<br>
-      <em class="italic text-accent">{{ langService.currentLang() === 'fr' ? 'nos espaces' : 'our spaces' }}</em>
+      {{ 'gallery.discover' | transloco }}<br>
+      <em class="italic text-accent">{{ 'gallery.ourSpaces' | transloco }}</em>
     </h2>
   </div>
 
@@ -15,7 +15,7 @@
         class="relative overflow-hidden rounded bg-cover bg-center bg-[#0a2672]/50 group text-left cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gold-light"
         [class.md:row-span-2]="space.large"
         [style.background-image]="'url(' + space.image + ')'"
-        [attr.aria-label]="(langService.currentLang() === 'fr' ? 'Voir les détails : ' : 'View details: ') + (langService.currentLang() === 'fr' ? space.labelFr : space.labelEn)"
+        [attr.aria-label]="(('gallery.viewDetails' | transloco)) + (langService.currentLang() === 'fr' ? space.labelFr : space.labelEn)"
         aria-haspopup="dialog"
         (pointerenter)="onTileEnter(space, $event)"
         (pointerleave)="onTileLeave()"
@@ -53,7 +53,7 @@
 
       <button #closeBtn type="button" (click)="close()"
         class="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center bg-navy-deep/60 border border-gold-light/25 text-white transition-colors hover:bg-gold-light/10"
-        [attr.aria-label]="langService.currentLang() === 'fr' ? 'Fermer' : 'Close'">
+        [attr.aria-label]="'common.close' | transloco">
         <lucide-icon [img]="icons.X" [size]="18" [strokeWidth]="1.5"></lucide-icon>
       </button>
 
@@ -85,7 +85,7 @@
 
         <button type="button" (click)="book()"
           class="mt-auto self-start bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep font-sans text-[0.7rem] font-bold tracking-[0.25em] uppercase px-7 py-3 cursor-pointer transition-transform duration-300 hover:-translate-y-0.5">
-          {{ langService.currentLang() === 'fr' ? 'Réserver un séjour' : 'Book a stay' }}
+          {{ 'common.bookStay' | transloco }}
           <lucide-icon [img]="icons.ArrowRight" [size]="13" [strokeWidth]="2" class="inline-block ml-2 align-middle"></lucide-icon>
         </button>
       </div>

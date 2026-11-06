@@ -3,6 +3,7 @@ import { ArrowRight, Citrus, GlassWater, Leaf, LucideAngularModule, LucideIconDa
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 interface Signature {
   icon: LucideIconData;
@@ -12,7 +13,7 @@ interface Signature {
 @Component({
   selector: 'app-rooftop',
   standalone: true,
-  imports: [LucideAngularModule, RevealDirective],
+  imports: [TranslocoPipe, LucideAngularModule, RevealDirective],
   templateUrl: './rooftop.component.html'
 })
 export class RooftopComponent {

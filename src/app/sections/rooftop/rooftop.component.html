@@ -11,13 +11,11 @@
       Rooftop & Bar Lounge
     </p>
     <h2 appReveal [revealDelay]="100" class="font-serif text-[clamp(2.4rem,5vw,4.5rem)] font-light leading-[1.02] max-w-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.35)]">
-      {{ langService.currentLang() === 'fr' ? 'Dakar à vos pieds,' : 'Dakar at your feet,' }}<br>
-      <em class="italic text-gold-light">{{ langService.currentLang() === 'fr' ? "l'océan pour horizon." : 'the ocean on the horizon.' }}</em>
+      {{ 'rooftop.dakarFeet' | transloco }}<br>
+      <em class="italic text-gold-light">{{ 'rooftop.oceanHorizon' | transloco }}</em>
     </h2>
     <p appReveal [revealDelay]="250" class="mt-5 max-w-xl text-[0.9375rem] font-normal leading-[1.85] text-white/85">
-      {{ langService.currentLang() === 'fr'
-        ? "Prenez de la hauteur, savourez l'instant : bienvenue sur le rooftop de LEBU, face à l'Atlantique au coucher du soleil. Nos mocktails signature célèbrent le bien-être avec le bissap, le bouye et les fruits frais pressés minute."
-        : 'Rise above it all and savour the moment: welcome to the LEBU rooftop, facing the Atlantic at sunset. Our signature mocktails celebrate well-being with bissap, bouye and freshly squeezed fruit.' }}
+      {{ 'rooftop.riseAboveAllSavour' | transloco }}
     </p>
 
     <ul class="mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -37,7 +35,7 @@
     <div class="mt-8 flex flex-wrap items-center gap-4">
       <button type="button" (click)="book()"
         class="inline-flex items-center gap-2 bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep font-sans text-[0.75rem] font-bold tracking-[0.25em] uppercase px-7 py-3 transition-transform duration-300 hover:-translate-y-0.5">
-        {{ langService.currentLang() === 'fr' ? 'Réserver un séjour' : 'Book a stay' }}
+        {{ 'common.bookStay' | transloco }}
         <lucide-icon [img]="icons.ArrowRight" [size]="13" [strokeWidth]="2"></lucide-icon>
       </button>
     </div>

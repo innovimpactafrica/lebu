@@ -3,11 +3,12 @@ import { RouterLink } from '@angular/router';
 import { LucideAngularModule, Moon, Sun } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { ThemeService } from '../../shared/theme.service';
+import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, LucideAngularModule],
+  imports: [TranslocoPipe, RouterLink, LucideAngularModule],
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {

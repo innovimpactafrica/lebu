@@ -3,11 +3,11 @@
   <div class="text-left">
     <div class="mb-16" appReveal>
       <div class="inline-block text-[0.7rem] tracking-[0.45em] uppercase text-accent mb-4 relative after:content-['◆'] after:text-[0.4rem] after:mx-3 after:text-gold-dark after:align-middle">
-        {{ langService.currentLang() === 'fr' ? 'Concept & Héritage' : 'Concept & Heritage' }}
+        {{ 'about.conceptHeritage' | transloco }}
       </div>
       <h2 class="font-serif text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.1]">
-        {{ langService.currentLang() === 'fr' ? "Un refuge d'exception" : "An exceptional retreat" }}<br>
-        {{ langService.currentLang() === 'fr' ? "au cœur de " : "in the heart of " }}<em class="italic text-accent">Dakar</em>
+        {{ 'about.exceptionalRetreat' | transloco }}<br>
+        {{ 'about.inTheHeartOf' | transloco }}<em class="italic text-accent">Dakar</em>
       </h2>
     </div>
     
