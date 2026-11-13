@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { LucideAngularModule, Mail, MapPin, Phone, Plane } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { ROOM_CATEGORIES } from '../../data/rooms.data';
+import { HOTEL_MAPS_URL } from '../../shared/contact';
 import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
@@ -16,6 +17,7 @@ export class FooterComponent {
   readonly rooms = ROOM_CATEGORIES;
   readonly icons = { MapPin, Phone, Mail, Plane };
   readonly year = new Date().getFullYear();
+  readonly mapsUrl = HOTEL_MAPS_URL;
 
   // Each link lands on its own service card; the concierge has its own page
   readonly services = [

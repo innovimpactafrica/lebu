@@ -24,7 +24,13 @@
     "about": "À propos",
     "services": "Services",
     "switchLightTheme": "Passer au thème clair",
-    "switchDarkTheme": "Passer au thème sombre"
+    "switchDarkTheme": "Passer au thème sombre",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "menu": "Menu",
+    "book": "Réserver",
+    "call": "Appeler",
+    "directions": "Itinéraire"
   },
   "conciergePage": {
     "lebuConcierge": "Conciergerie LEBU",
@@ -111,16 +117,16 @@
     "version": "Version",
     "includedClubLebuPrivileges": "Privilèges Club Lebu inclus",
     "clubLebuExclusive": "Exclusivité Club Lebu",
-    "notAvailableClubLebu": "Non disponible en Club Lebu",
     "nightTaxes": "/ nuit + taxes",
     "alsoClubLebu": "Aussi en Club Lebu",
-    "viewClassicVersion": "Voir en version Classique",
     "bookThisSuite": "Réserver cette suite",
     "allSuites": "Dans toutes nos suites",
     "smokeFreeSuitesGuaranteed": "Suites non-fumeur, un air pur garanti",
     "checkFrom2Pm": "Arrivée dès 14 h · Départ avant 12 h",
-    "clubIntroBefore": "Certaines catégories existent en version",
-    "clubIntroAfter": "({{ floors }}), avec des privilèges inclus."
+    "clubIntroBefore": "Toutes nos catégories existent en version",
+    "clubIntroAfter": "({{ floors }}), avec des privilèges inclus.",
+    "alsoInClub": "Exclusivités Club Lebu",
+    "discoverClub": "Découvrir le Club Lebu"
   },
   "services": {
     "servicesExperience": "Services & Expérience",

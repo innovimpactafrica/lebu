@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <ul class="hidden md:flex gap-5 lg:gap-8 list-none">
+  <ul class="hidden md:flex items-center gap-5 lg:gap-8 list-none">
     <li><a routerLink="/" fragment="about"
         class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
         'header.about' | transloco }}</a></li>
@@ -22,8 +22,9 @@
         'header.services' | transloco }}</a></li>
     <li><a routerLink="/" fragment="rooftop"
         class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">Rooftop</a></li>
-    <li><a routerLink="/conciergerie"
-        class="text-white/75 no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase transition-colors hover:text-gold-light">{{
+    <!-- Highlighted: the concierge is a key differentiator -->
+    <li><a routerLink="/conciergerie" routerLinkActive="bg-gold-light/15"
+        class="text-gold-light no-underline text-[0.7rem] lg:text-[0.78rem] font-medium tracking-[0.12em] lg:tracking-widest uppercase border border-gold-light/60 px-3 py-1.5 transition-colors hover:bg-gold-light/10 hover:border-gold-light">{{
         'common.concierge' | transloco }}</a></li>
   </ul>
 
@@ -41,5 +42,63 @@
     <span class="text-white/25">|</span>
     <button (click)="setLang('en')" class="bg-transparent border-none cursor-pointer transition-colors"
       [class]="langService.currentLang() === 'en' ? 'text-gold-light' : 'text-white/70 hover:text-gold-light'">EN</button>
+    <!-- Mobile only: the section links above are hidden below md -->
+    <button #menuButton type="button" (click)="openMenu()"
+      class="md:hidden w-10 h-10 -mr-1.5 ml-1.5 flex items-center justify-center text-white transition-colors hover:text-gold-light"
+      [attr.aria-label]="'header.openMenu' | transloco" aria-controls="mobile-menu" [attr.aria-expanded]="menuOpen()">
+      <lucide-icon [img]="icons.Menu" [size]="24" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+    </button>
   </div>
 </nav>
+
+<!-- Outside <nav>: its backdrop-filter would trap a fixed child inside the bar -->
+@if (menuOpen()) {
+  <div id="mobile-menu" role="dialog" aria-modal="true" [attr.aria-label]="'header.menu' | transloco"
+    class="md:hidden fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-navy-deep text-white animate-[fadeIn_0.25s_ease-out_forwards]">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-gold-light/20 shrink-0">
+      <a routerLink="/" (click)="closeMenu()" aria-label="Lebu Appart&amp;Suites"><img src="logo_Lebu2.png" alt="Lebu Appart&amp;Suites" class="w-28"></a>
+      <button #closeButton type="button" (click)="closeMenu(true)"
+        class="w-10 h-10 -mr-1.5 flex items-center justify-center text-white transition-colors hover:text-gold-light"
+        [attr.aria-label]="'header.closeMenu' | transloco">
+        <lucide-icon [img]="icons.X" [size]="26" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+      </button>
+    </div>
+
+    <ul class="list-none px-6 pt-4 pb-8 flex-1">
+      @for (link of menuLinks; track link.path + link.fragment; let i = $index) {
+        <li class="border-b border-gold-light/10 opacity-0 animate-[fadeInUp_0.4s_ease-out_forwards]" [style.animation-delay.ms]="60 + i * 40">
+          <a [routerLink]="link.path" [fragment]="link.fragment" (click)="closeMenu()"
+            class="flex items-baseline gap-4 py-4 no-underline transition-colors hover:text-gold-light"
+            [class]="link.highlight ? 'text-gold-light' : 'text-white'">
+            <span class="w-6 shrink-0 text-[0.75rem] tracking-[0.2em] text-gold-light/70">{{ (i + 1).toString().padStart(2, '0') }}</span>
+            <span class="font-serif text-[1.875rem] font-light leading-tight">{{ link.labelKey ? (link.labelKey | transloco) : link.label }}</span>
+            @if (link.highlight) {
+              <lucide-icon [img]="icons.ConciergeBell" [size]="18" [strokeWidth]="1.5" class="self-center" aria-hidden="true"></lucide-icon>
+            }
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- Quick actions: the three things a phone visitor most often wants -->
+    <div class="px-6 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] border-t border-gold-light/20 shrink-0 flex flex-col gap-3">
+      <button type="button" (click)="bookFromMenu()"
+        class="w-full bg-gradient-to-br from-gold-light to-gold-dark text-navy-deep font-sans text-[0.8125rem] font-bold tracking-[0.25em] uppercase py-4 cursor-pointer">
+        {{ 'header.book' | transloco }}
+      </button>
+      <div class="grid grid-cols-2 gap-3">
+        <a [href]="phone.href" (click)="closeMenu()"
+          class="flex items-center justify-center gap-2.5 border border-gold-light/50 text-gold-light text-[0.8125rem] font-semibold tracking-[0.15em] uppercase py-3.5 transition-colors hover:bg-gold-light/10">
+          <lucide-icon [img]="icons.Phone" [size]="16" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+          {{ 'header.call' | transloco }}
+        </a>
+        <a [href]="mapsUrl" target="_blank" rel="noopener" (click)="closeMenu()"
+          class="flex items-center justify-center gap-2.5 border border-gold-light/50 text-gold-light text-[0.8125rem] font-semibold tracking-[0.15em] uppercase py-3.5 transition-colors hover:bg-gold-light/10">
+          <lucide-icon [img]="icons.MapPin" [size]="16" [strokeWidth]="1.5" aria-hidden="true"></lucide-icon>
+          {{ 'header.directions' | transloco }}
+        </a>
+      </div>
+      <p class="text-center text-[0.8125rem] text-white/60 pt-1">{{ phone.label }}</p>
+    </div>
+  </div>
+}

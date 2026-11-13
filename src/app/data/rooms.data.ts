@@ -18,7 +18,8 @@ export interface RoomOffer {
   pmsRoomTypeId?: number;
 }
 
-// Every RoomRaccoon room type of the hotel (from the PMS booking widget).
+// Every RoomRaccoon room type of the hotel (from the PMS booking widget): 8 offers,
+// LEBU Standard (Deluxe, Executive, Prestige) and LEBU Club (Standard to Penthouse).
 // TODO: set each offer's pmsRoomTypeId below once RoomRaccoon confirms which id is which;
 // until then every booking link lists all of them.
 export const PMS_ROOM_TYPE_IDS = [132226, 132227, 132228, 132225, 132229, 132222, 132223, 132224];
@@ -103,7 +104,8 @@ export const ROOM_CATEGORIES: RoomCategory[] = [
     surface: 16, adults: 2,
     features: [{ fr: 'Cuisine équipée', en: 'Equipped kitchen' }, ...CORE_FEATURES],
     also: CORE_EQUIPMENT,
-    offers: { classic: { price: 85000 } },
+    // PMS: Standard exists only as LEBU Club. TODO: confirm the Club price (kept from the former offer)
+    offers: { club: { price: 85000 } },
   },
   {
     id: 'deluxe', name: 'Deluxe', image: 'salon.jpeg', wide: false,

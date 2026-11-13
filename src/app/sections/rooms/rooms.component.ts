@@ -1,5 +1,5 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { Check, Clock, Crown, Leaf, LucideAngularModule, Ruler, Users } from 'lucide-angular';
+import { Component, ElementRef, computed, inject, signal, viewChild } from '@angular/core';
+import { ArrowRight, Check, Clock, Crown, Leaf, LucideAngularModule, Ruler, Users } from 'lucide-angular';
 import { LangService } from '../../shared/lang.service';
 import { BookingService } from '../../shared/booking.service';
 import {
@@ -13,10 +13,8 @@ interface RoomCard {
   category: RoomCategory;
   offer: RoomOffer;
   version: RoomVersion;
-  // Classic mode, category only sold as Club (Penthouse)
+  // Category only sold as Club (Standard, Penthouse)
   clubOnly: boolean;
-  // Club mode, category without a Club version (Standard): shown greyed out
-  unavailable: boolean;
   upgradeDelta: number | null;
 }
 @Component({
@@ -28,7 +26,7 @@ interface RoomCard {
 export class RoomsComponent {
   langService = inject(LangService);
   private booking = inject(BookingService);
-  readonly icons = { Ruler, Users, Leaf, Crown, Check, Clock };
+  readonly icons = { Ruler, Users, Leaf, Crown, Check, Clock, ArrowRight };
   readonly amenities = SHARED_AMENITIES;
   readonly clubPerks = CLUB_PERKS;
   readonly clubFloors = CLUB_FLOORS;
@@ -36,28 +34,33 @@ export class RoomsComponent {
 
   version = signal<RoomVersion>('classic');
 
-  // Every category is shown in both modes: a category without an offer in the
-  // selected version falls back to the one it has (Standard stays Classic in
-  // Club mode, Penthouse stays Club in Classic mode)
+  // Each mode only lists the categories sold in that version (as in the PMS)
   cards = computed<RoomCard[]>(() => {
     const mode = this.version();
     return ROOM_CATEGORIES
-      .map(category => {
-        const own = category.offers[mode];
-        const version: RoomVersion = own ? mode : mode === 'club' ? 'classic' : 'club';
-        return {
-          category,
-          offer: category.offers[version]!,
-          version,
-          clubOnly: mode === 'classic' && !own,
-          unavailable: mode === 'club' && !own,
-          upgradeDelta: clubUpgradeDelta(category),
-        };
-      });
+      .filter(category => !!category.offers[mode])
+      .map(category => ({
+        category,
+        offer: category.offers[mode]!,
+        version: mode,
+        clubOnly: !category.offers.classic,
+        upgradeDelta: clubUpgradeDelta(category),
+      }));
   });
+
+  // Shown under the Classic grid so they are not missed
+  readonly clubExclusives = ROOM_CATEGORIES.filter(c => !c.offers.classic);
+
+  private versionSelector = viewChild<ElementRef<HTMLElement>>('versionSelector');
 
   setVersion(version: RoomVersion) {
     this.version.set(version);
+  }
+
+  // From the bottom of the grid: switch, then bring the selector and the first Club card into view
+  discoverClub() {
+    this.setVersion('club');
+    this.versionSelector()?.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   t(text: { fr: string; en: string }): string {
